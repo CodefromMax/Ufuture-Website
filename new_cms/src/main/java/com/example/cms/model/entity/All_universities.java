@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name="universities")
 
 public class All_universities {
     @Id
@@ -21,22 +22,22 @@ public class All_universities {
 
     private String universityId;
 
+    @NotEmpty
+    private String uniName;
+
     @ManyToOne
     @Nullable
     @JoinColumn(name="qsRanking")
-
     private String qsrankings;
 
     @ManyToOne
     @Nullable
     @JoinColumn(name="timesRanking")
-
     private String timesrankings;
 
     @ManyToOne
     @Nullable
     @JoinColumn(name="cwurRanking")
-
     private String cwurrankings;
 
 
