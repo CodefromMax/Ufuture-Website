@@ -1,25 +1,6 @@
 <template>
   <div class="hello">
     <h2> Students </h2>
-
-
-    <div class = "search container">
-      <b-input-group prepend="Search a University">
-        <!--triger 1-->
-      <b-form-input type = "text" placeholder = "Name of the University" v-model = "query" @keydown.enter = "search(query)"/>
-      <template #append>
-        <!--triger 2-->
-        <b-button class = "search-button" @click = "search(query)">
-          <b-icon-search></b-icon-search>
-        </b-button>
-      </template>
-    
-      </b-input-group>
-
-    </div>
-
-
-
     <b-table striped hover responsive :items="students" :fields="fields">
       <template #cell(actions)="row">
         <b-button size="sm" v-b-modal.edit-modal @click="edit(row.item, row.index, $event.target)">
@@ -77,7 +58,6 @@ export default {
   data () {
     return {
       students: null,
-      query: "",
       fields: [
       {key: 'id', label: 'Student ID', sortable: true},
       {key: 'lastName', label: 'Last Name', sortable: true},
@@ -100,21 +80,6 @@ export default {
       axios
         .get('http://localhost:8085/students')
         .then(response => (this.students = response.data))
-    },
-
-    search(searchTerm){
-      if (searchTerm){
-        axios
-        .get('http://localhost:8085/students/search/'+searchTerm)
-        .then(response => (this.students = response.data) )
-        .catch(function (error){
-          if (error.response){
-            console.log(error.response.data);
-          }
-        })
-      }
-      console.log(searchTerm)
-
     },
     edit(item, index, button) {
       this.form.id = item.id
@@ -162,9 +127,5 @@ li {
 }
 a {
   color: #42b983;
-}
-
-.search-container{
-  padding: 5%
 }
 </style>
