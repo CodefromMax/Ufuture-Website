@@ -24,5 +24,7 @@ export default new Router({
       name: 'Professors',
       component: Professors
     },
+    
+
   ]
 })
