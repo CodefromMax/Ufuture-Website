@@ -25,6 +25,7 @@ public class All_universities {
     @NotEmpty
     private String uniName;
 
+
 //
 //    @ManyToOne
 //    @Nullable
