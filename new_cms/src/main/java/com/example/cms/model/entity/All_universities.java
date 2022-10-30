@@ -25,21 +25,22 @@ public class All_universities {
     @NotEmpty
     private String uniName;
 
-    @ManyToOne
-    @Nullable
-    @JoinColumn(name="qsRanking")
-    private String qsrankings;
-
-    @ManyToOne
-    @Nullable
-    @JoinColumn(name="timesRanking")
-    private String timesrankings;
-
-    @ManyToOne
-    @Nullable
-    @JoinColumn(name="cwurRanking")
-    private String cwurrankings;
-
-
+//
+//    @ManyToOne
+//    @Nullable
+//    @JoinColumn(name="qsRanking")
+//    private String qsrankings;
+//
+//    @ManyToOne
+//    @Nullable
+//    @JoinColumn(name="timesRanking")
+//    private String timesrankings;
+//
+//    @ManyToOne
+//    @Nullable
+//    @JoinColumn(name="cwurRanking")
+//    private String cwurrankings;
+//
+//
 
 }
