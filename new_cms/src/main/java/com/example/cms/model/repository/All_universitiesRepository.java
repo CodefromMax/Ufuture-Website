@@ -15,7 +15,7 @@ public interface All_universitiesRepository extends JpaRepository<All_universiti
     /* Is here String okay to use??
 
      */
-    @Query(value = "select * from All_universities u " +
+    @Query(value = "select * from universities u " +
             "where lower(u.uniName) like lower(concat('%', :searchuniName, '%')) " , nativeQuery = true)
     List<All_universities> searchUni(@Param("searchuniName") String searchuniName);
 }
