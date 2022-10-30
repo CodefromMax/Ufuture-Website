@@ -27,7 +27,45 @@
         </b-button>
       </template>
     </b-table>
-    
+    <b-modal id="edit-modal" title="Edit Student" @hide="resetEditModal" hide-footer>
+      <b-form>
+
+        <label class="sr-only" for="input-id">Student ID</label>
+        <b-form-input
+          id='input-id'
+          v-model="form.id"
+          placeholder="Student ID"
+          readonly
+        ></b-form-input>
+
+        <label class="sr-only" for="input-first-name">First Name</label>
+        <b-form-input
+          id='input-first-name'
+          v-model="form.first_name"
+          placeholder="First Name"
+          required
+        ></b-form-input>
+
+        <label class="sr-only" for="input-last-name">Last Name</label>
+        <b-form-input
+          id="input-last-name"
+          v-model="form.last_name"
+          placeholder="Last Name"
+          required
+        ></b-form-input>
+
+        <label class="sr-only" for="input-email">Email</label>
+        <b-input-group prepend="@" >
+          <b-form-input id="input-email" v-model="form.email" placeholder="Email" required></b-form-input>
+        </b-input-group>
+        
+        <br />
+        <b-button type="button" @click="onSave" variant="primary">Save</b-button>
+        <b-button type="reset" variant="warning">Reset</b-button>
+        <b-button type="button" variant="danger">Remove Student</b-button>
+      </b-form>
+
+    </b-modal>
   </div>
 </template>
 
