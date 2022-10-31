@@ -52,9 +52,7 @@ export default {
       {key: 'International_Research_Network_Score', label: 'International_Research_Network_Score'},
       {key: 'Employment_Outcomes_Score', label: 'Employment Outcomes Score'},
       {key: 'Overall_Score', label: 'Overall Score'},
-      {key: 'actions', label: 'Actions'},
-
-    
+      {key: 'actions', label: 'Actions'}, 
     ],
       form: {
           University_name: '',
@@ -70,7 +68,6 @@ export default {
           Employment_Outcomes_Score:'',
           Overall_Score:'',
           actoins:''
-
         },
     }
   },
