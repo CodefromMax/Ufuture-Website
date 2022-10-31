@@ -24,8 +24,8 @@
     </b-table>
 
     
-    <div style="height: 150px; background-color: rgba(20,85,255,0.2);">
-    <h2 style="height: 50px;">Finding Rankings of all the Universities</h2>
+    <div style="height: 150px; background-color: rgba(226, 197, 33, 0.776);">
+    <h2 style="height: 100px;">Finding Rankings of all the Universities</h2>
     <b-button-group>
       <b-button size="lg" style="height: 50px;" @click = "QSRanking()">QS</b-button>
     </b-button-group>
