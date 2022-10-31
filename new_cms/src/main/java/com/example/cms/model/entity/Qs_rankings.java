@@ -20,7 +20,7 @@ public class Qs_rankings {
 
     @Id
     @NotEmpty
-    private String QS_ranking_id;
+    private Long QS_ranking_id;
 
     @NotEmpty
     private String Institution_Name;

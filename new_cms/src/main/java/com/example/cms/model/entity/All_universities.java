@@ -20,7 +20,7 @@ public class All_universities {
     @Id
     @NotEmpty
 
-    private String universityId;
+    private Integer universityId;
 
     @NotEmpty
     private String uniName;
