@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import Students from '@/components/Students'
 import Professors from '@/components/Professors'
 // import HomePage from '@/components/HomePage'
-// import Homecopy from '@/components/Homecopy'
+import interest_list from '@/components/interest_list'
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +23,11 @@ export default new Router({
       path: '/professors',
       name: 'Professors',
       component: Professors
+    },
+    {
+      path: '/interest_list',
+      name: 'interest_list',
+      component: interest_list
     }
    
   ]
