@@ -27,7 +27,10 @@
     <div style="height: 150px; background-color: rgba(237, 215, 199, 0.776);">
     <h2 style="height: 100px;">Finding Rankings of all the Universities</h2>
     <b-button-group>
-      <b-button size="lg" style="height: 50px;" @click = "QSRanking()">QS</b-button>
+
+
+      <router-link :to="{ path: '/students' }">
+      <b-button size="lg" style="height: 50px;" @click = "QSRanking()">QS</b-button></router-link>
     </b-button-group>
     <b-button-group>
       <b-button size="lg" style="height: 50px;" @click = "CWRRanking()">CWR</b-button>
