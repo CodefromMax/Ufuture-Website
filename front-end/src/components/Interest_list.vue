@@ -30,13 +30,6 @@
 
 
 
-  
-
-
-
-
-  
-
 </template>
 
 <script>

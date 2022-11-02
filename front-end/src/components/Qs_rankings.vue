@@ -23,7 +23,7 @@
     <b-table striped hover responsive :items="Qs_rankings" :fields="fields">
       <template #cell(actions)="row">
         <b-button size="sm" v-b-modal.edit-modal @click="edit(row.item, row.index, $event.target)">
-          
+          Add it to interest list
         </b-button>
       </template>
     </b-table>
@@ -34,24 +34,24 @@
 import axios from 'axios';
 
 export default {
-  name: 'Students',
+  name: 'Qs_rankings',
   data () {
     return {
       Qs_rankings: null,
       query: "",
       fields: [
-      {key: 'Institution_Name', label: 'University Name'},
-      {key: 'QS_ranking_id', label: 'Ranking'},
-      {key: 'Location', label: 'Location'},
-      {key: 'Academic_Reputation_Score', label: 'Academic Reputation Score'},
-      {key: 'Employer_Reputation_Score', label: 'Employer Reputation Score'},
-      {key: 'Faculty_Student_Score', label: 'Faculty Student Score'},
-      {key: 'Citations_per_Faculty_Score', label: 'Citations per Faculty Score'},
-      {key: 'International_Faculty_Score', label: 'International Faculty Score'},
-      {key: 'International_Students_Score', label: 'International_Students_Score'},
-      {key: 'International_Research_Network_Score', label: 'International_Research_Network_Score'},
-      {key: 'Employment_Outcomes_Score', label: 'Employment Outcomes Score'},
-      {key: 'Overall_Score', label: 'Overall Score'},
+      {key: 'institution_Name', label: 'University Name'},
+      {key: 'qs_ranking_id', label: 'Ranking'},
+      {key: 'location', label: 'Location'},
+      {key: 'academic_Reputation_Score', label: 'Academic Reputation Score'},
+      {key: 'employer_Reputation_Score', label: 'Employer Reputation Score'},
+      {key: 'faculty_Student_Score', label: 'Faculty Student Score'},
+      {key: 'citations_per_Faculty_Score', label: 'Citations per Faculty Score'},
+      {key: 'international_Faculty_Score', label: 'International Faculty Score'},
+      {key: 'international_Students_Score', label: 'International Students Score'},
+      {key: 'international_Research_Network_Score', label: 'International Research Network Score'},
+      {key: 'employment_Outcomes_Score', label: 'Employment Outcomes Score'},
+      {key: 'overall_Score', label: 'Overall Score'},
       {key: 'actions', label: 'Actions'}, 
     ],
       form: {
@@ -67,7 +67,7 @@ export default {
           International_Research_Network_Score:'',
           Employment_Outcomes_Score:'',
           Overall_Score:'',
-          actoins:''
+          actions:''
         },
     }
   },
@@ -115,7 +115,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #030404;
 }
 
 .search-container{
