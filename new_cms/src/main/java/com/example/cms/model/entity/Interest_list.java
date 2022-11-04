@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.Nullable;
+
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import javax.persistence.*;
@@ -29,6 +31,5 @@ public class Interest_list {
 
     @Nullable
     private String comment;
-
 
 }

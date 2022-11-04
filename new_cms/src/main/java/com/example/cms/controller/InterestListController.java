@@ -29,19 +29,19 @@ public class InterestListController {
     }
 
     @PutMapping("/university/interestlist/comment/{id}")
-    Interest_list updateComment(@RequestBody Interest_list newLst, @PathVariable("id") long ListId) {
-        return repository.findById(ListId)
+    Interest_list updateComment(@RequestBody Interest_list newLst, @PathVariable("id") long LId) {
+        return repository.findById(LId)
                 .map(interestlist -> {
                     interestlist.setComment(newLst.getComment());
                     return repository.save(interestlist);
                 })
                 .orElseGet(() -> {
-                    newLst.setListId(ListId);
+                    newLst.setListId(LId);
                     return repository.save(newLst);
                 });
     }
     @DeleteMapping("/university/interestlist/{id}")
-    void deleteInterestList(@PathVariable("id") Long DeleteItem) {
+    void deleteInterestList(@PathVariable("id") long DeleteItem) {
         repository.deleteById(DeleteItem);
         }
     }
