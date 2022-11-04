@@ -36,7 +36,7 @@
         <br />
         <b-button type="button" @click="onSave" variant="primary">Save</b-button>
         <b-button type="reset" variant="warning">Reset</b-button>
-        <b-button type="button" variant="danger">Remove University</b-button>
+        <b-button type="button" @click = "deletel" variant="danger">Remove University</b-button>
       </b-form>
 
     </b-modal>
@@ -88,6 +88,20 @@ export default {
       numId = parseInt(this.form.listId);
       axios
         .put('http://localhost:8085/university/interestlist/comment/' + numId, {
+          "listId": numId,
+          "UniversityName": this.form.University_name,
+          "comment": this.form.comment,
+        })
+        .then(() => this.init())
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    deletel(event) {
+      var numId;
+      numId = parseInt(this.form.listId);
+      axios
+        .delete('http://localhost:8085/university/interestlist/' + numId, {
           "listId": numId,
           "UniversityName": this.form.University_name,
           "comment": this.form.comment,
