@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface QsRepository extends JpaRepository<Qs_rankings, Long> {
+public interface QsRepository extends JpaRepository<Qs_rankings, String> {
 
     @Query(value = "select * from QSRanking q " +
             "where q.QS_ranking_id <= :Upperbound ", nativeQuery = true)
