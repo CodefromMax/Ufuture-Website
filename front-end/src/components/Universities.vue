@@ -1,49 +1,42 @@
 <template>
   <div class="hello">
-    <h2> Students </h2>
-    <b-table striped hover responsive :items="students" :fields="fields">
+    <h2> Interest List </h2>
+    <b-table striped hover responsive :items="Interest_list" :fields="fields">
       <template #cell(actions)="row">
         <b-button size="sm" v-b-modal.edit-modal @click="edit(row.item, row.index, $event.target)">
           Edit
         </b-button>
       </template>
     </b-table>
-    <b-modal id="edit-modal" title="Edit Student" @hide="resetEditModal" hide-footer>
+    <b-modal id="edit-modal" title="Edit note" @hide="resetEditModal" hide-footer>
       <b-form>
 
-        <label class="sr-only" for="input-id">Student ID</label>
+        <label class="sr-only" for="input-listId">List ID</label>
         <b-form-input
-          id='input-id'
-          v-model="form.id"
-          placeholder="Student ID"
+          id='input-listId'
+          v-model="form.listId"
+          placeholder="List ID"
           readonly
         ></b-form-input>
 
-        <label class="sr-only" for="input-first-name">First Name</label>
+        <label class="sr-only" for="input-University-name">University Name</label>
         <b-form-input
-          id='input-first-name'
-          v-model="form.first_name"
-          placeholder="First Name"
+          id='input-University-name'
+          v-model="form.University_name"
+          placeholder="University Name"
           required
         ></b-form-input>
 
-        <label class="sr-only" for="input-last-name">Last Name</label>
-        <b-form-input
-          id="input-last-name"
-          v-model="form.last_name"
-          placeholder="Last Name"
-          required
-        ></b-form-input>
 
-        <label class="sr-only" for="input-email">Email</label>
-        <b-input-group prepend="@" >
-          <b-form-input id="input-email" v-model="form.email" placeholder="Email" required></b-form-input>
+        <label class="sr-only" for="input-comment">Note</label>
+        <b-input-group>
+          <b-form-input id="input-comment" v-model="form.comment" placeholder="Note" required></b-form-input>
         </b-input-group>
         
         <br />
         <b-button type="button" @click="onSave" variant="primary">Save</b-button>
         <b-button type="reset" variant="warning">Reset</b-button>
-        <b-button type="button" variant="danger">Remove Student</b-button>
+        <b-button type="button" @click = "deletel" variant="danger">Remove University</b-button>
       </b-form>
 
     </b-modal>
@@ -57,18 +50,17 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      students: null,
+      Interest_list: null,
       fields: [
-      {key: 'id', label: 'Student ID', sortable: true},
-      {key: 'lastName', label: 'Last Name', sortable: true},
-      {key: 'firstName', label: 'First Name', sortable: true},
-      {key: 'email', label: 'Email', sortable: true, sortable: true},
+      {key: 'listId', label: 'List ID', sortable: true},
+      {key: 'UniversityName', label: 'University Name', sortable: true},
+      {key: 'comment', label: 'Note', sortable: true, sortable: true},
       {key: 'actions', label: 'Actions'}],
       form: {
-          email: '',
-          first_name: '',
-          last_name: '',
-          id: ''
+          comment: '',
+          University_name: '',
+
+          listId: ''
         },
     }
   },
@@ -78,30 +70,41 @@ export default {
   methods: {
     init() {
       axios
-        .get('http://localhost:8085/students')
-        .then(response => (this.students = response.data))
+        .get('http://localhost:8085/university/interestlist/showall')
+        .then(response => {this.Interest_list = response.data, console.log(response.data)})
     },
     edit(item, index, button) {
-      this.form.id = item.id
-      this.form.email = item.email
-      this.form.first_name = item.firstName
-      this.form.last_name = item.lastName
+      this.form.listId = item.listId
+      this.form.comment = item.comment
+      this.form.University_name = item.UniversityName
     },
     resetEditModal() {
-      this.form.id=''
-      this.form.email=''
-      this.form.first_name=''
-      this.form.last_name=''
+      this.form.listId=''
+      this.form.comment=''
+      this.form.University_name=''
     },
     onSave(event) {
       var numId;
-      numId = parseInt(this.form.id);
+      numId = parseInt(this.form.listId);
       axios
-        .put('http://localhost:8085/students/' + numId, {
-          "id": numId,
-          "firstName": this.form.first_name,
-          "lastName": this.form.last_name,
-          "email": this.form.email,
+        .put('http://localhost:8085/university/interestlist/comment/' + numId, {
+          "listId": numId,
+          "UniversityName": this.form.University_name,
+          "comment": this.form.comment,
+        })
+        .then(() => this.init())
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    deletel(event) {
+      var numId;
+      numId = parseInt(this.form.listId);
+      axios
+        .delete('http://localhost:8085/university/interestlist/' + numId, {
+          "listId": numId,
+          "UniversityName": this.form.University_name,
+          "comment": this.form.comment,
         })
         .then(() => this.init())
         .catch(function (error) {

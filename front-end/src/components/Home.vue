@@ -24,7 +24,7 @@
     </b-table>
 
     
-    <div style="height: 150px; background-color: rgba(237, 215, 199, 0.776);">
+    <div style="height: 200px; background-color: rgba(237, 215, 199, 0.2);">
     <h2 style="height: 100px;">Finding Rankings of all the Universities</h2>
     <b-button-group>
 
