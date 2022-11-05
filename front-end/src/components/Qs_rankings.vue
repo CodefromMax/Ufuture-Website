@@ -93,18 +93,20 @@ export default {
           
         })
       }
-      console.log(searchTerm)
 
     },
     add(item, index, button){
+      console.log(item.Location)
+      console.log(item.index)
       if (item){
         axios
         .post('http://localhost:8085/university/interestlist/add',
         {
-          "listId":this.index
-
+          "listId":2,
+          "universityName": "1",
+          "comment": ""
         })
-        .then(() => this.init )
+        .then(() => this.init() )
         .catch(function (error){
           
             console.log(error);
@@ -112,7 +114,6 @@ export default {
           
         })
       }
-      console.log(searchTerm)
 
     }
     
