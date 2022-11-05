@@ -2,7 +2,10 @@ INSERT INTO departments (code, name, contactEmail) VALUES ('MIE', 'Mechanical an
 INSERT INTO departments (code, name, contactEmail) VALUES ('ECE', 'Electrical and Computer Engineering', 'eceinquiry@utoronto.ca');
 INSERT INTO departments (code, name, contactEmail) VALUES ('MSE', 'Materials Science and Engineering', 'materials.engineering@utoronto.ca');
 INSERT INTO universities (universityId, uniName) VALUES ('1','UOFT');
-
+INSERT INTO universities (universityId, uniName) VALUES ('2','Waterloo');
+INSERT INTO universities (universityId, uniName) VALUES ('3','Western');
+INSERT INTO universities (universityId, uniName) VALUES ('4','Tsinhua');
+INSERT INTO universities (universityId, uniName) VALUES ('5','Pecking University');
 
 INSERT INTO QSRanking (QS_ranking_id,Qs_rank, Institution_Name, Location, Academic_Reputation_Score, Employer_Reputation_Score, Faculty_Student_Score, Citations_per_Faculty_Score, International_Faculty_Score, International_Students_Score, International_Research_Network_Score, Employment_Outcomes_Score, Overall_Score)VALUES
     ('Q1','1','Massachusetts Institute of Technology (MIT)','United States',100,100,100,100,100,90,96.1,100,100),
@@ -318,4 +321,21 @@ INSERT INTO professors (id, firstName, lastName, email, office) VALUES (1122, 'S
 INSERT INTO professors (id, firstName, lastName, email, office) VALUES (3344, 'Arya', 'Stark', 'arya.stark@univ.ca', 'MC1234');
 INSERT INTO professors (id, firstName, lastName, email, office) VALUES (5566, 'Jorah', 'Mormont', 'jorah.mormont@univ.ca', 'MY1234');
 
-INSERT INTO InterestList(listId, UniversityName,comment) VALUES (1,'UofT','Worst school ever in history');
+
+INSERT INTO InterestList(listId, UniversityName,comment) VALUES
+    (1,'UofT','Professor of MIE350 is too handsome.'),
+    (2,'Massachusetts Institute of Technology (MIT)','Dream School'),
+    (3,'University of Cambridge','First choice'),
+    (4,'Stanford University','Always Loved'),
+    (5,'University of Oxford','MY DREAM'),
+    (6,'Harvard University','Wongderful'),
+    (7,'California Institute of Technology (Caltech)','Second choice'),
+    (8,'Imperial College London','Liked'),
+    (9,'UCL','Love London'),
+    (10,'ETH Zurich - Swiss Federal Institute of Technology','Great'),
+    (11,'University of Chicago','Yes'),
+    (12,'National University of Singapore (NUS)','No Choice'),
+    (13,'Peking University','T0'),
+    (14,'University of Pennsylvania','Chuan Pu'),
+    (15,'Tsinghua University','T0'),
+    (16,'The University of Edinburgh','LOVED');

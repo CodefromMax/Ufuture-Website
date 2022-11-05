@@ -19,7 +19,6 @@ import java.util.List;
 public class All_universities {
     @Id
     @NotEmpty
-
     private Integer universityId;
 
     @NotEmpty
