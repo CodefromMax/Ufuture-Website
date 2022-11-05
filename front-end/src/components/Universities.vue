@@ -53,7 +53,7 @@ export default {
       Interest_list: null,
       fields: [
       {key: 'listId', label: 'List ID', sortable: true},
-      {key: 'UniversityName', label: 'University Name', sortable: true},
+      {key: 'universityName', label: 'University Name', sortable: true},
       {key: 'comment', label: 'Note', sortable: true, sortable: true},
       {key: 'actions', label: 'Actions'}],
       form: {

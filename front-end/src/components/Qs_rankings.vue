@@ -38,6 +38,7 @@ export default {
   data () {
     return {
       Qs_rankings: null,
+      l:null,
       query: "",
       fields: [
       {key: 'institution_Name', label: 'University Name'},
@@ -79,6 +80,7 @@ export default {
       axios
         .get('http://localhost:8085/qsrankings')
         .then(response => (this.Qs_rankings = response.data))
+        
     },
 
     search(searchTerm){
@@ -96,14 +98,12 @@ export default {
 
     },
     add(item, index, button){
-      console.log(item.Location)
-      console.log(item.index)
       if (item){
         axios
         .post('http://localhost:8085/university/interestlist/add',
         {
-          "listId":2,
-          "universityName": "1",
+          "listId": this.l+1,
+          "universityName": item.institution_Name,
           "comment": ""
         })
         .then(() => this.init() )
