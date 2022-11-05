@@ -22,7 +22,7 @@
 
     <b-table striped hover responsive :items="Qs_rankings" :fields="fields">
       <template #cell(actions)="row">
-        <b-button size="sm" v-b-modal.edit-modal @click="edit(row.item, row.index, $event.target)">
+        <b-button size="sm" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)">
           Add it to interest list
         </b-button>
       </template>
@@ -96,6 +96,25 @@ export default {
       console.log(searchTerm)
 
     },
+    add(item, index, button){
+      if (item){
+        axios
+        .post('http://localhost:8085/university/interestlist/add',
+        {
+          "listId":this.index
+
+        })
+        .then(() => this.init )
+        .catch(function (error){
+          
+            console.log(error);
+          
+          
+        })
+      }
+      console.log(searchTerm)
+
+    }
     
   }
 }
