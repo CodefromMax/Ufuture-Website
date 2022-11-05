@@ -59,7 +59,6 @@ export default {
       form: {
           comment: '',
           University_name: '',
-
           listId: ''
         },
     }
