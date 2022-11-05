@@ -70,7 +70,7 @@ export default {
     init() {
       axios
         .get('http://localhost:8085/university/interestlist/showall')
-        .then(response => {this.Interest_list = response.data, console.log(response.data)})
+        .then(response => {this.Interest_list = response.data, console.log(response.data), localStorage.setItem('length', this.Interest_list.length);})
     },
     edit(item, index, button) {
       this.form.listId = item.listId
