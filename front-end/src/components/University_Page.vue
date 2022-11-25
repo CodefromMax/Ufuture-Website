@@ -1,42 +1,23 @@
 <template>
-  <div class="hello">
-    <h2> QSranking </h2>
+  <div class="un">
+    <h1> University Page </h1>
 
 
-    <div class = "search container">
-      <b-input-group prepend="Search a University">
-        <!--triger 1-->
-      <b-form-input type = "text" placeholder = "Name of the University" v-model = "query" @keydown.enter = "search(query)"/>
-      <template #append>
-        <!--triger 2-->
-        <b-button class = "search-button" @click = "search(query)">
-          <b-icon-search></b-icon-search>
-        </b-button>
-      </template>
-    
-      </b-input-group>
-
-    </div>
-
-
-
-    <b-table striped hover responsive :items="Qs_rankings" :fields="fields">
+    <h3> QS Ranking </h3>
+    <b-table striped hover responsive :items="Qs_rankings" :fields="fields1">
       <template #cell(actions)="row">
         <b-button size="sm" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)">
           Add to interest list
         </b-button>
-      
-      
-      
       </template>
-      <template #cell(more)="row">
-        <router-link :to="{ path: '/u' }">
-        <b-button size="sm" v-b-modal.edit-modal @click="clickedU(row.item)">
-        Go
+    </b-table>
+
+    <h3> CWUR Ranking </h3>
+    <b-table striped hover responsive :items="Qs_rankings" :fields="fields1">
+      <template #cell(actions)="row">
+        <b-button size="sm" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)">
+          Add to interest list
         </b-button>
-        </router-link>
-         
-        
       </template>
     </b-table>
   </div>
@@ -51,9 +32,8 @@ export default {
     return {
       Qs_rankings: null,
       query: "",
-      fields: [
-      {key: 'actions', label: 'Actions'}, 
-      {key: 'more', label: 'More'}, 
+      fields1: [
+      {key: 'actions', label: 'Actions'},
       {key: 'institution_Name', label: 'University Name'},
       {key: 'qs_ranking_id', label: 'Ranking'},
       {key: 'location', label: 'Location'},
@@ -69,6 +49,7 @@ export default {
       
     ],
       form: {
+          actions:'',
           University_name: '',
           QS_ranking: '',
           Location:'',
@@ -80,9 +61,8 @@ export default {
           International_Students_Score:'',
           International_Research_Network_Score:'',
           Employment_Outcomes_Score:'',
-          Overall_Score:'',
-          actions:'',
-          more:''
+          Overall_Score:''
+         
         },
     }
   },
@@ -92,7 +72,7 @@ export default {
   methods: {
     init() {
       axios
-        .get('http://localhost:8085/qsrankings')
+        .get('http://localhost:8085/qsrankings/searchname/'+localStorage.getItem('currentU'))
         .then(response => (this.Qs_rankings = response.data))
     },
 
@@ -109,11 +89,6 @@ export default {
         })
       }
 
-    },
-    clickedU(item){
-      //console.log(item.institution_Name)
-      localStorage.setItem('currentU', item.institution_Name)
-      console.log(localStorage.getItem('currentU'))
     },
     add(item, index, button){
       if (item){
