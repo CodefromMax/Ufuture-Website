@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StudentUserRepository extends JpaRepository<StudentUser, Long> {
+public interface StudentUserRepository extends JpaRepository<StudentUser, String> {
 
     @Query(value = "select * from StudentUsers s " +
             "where lower(s.firstName) like lower(concat('%', :searchTerm, '%')) " +

@@ -15,16 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-
+@CrossOrigin
+@RestController
 public class DiscussionController {
 
     @Autowired
     private final DiscussionRepository repository;
 
     @Autowired
-    private StudentUserRepository studentRepository;
+    private StudentUserRepository studentUserRepository;
 
 
     public DiscussionController(DiscussionRepository repository) {
@@ -34,16 +34,16 @@ public class DiscussionController {
     @GetMapping("/discussion/showall")
     List<Discussion> showDiscussion() {return repository.findAll();}
 
-    /*
-    @PostMapping("/discussion")
+    @PostMapping("/discussion/post")
     Discussion createDiscussion(@RequestBody DiscussionDto discussionDto){
         Discussion newDiscussion = new Discussion();
         newDiscussion.setDiscussionId(discussionDto.getDiscussionId());
         newDiscussion.setDiscussionContent(discussionDto.getDiscussionContent());
-        Student student = studentRepository.findById(discussionDto.getStudentId()).orElseThrow(()->
-                new StudentNotFoundException(discussionDto.getStudentId()));
-        newDiscussion.setParticipatedStudent(student);
+        StudentUser studentUser = studentUserRepository.findById(discussionDto.getStudentId()).orElseThrow(
+                () -> new StudentNotFoundException(discussionDto.getStudentId()));
+        newDiscussion.setParticipatedStudent(studentUser);
         return repository.save(newDiscussion);
+
     }
 
     @PutMapping("/discussion/{disId}")
@@ -51,7 +51,7 @@ public class DiscussionController {
         return repository.findById(discussionId)
                 .map(discussion -> {
                     discussion.setDiscussionContent(discussionDto.getDiscussionContent());
-                    Student student = studentRepository.findById(discussionDto.getStudentId()).orElseThrow(
+                    StudentUser student = studentUserRepository.findById(discussionDto.getStudentId()).orElseThrow(
                             () -> new StudentNotFoundException(discussionDto.getStudentId()));
                     discussion.setParticipatedStudent(student);
                     return repository.save(discussion);
@@ -60,20 +60,8 @@ public class DiscussionController {
                     return this.createDiscussion(discussionDto);
                     });
     }
-    /*
-    @DeleteMapping("/discussion/{disId}/{studentId}")
-    void deleteDiscussion(@PathVariable("disId") long disId, @PathVariable("studentId") long studentId){
-        repository.findById(disId).map(selectedDiscussion -> {
-            if (selectedDiscussion.getParticipatedStudent().getId() == studentId) {
-                repository.deleteById(disId);
-            } else {
-                new DiscussionNotMatchException(disId);
-            }
-            return null;
-        }).orElseGet(()->{
-            return new DiscussionNotFoundException(disId);
-        });
+    @DeleteMapping("/discussion/{disId}")
+    void deleteDiscussion(@PathVariable("disId") Long discussionId) {repository.deleteById(discussionId);
     }
-     */
 }
 

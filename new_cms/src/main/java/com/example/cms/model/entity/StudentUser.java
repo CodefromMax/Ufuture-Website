@@ -37,11 +37,9 @@ public class StudentUser {
     @JoinColumn(name = "Interest_List_Id", referencedColumnName = "list_Id")
     private Interest_list interestList  = new Interest_list();
 */
-   /*
     @Nullable
     @OneToMany(mappedBy = "participatedStudent")
     @JsonIgnore
     private List<Discussion> discussion;
 
-*/
 }
