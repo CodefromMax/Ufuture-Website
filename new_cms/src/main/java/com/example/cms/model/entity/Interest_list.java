@@ -26,6 +26,9 @@ public class Interest_list {
     @Id
     private long listId;
 
+    //@OneToOne(mappedBy = "interestList")
+    //private Student student;
+
     @NotEmpty
     private String UniversityName;
 

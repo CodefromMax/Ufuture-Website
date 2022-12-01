@@ -1,12 +1,3 @@
-INSERT INTO departments (code, name, contactEmail) VALUES ('MIE', 'Mechanical and Industrial Engineering', 'reception@mie.utoronto.ca');
-INSERT INTO departments (code, name, contactEmail) VALUES ('ECE', 'Electrical and Computer Engineering', 'eceinquiry@utoronto.ca');
-INSERT INTO departments (code, name, contactEmail) VALUES ('MSE', 'Materials Science and Engineering', 'materials.engineering@utoronto.ca');
-INSERT INTO universities (universityId, uniName) VALUES ('1','UOFT');
-INSERT INTO universities (universityId, uniName) VALUES ('2','Waterloo');
-INSERT INTO universities (universityId, uniName) VALUES ('3','Western');
-INSERT INTO universities (universityId, uniName) VALUES ('4','Tsinhua');
-INSERT INTO universities (universityId, uniName) VALUES ('5','Pecking University');
-
 INSERT INTO QSRanking (QS_ranking_id,Qs_rank, Institution_Name, Location, Academic_Reputation_Score, Employer_Reputation_Score, Faculty_Student_Score, Citations_per_Faculty_Score, International_Faculty_Score, International_Students_Score, International_Research_Network_Score, Employment_Outcomes_Score, Overall_Score)VALUES
     ('Q1','1','Massachusetts Institute of Technology (MIT)','United States',100,100,100,100,100,90,96.1,100,100),
     ('Q2','2','University of Cambridge','United Kingdom',100,100,100,92.3,100,96.3,99.5,100,98.8),
@@ -311,16 +302,411 @@ INSERT INTO QSRanking (QS_ranking_id,Qs_rank, Institution_Name, Location, Academ
     ('Q301','300=','Griffith University','Australia',26.1,16.6,7.6,71.7,99.9,40.5,90,27,35.2),
     ('Q302','300=','University Paris 1 Panthyon-Sorbonne','France',64,35.7,4.7,3.4,35.5,49.9,73.4,32.2,35.2);
 
-INSERT INTO students (id, firstName, lastName, email) VALUES (1111, 'Tyrion', 'Lannister', 'tyrion.lannister@mail.univ.ca');
-INSERT INTO students (id, firstName, lastName, email) VALUES (2222, 'Cersei', 'Lannister', 'cersei.lannister@mail.univ.ca');
-INSERT INTO students (id, firstName, lastName, email) VALUES (3333, 'Jaime', 'Lannister', 'jaime.lannister@mail.univ.ca');
-INSERT INTO students (id, firstName, lastName, email) VALUES (4444, 'Daenerys', 'Targaryen', 'jaime.targaryen@mail.univ.ca');
-INSERT INTO students (id, firstName, lastName, email) VALUES (5555, 'Jon', 'Snow', 'jon.snow@mail.univ.ca');
 
-INSERT INTO professors (id, firstName, lastName, email, office) VALUES (1122, 'Sansa', 'Stark', 'sansa.stark@univ.ca', 'BA1234');
-INSERT INTO professors (id, firstName, lastName, email, office) VALUES (3344, 'Arya', 'Stark', 'arya.stark@univ.ca', 'MC1234');
-INSERT INTO professors (id, firstName, lastName, email, office) VALUES (5566, 'Jorah', 'Mormont', 'jorah.mormont@univ.ca', 'MY1234');
+INSERT INTO TimesRankings(times_Id,Times_Rank,University_Name,Country,Teaching_Score,International_Score,Research_Score,Citations_Score,Income_Score,Total_Score,Number_Of_Students,Student_Staff_Ratio,International_Student_Ratio) VALUES
+        ('T1',1,'California Institute of Technology','United States of America',95.6,64,97.6,99.8,97.8,95.2,2243,6.9,0.27),
+    	('T2',2,'University of Oxford','United Kingdom',86.5,94.4,98.9,98.8,73.1,94.2,19919,11.6,0.34),
+    	('T3',3,'Stanford University','United States of America',92.5,76.3,96.2,99.9,63.3,93.9,15596,7.8,0.22),
+    	('T4',4,'University of Cambridge','United Kingdom',88.2,91.5,96.7,97,55,92.8,18812,11.8,0.34),
+    	('T5',5,'Massachusetts Institute of Technology','United States of America',89.4,84,88.6,99.7,95.4,92,11074,9,0.33),
+    	('T6',6,'Harvard University','United States of America',83.6,77.2,99,99.8,45.2,91.6,20152,8.9,0.25),
+    	('T7',7,'Princeton University','United States of America',85.1,78.5,91.9,99.3,52.1,90.1,7929,8.4,0.27),
+    	('T8',8,'Imperial College London','United Kingdom',83.3,96,88.5,96.7,53.7,89.1,15060,11.7,0.51),
+    	('T9',9,'ETH Zurich – Swiss Federal Institute of Technology Zurich','Switzerland',77,97.9,95,91.1,80,88.3,18178,14.7,0.37),
+    	('T10',10,'University of Chicago','United States of America',85.7,65,88.9,99.2,36.6,87.9,14221,6.9,0.21),
+    	('T11',11,'Johns Hopkins University','United States of America',77.6,70,90.4,98.2,100,87.6,15128,3.6,0.23),
+    	('T12',12,'Yale University','United States of America',86.5,64.3,87.8,97.2,43.3,87.4,11751,4.4,0.20),
+    	('T13',13,'University of California, Berkeley','United States of America',80.4,61.9,91.1,99.7,47.9,87.2,36186,16.4,0.15),
+    	('T14',14,'University College London','United Kingdom',78.1,94.4,91,94.2,40.5,87.1,26607,10.7,0.46),
+    	('T15',15,'Columbia University','United States of America',85.9,73.5,82.2,98.1,41.5,86.1,25055,5.9,0.28),
+    	('T16',16,'University of California, Los Angeles','United States of America',80.8,56.4,88.6,98.5,47.9,85.8,38206,10.3,0.15),
+    	('T17',17,'University of Pennsylvania','United States of America',82,49.5,86.9,98.6,47.9,85.2,20376,6.5,0.20),
+    	('T18',18,'Cornell University','United States of America',77.9,63.9,86.1,97.2,33.7,84,21424,10.2,0.19),
+    	('T19',19,'University of Toronto','Canada',75.9,77.8,89.3,90.9,49.1,83.9,66198,19.5,0.15),
+    	('T20',20,'Duke University','United States of America',76,56.5,78,99,100,82.7,15172,4.8,0.17),
+    	('T21',21,'University of Michigan','United States of America',76.8,53.7,85.2,94.4,56.3,82.4,41786,9,0.16),
+    	('T22',22,'Carnegie Mellon University','United States of America',67.4,57.1,88.8,99.1,57.5,82.3,11885,13.1,0.35),
+    	('T23',23,'London School of Economics and Political Science','United Kingdom',69.8,93.6,80.6,94.3,32.2,81.3,10998,15.6,0.65),
+    	('T24',24,'University of Edinburgh','United Kingdom',68.6,89.8,77.2,96.3,36.1,80.3,25774,14.1,0.36),
+    	('T25',25,'Northwestern University','United States of America',69.8,53.9,78.4,96.5,81.2,79.5,18334,13.8,0.15),
+    	('T26',26,'National University of Singapore','Singapore',71.7,96.2,84.5,79.4,49.8,79.2,31592,15.5,0.34),
+    	('T27',27,'King’s College London','United Kingdom',64.5,93.8,75.8,93.8,40.1,78.2,21394,11.4,0.37),
+    	('T28',28,'Karolinska Institute','Sweden',60.6,73.1,81.1,92.2,75.8,77.5,7774,11.5,0.22),
+    	('T29',29,'LMU Munich','Germany',70.5,62.8,77.4,85.7,100,77.3,35691,15.5,0.13),
+    	('T30',30,'New York University','United States of America',74.7,49.3,72.3,95.3,30.4,77.2,42056,6.8,0.19),
+    	('T31',31,'École Polytechnique Fédérale de Lausanne','Switzerland',61.3,98.6,67.5,94.6,65.4,76.1,9666,10.5,0.54),
+    	('T32',32,'University of Washington','United States of America',67.1,51.2,70,98.6,43.1,75.6,44020,11.8,0.13),
+    	('T33',33,'University of Melbourne','Australia',62,87.1,75.5,86.6,64.6,75.4,40128,23.7,0.35),
+    	('T34',34,'University of British Columbia','Canada',60.2,90.5,73.2,91.5,42.6,75.3,50152,17.6,0.25),
+    	('T35',35,'KU Leuven','Belgium',59.9,68.6,76.9,87.3,100,74.8,42503,41.9,0.18),
+    	('T36',36,'University of Illinois at Urbana56.5Champaign','United States of America',64.5,45.8,81.2,86.8,52.8,74.5,42727,18.7,0.20),
+    	('T37',37,'Heidelberg University','Germany',68.8,62.8,69.6,88.2,68.2,74.4,28881,24.5,0.17),
+    	('T38',38,'McGill University','Canada',66.1,85.5,72.1,78.9,40.3,72.6,31326,13.7,0.23),
+    	('T39',39,'University of California, San Diego','United States of America',56.9,42.9,69.8,98.7,56.7,72.2,27233,6.5,0.11),
+    	('T40',39,'University of California, Santa Barbara','United States of America',52.6,61.5,66,99.2,90.4,72.2,22020,27.3,0.11),
+    	('T41',41,'Georgia Institute of Technology','United States of America',57.8,71.5,72.7,86,73.7,72.1,19967,20.1,0.26),
+    	('T42',42,'Peking University','China',77.8,49.2,72.4,69.1,100,72,40148,8.3,0.14),
+    	('T43',43,'University of Tokyo','Japan',81.4,30.3,83,60.9,50.8,71.1,26199,5.7,0.10),
+    	('T44',44,'University of California, Davis','United States of America',60.1,58.4,72.7,84.3,57.3,71,35364,13.9,0.13),
+    	('T45',44,'University of Hong Kong','Hong Kong',64.6,99.5,72.8,70.1,53.7,71,19835,17.6,0.38),
+    	('T46',46,'University of Texas at Austin','United States of America',59.3,31.7,69.7,92.2,63.1,70.3,49427,17.4,0.09),
+    	('T47',47,'Tsinghua University','China',73.3,39.5,83,58.8,100,70,39763,13.7,0.10),
+    	('T48',47,'Wageningen University and Research Center','Netherlands',52.6,70.3,66.9,87.8,100,70,9248,17,0.21),
+    	('T49',49,'Humboldt University of Berlin','Germany',63.7,62.6,77,73.6,36.1,69.9,29987,52.5,0.16),
+    	('T50',50,'University of Wisconsin56.5Madison','United States of America',65.1,33,68.2,86.6,48.5,69.7,39655,10.8,0.11),
+    	('T51',51,'Brown University','United States of America',62.8,57.8,55.7,96.4,31.4,69.6,8653,10.1,0.19),
+    	('T52',52,'Australian National University','Australia',54.7,93.3,77.3,72.3,48,69.5,14604,19.2,0.35),
+    	('T53',53,'Technical University of Munich','Germany',61,63.8,66,80.1,99.2,69.4,35565,31.5,0.20),
+    	('T54',54,'École Normale Supérieure','France',70.6,85.5,47.7,87.1,37.1,69,2400,7.9,0.20),
+    	('T55',55,'Nanyang Technological University','Singapore',48.4,94.6,61.3,85.6,99.9,68.2,25028,16.2,0.33),
+    	('T56',56,'University of Manchester','United Kingdom',58.4,87,66,77.3,42,68.1,34938,15.3,0.34),
+    	('T57',56,'University of Sydney','Australia',54.3,84.4,68.1,77.5,72.4,68.1,41868,20.2,0.28),
+    	('T58',58,'University of Amsterdam','Netherlands',52.2,66.5,64.7,87.4,62.8,67.8,24570,14.4,0.11),
+    	('T59',59,'Hong Kong University of Science and Technology','Hong Kong',49.4,80.5,66.1,82.6,68.1,67.2,11385,23.8,0.36),
+    	('T60',60,'The University of Queensland','Australia',49.2,89.3,62.8,82.4,76.7,67,34718,32.7,0.27),
+    	('T61',60,'Washington University in St Louis','United States of America',54.3,44.9,55.6,99.2,33.5,67,12528,5.7,0.17),
+    	('T62',62,'Utrecht University','Netherlands',48.1,55.8,64.3,88.1,89.1,66.6,30779,15.4,0.07),
+    	('T63',63,'University of North Carolina at Chapel Hill','United States of America',58,39,54.5,95.9,39.4,66.4,26518,7.3,0.08),
+    	('T64',64,'Boston University','United States of America',57.8,51,49.5,97.7,30.3,66.1,24789,8.6,0.17),
+    	('T65',65,'Delft University of Technology','Netherlands',55,84,73.8,61.5,100,65.9,15920,19.4,0.25),
+    	('T66',65,'University of Minnesota','United States of America',53.5,35.3,61,88,98.5,65.9,46825,18,0.13),
+    	('T67',67,'Leiden University','Netherlands',50.5,64.3,63.1,85.2,49.8,65.7,21222,17.1,0.10),
+    	('T68',68,'University of Southern California','United States of America',49.3,56.3,58.9,93,38,65.5,36534,12.9,0.20),
+    	('T69',69,'University of Bristol','United Kingdom',47.6,82.4,51.6,91.2,40,64.3,17906,14,0.25),
+    	('T70',70,'Durham University','United Kingdom',47.9,86.4,51.9,87.7,34.4,63.6,15489,15.7,0.24),
+    	('T71',71,'Erasmus University Rotterdam','Netherlands',37.2,76.1,55.2,95.6,54.6,63.5,20580,18.9,0.18),
+    	('T72',72,'Free University of Berlin','Germany',57.9,69.2,72.2,60.2,35.1,63.2,33062,39.3,0.20),
+    	('T73',73,'Monash University','Australia',48.1,87.6,58.5,73.3,79.7,62.5,50882,40.5,0.36),
+    	('T74',74,'University of Groningen','Netherlands',43.3,63.9,56.9,84,92.4,62.4,24556,25.6,0.12),
+    	('T75',75,'Pennsylvania State University','United States of America',50.4,40.8,61.9,80.5,56.2,62.3,44501,12.4,0.12),
+    	('T76',76,'University of Glasgow','United Kingdom',41.6,85.8,48.3,92.3,31.6,61.9,22616,16,0.29),
+    	('T77',76,'University of Helsinki','Finland',48.4,51.8,60.4,82.1,31.6,61.9,23505,15.1,0.06),
+    	('T78',78,'University of Tübingen','Germany',47,58.2,59.8,79.3,59.2,61.7,28327,38.9,0.12),
+    	('T79',79,'University of Pittsburgh','United States of America',50.6,33.9,50.3,92.3,39.3,61.5,26485,5.8,0.10),
+    	('T80',80,'University of Warwick','United Kingdom',47.4,90.3,53.1,78.2,37.7,61.3,18529,16.6,0.37),
+    	('T81',81,'Uppsala University','Sweden',44.1,59.6,61,80.9,39.5,61.2,25266,18.2,0.12),
+    	('T82',82,'University of Copenhagen','Denmark',49.8,83.3,42.7,86.2,45,61,27545,4.1,0.19),
+    	('T83',82,'University of New South Wales','Australia',40.7,89.5,53.9,82.1,50,61,38309,25.9,0.33),
+    	('T84',84,'University of Freiburg','Germany',47.4,60.3,51.1,80.5,100,60.7,26467,31.2,0.16),
+    	('T85',85,'Seoul National University','South Korea',66.5,30.9,70.5,50,85.4,60.5,26389,13.9,0.10),
+    	('T86',86,'University of St Andrews','United Kingdom',49.7,92.3,47.3,78.8,30.6,60.4,8338,12.7,0.47),
+    	('T87',87,'Vanderbilt University','United States of America',47.8,29.1,44.2,95.7,63.2,60.1,12161,3.6,0.10),
+    	('T88',88,'Kyoto University','Japan',70.6,26.1,69.3,46.6,79,59.9,22809,5.6,0.07),
+    	('T89',88,'Maastricht University','Netherlands',37.5,95.5,47.7,82.7,95.4,59.9,15626,18.9,0.48),
+    	('T90',90,'Emory University','United States of America',48.3,51,37.1,96.7,48.9,59.7,12338,4.5,0.18),
+    	('T91',90,'Lund University','Sweden',39.7,74.1,53.6,81.3,70.4,59.7,28251,11.5,0.15),
+    	('T92',90,'Ohio State University','United States of America',51.6,53,46.6,83.2,53.1,59.7,51462,13.4,0.12),
+    	('T93',93,'University of Exeter','United Kingdom',39.4,87.3,40,94.3,31.9,59.5,17755,18.8,0.28),
+    	('T94',94,'University of Bonn','Germany',45.1,63.6,47.5,85.3,69.1,58.8,32474,70.4,0.13),
+    	('T95',94,'Georgetown University','United States of America',54.4,52.7,39.3,82.5,80.7,58.8,15408,8.5,0.14),
+    	('T96',94,'McMaster University','Canada',39.8,76.1,44.8,84.9,88,58.8,23823,19.3,0.15),
+    	('T97',97,'University of Sheffield','United Kingdom',42.4,81.9,48.8,80.1,43.4,58.6,23311,15.5,0.31),
+    	('T98',98,'Queen Mary University of London','United Kingdom',34.1,93.5,41.3,93.3,36.8,58.5,14260,14,0.40),
+    	('T99',99,'University of Göttingen','Germany',49.3,56.4,54.5,72.7,31.8,58,25581,25.6,0.12),
+    	('T100',99,'Michigan State University','United States of America',47.3,56.4,52.6,76.8,32.2,58,44750,15.7,0.15),
+    	('T101',101,'University of Basel','Switzerland',39.5,94.7,33.1,88.3,99.9,57.9,12551,17.3,0.24),
+    	('T102',101,'École Polytechnique','France',53.5,92.8,44.6,64.7,82.3,57.9,2429,4.8,0.30),
+    	('T103',101,'Rice University','United States of America',37.9,66.6,35.1,99.7,41.7,57.9,6333,9,0.26),
+    	('T104',104,'Dartmouth College','United States of America',50.7,38.3,35.8,93.3,40.8,57.8,6178,6.6,0.16),
+    	('T105',104,'University of Zurich','Switzerland',49.5,90.4,31.5,85.4,44,57.8,26583,6.5,0.19),
+    	('T106',106,'Aarhus University','Denmark',36.9,76.8,50.7,79.8,68.3,57.7,23895,13.6,0.14),
+    	('T107',106,'University of California, Irvine','United States of America',39.9,59.2,41.8,91.6,48.9,57.7,26614,16.1,0.16),
+    	('T108',106,'University of Mannheim','Germany',34.5,64.6,47.7,86.9,85.3,57.7,11761,85.8,0.15),
+    	('T109',108,'University of Notre Dame','United States of America',47.6,47.6,48.1,81.7,33.7,57.6,11829,13.8,0.10),
+    	('T110',109,'University of Western Australia','Australia',33.4,92.6,46.1,83.6,64.5,57.5,20851,20.7,0.27),
+    	('T111',110,'RWTH Aachen University','Germany',49.4,54.1,56.3,63.2,98.1,57.2,37917,27.6,0.16),
+    	('T112',110,'University of Southampton','United Kingdom',39.8,88.4,43.6,82,37.5,57.2,20925,13.5,0.29),
+    	('T113',112,'Scuola Normale Superiore di Pisa','Italy',54.2,46.3,53.1,67.2,52,57.1,462,16.5,0.05),
+    	('T114',113,'University of Montreal','Canada',46.3,84.2,45.5,69.6,92.6,57,38264,20.3,0.25),
+    	('T115',113,'Pierre and Marie Curie University','France',52.8,74.1,32.7,82.9,37.4,57,27862,8.7,0.18),
+    	('T116',113,'Purdue University','United States of America',50.2,66.4,57.7,63.2,50.2,57,39256,18.1,0.22),
+    	('T117',116,'Pohang University of Science and Technology','South Korea',49.1,33.7,47.1,76.7,100,56.9,3055,10.1,0.04),
+    	('T118',117,'University of Maryland, College Park','United States of America',45,43.5,42.1,88.2,32.3,56.7,31331,8.4,0.09),
+    	('T119',118,'Ghent University','Belgium',42.1,54.2,54.5,71.2,88.3,56.6,32166,34.1,0.09),
+    	('T120',119,'University of Birmingham','United Kingdom',39.4,82,41.8,82.7,34.7,56.2,25295,16.4,0.23),
+    	('T121',120,'University of Bern','Switzerland',40,83.7,42.5,76.6,82.9,56.1,14708,22.5,0.14),
+    	('T122',120,'University of Cape Town','South Africa',34.9,80.2,38.7,85.6,92.7,56.1,20040,12.1,0.18),
+    	('T123',120,'University of Florida','United States of America',51.8,33.3,56.8,67.7,70.5,56.1,50095,18.7,0.09),
+    	('T124',123,'University of Erlangen56.5Nuremberg','Germany',51.7,47,39.7,75.2,99.4,56,36146,53.9,0.09),
+    	('T125',123,'Rutgers, the State University of New Jersey','United States of America',43.9,34.7,55.7,75.4,35.9,56,37032,17.3,0.08),
+    	('T126',125,'University of Münster','Germany',40.3,46.3,44.1,85.6,58.2,55.9,39838,46.1,0.08),
+    	('T127',125,'Radboud University Nijmegen','Netherlands',34.3,60.9,48.5,84.9,39.2,55.9,17713,13,0.10),
+    	('T128',127,'University of Colorado Boulder','United States of America',39.7,36.6,37.6,96.4,35.7,55.8,29325,16.1,0.08),
+    	('T129',127,'Tufts University','United States of America',45.2,49.4,33.3,90.1,60.7,55.8,10410,10,0.14),
+    	('T130',129,'Royal Holloway, University of London','United Kingdom',35.1,92.7,33.2,91.2,34.4,55.7,8747,15.9,0.37),
+    	('T131',130,'Lancaster University','United Kingdom',34,87,41.4,85.3,33.6,55.6,11512,14.9,0.33),
+    	('T132',131,'University of Geneva','Switzerland',34.9,98.5,40.5,78.5,72.4,55.4,15668,15,0.39),
+    	('T133',131,'University of York','United Kingdom',41.9,83.5,46.3,73.1,31.1,55.4,16689,30.2,0.40),
+    	('T134',133,'Case Western Reserve University','United States of America',46.1,40.5,33.2,92,34.1,55.3,9259,6.4,0.17),
+    	('T135',133,'University of Leeds','United Kingdom',43.7,77.4,39,79.2,36.7,55.3,27703,14.7,0.21),
+    	('T136',135,'University of Oslo','Norway',43.3,68.2,44.7,75.5,38.3,55.1,27139,18.8,0.18),
+    	('T137',136,'Stockholm University','Sweden',34.1,48.5,51.2,82.5,31.1,54.8,31715,23.7,0.08),
+    	('T138',137,'University of Alberta','Canada',46.4,80.7,48.1,63.6,47.4,54.7,36299,21.6,0.23),
+    	('T139',138,'Chinese University of Hong Kong','Hong Kong',41.5,81.1,48.5,68.4,37.5,54.5,17916,10.2,0.22),
+    	('T140',138,'Karlsruhe Institute of Technology','Germany',37.7,56.7,47.5,73.8,99.5,54.5,25294,24.6,0.16),
+    	('T141',140,'University of Sussex','United Kingdom',33.4,88.3,37.2,86.1,30.6,54.4,12001,17.4,0.35),
+    	('T142',141,'University of Massachusetts','United States of America',40.2,48.9,36.3,88.1,52.2,54.3,56959,13,0.11),
+    	('T143',142,'University of Vienna','Austria',40.8,92.6,50.5,63.6,30.2,54.2,34651,20.5,0.25),
+    	('T144',143,'University of Nottingham','United Kingdom',40.3,80.6,39,77.5,39.8,54.1,30144,15,0.27),
+    	('T145',144,'University of California, Santa Cruz','United States of America',31.1,45.6,34.2,99.9,36.1,53.9,17404,22.7,0.01),
+    	('T146',144,'University of Lausanne','Switzerland',30.9,89.2,45.6,76.2,56,53.9,11964,13.1,0.22),
+    	('T147',146,'Autonomous University of Barcelona','Spain',40.3,50.3,40,83.8,34.9,53.8,30538,12.3,0.10),
+    	('T148',147,'University of Virginia','United States of America',38.8,43.4,37.5,87.3,37.9,53.3,23845,10.2,0.12),
+    	('T149',148,'Korea Advanced Institute of Science and Technology (KAIST)','South Korea',43.3,33.9,40.5,75.9,100,53,9027,10,0.09),
+    	('T150',149,'University of Adelaide','Australia',32.8,85.1,43.2,72.4,79.3,52.9,20771,30.1,0.26),
+    	('T151',149,'University of East Anglia','United Kingdom',31.9,83.5,28.7,92.7,28.5,52.9,14992,14.7,0.28),
+    	('T152',149,'University of Twente','Netherlands',34.1,80.1,45.6,68.8,91.2,52.9,6631,12,0.26),
+    	('T153',153,'Sungkyunkwan University (SKKU)','South Korea',51.4,36.7,53.5,53.8,97.5,52.8,24365,20.3,0.09),
+    	('T154',154,'VU University Amsterdam','Netherlands',28.4,54.9,37.1,90.7,60.1,52.5,23280,16.3,0.06),
+    	('T155',155,'KTH Royal Institute of Technology','Sweden',39,84.4,44.3,63.9,78.1,52.4,12062,14.6,0.21),
+    	('T156',156,'University of Cologne','Germany',42.2,53.1,38,75,68.5,52.3,43280,43.4,0.11),
+    	('T157',157,'University of Liverpool','United Kingdom',32.8,85.4,30.9,85.9,36.6,52.2,18815,13.6,0.30),
+    	('T158',158,'TU Dresden','Germany',41.4,47.7,45.8,66.1,99.7,52.1,35487,37.4,0.12),
+    	('T159',158,'University of Rochester','United States of America',39.7,55.8,27.9,89,37,52.1,9390,4.5,0.26),
+    	('T160',160,'Trinity College Dublin','Republic of Ireland',41.9,90.5,30.8,75.8,28,52,15521,18,0.25),
+    	('T161',161,'Lomonosov Moscow State University','Russian Federation',75.4,57.8,66.7,8.6,95.7,51.9,30822,7.7,0.20),
+    	('T162',161,'University of Miami','United States of America',41.7,64,22.3,90.1,35.5,51.9,15286,5.7,0.14),
+    	('T163',163,'University of Arizona','United States of America',38.7,38.6,41.8,79.5,32.4,51.7,36429,12.7,0.08),
+    	('T164',164,'Pompeu Fabra University','Spain',32.9,63.3,28,90.7,37.2,51.2,10901,18.3,0.13),
+    	('T165',164,'University of Reading','United Kingdom',39.3,85.1,37.3,69.9,34.2,51.2,12050,14.8,0.28),
+    	('T166',164,'Yeshiva University','United States of America',44.8,28.5,23.7,92.8,56.5,51.2,6753,5.5,0.07),
+    	('T167',167,'University of California, Riverside','United States of America',27.5,59.5,33.3,91.2,42.5,51.1,20626,22,0.12),
+    	('T168',167,'University of Leicester','United Kingdom',32.1,86.6,27.8,86,31.7,51.1,14541,13.4,0.35),
+    	('T169',167,'National Taiwan University','Taiwan',54.1,27.7,58,47.3,49.6,51.1,31891,11.9,0.07),
+    	('T170',167,'Technical University of Denmark','Denmark',37.3,85.1,29.9,77.8,50,51.1,9990,5,0.18),
+    	('T171',167,'Université Catholique de Louvain','Belgium',38.7,74.2,40.6,68.4,51,51.1,28856,42,0.19),
+    	('T172',172,'University of Aberdeen','United Kingdom',29.7,91.4,31.4,82.6,43.1,51,12938,15.8,0.33),
+    	('T173',172,'University of Auckland','New Zealand',31.4,90.5,39.5,69.8,78,51,29787,18.9,0.28),
+    	('T174',174,'University of Barcelona','Spain',38.5,49.2,37.4,78.9,31.1,50.9,47491,12.2,0.10),
+    	('T175',175,'University of Konstanz','Germany',38.5,58.3,46.7,61.9,92.4,50.8,10930,59.1,0.12),
+    	('T176',176,'Eindhoven University of Technology','Netherlands',34.3,71.3,41,70.7,57.3,50.6,8176,16,0.14),
+    	('T177',176,'University College Dublin','Republic of Ireland',35,86.3,38.5,70.8,33.5,50.6,22193,24.5,0.23),
+    	('T178',178,'Hebrew University of Jerusalem','Israel',45.8,55.6,41.4,64.6,31.9,50.5,17612,10.7,0.05),
+    	('T179',179,'University of Waterloo','Canada',35.4,74.4,43.9,66.5,39.5,50.3,30726,24.2,0.14),
+    	('T180',180,'University of Gothenburg','Sweden',28.5,58.3,39.8,81.8,30.3,50.2,26420,16.4,0.12),
+    	('T181',180,'Scuola Superiore Sant’Anna','Italy',42.5,45.2,23.2,84.5,71.2,50.2,769,8.5,0.17),
+    	('T182',182,'University of Bergen','Norway',32.5,70,31.5,82.4,36.2,50.1,11623,11.1,0.12),
+    	('T183',182,'Cardiff University','United Kingdom',30.9,78.1,31.6,82,34.6,50.1,23347,13.1,0.23),
+    	('T184',182,'University of Utah','United States of America',35.6,30.1,35.3,83.7,57.4,50.1,25674,16.9,0.09),
+    	('T185',185,'Brandeis University','United States of America',28.3,47,25.7,97.3,38.6,49.9,5495,12.6,0.22),
+    	('T186',185,'University of Dundee','United Kingdom',25.6,78.5,26.9,90.2,49.5,49.9,11628,15.3,0.25),
+    	('T187',185,'University of Würzburg','Germany',34.6,50.9,35.8,79.1,47.9,49.9,26576,38.4,0.08),
+    	('T188',188,'Paris56.5Sud University','France',38.7,64.2,29,79.8,28.8,49.8,27603,15,0.17),
+    	('T189',189,'Arizona State University','United States of America',32.4,31.9,38.1,84.6,32,49.7,83236,29.9,0.09),
+    	('T190',190,'University of Antwerp','Belgium',31.6,64.8,40.8,71.7,60.3,49.6,12346,30.3,0.16),
+    	('T191',190,'Boston College','United States of America',34.1,60,29.3,83.3,46.8,49.6,13216,17.4,0.19),
+    	('T192',192,'Ulm University','Germany',35.2,58.2,23.9,86.4,58.4,49.5,9187,11.2,0.10),
+    	('T193',193,'University of Luxembourg','Luxembourg',25,99.8,26.7,84.8,38.1,49.4,5144,15.9,0.52),
+    	('T194',193,'Texas A&M University','United States of America',49.4,47.8,52.4,47.1,46.4,49.4,50657,21.4,0.09),
+    	('T195',195,'Charité 56.5 Universitätsmedizin Berlin','Germany',37.3,61.1,22.2,83.8,68.4,49.3,6853,6.6,0.16),
+    	('T196',196,'Newcastle University','United Kingdom',30.9,84.3,27.5,81.5,34.7,49.2,20174,15.2,0.29),
+    	('T197',196,'St George’s, University of London','United Kingdom',25.6,69.5,18.1,100,37.7,49.2,2958,13.4,0.17),
+    	('T198',198,'University of Trento','Italy',30.8,55.9,27.4,87.7,47.1,49.1,16841,43.2,0.08),
+    	('T199',199,'Paris Diderot University – Paris 7','France',30.5,64.9,22.9,91,29,48.9,27756,14.8,0.17),
+    	('T200',200,'Queen’s University Belfast','United Kingdom',34.1,93.4,33.3,68.9,35.7,48.8,17940,17.9,0.30);
 
+
+
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C1','1','Harvard University','USA',1,1,1,1,1,1,1,1,3,100);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C2','2','Stanford University','USA',2,9,2,4,5,3,3,4,10,98.66);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C3','3','Massachusetts Institute of Technology','USA',3,3,11,2,15,2,2,2,1,97.54);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C4','4','University of Cambridge','United Kingdom',1,2,10,5,11,6,12,13,48,96.81);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C5','5','University of Oxford','United Kingdom',2,7,13,10,7,12,7,9,15,96.46);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C6','6','Columbia University','USA',4,13,6,9,13,13,11,12,4,96.14);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C7','7','University of California, Berkeley','USA',5,5,21,6,10,4,4,7,29,92.25);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C8','8','University of Chicago','USA',6,11,14,8,17,16,12,22,141,90.7);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C9','9','Princeton University','USA',7,4,15,3,72,25,24,33,225,89.42);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C10','10','Cornell University','USA',8,12,18,14,24,15,25,22,11,86.79);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C11','11','Yale University','USA',9,10,26,11,18,8,35,20,49,86.61);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C12','12','California Institute of Technology','USA',10,6,328,7,53,9,19,25,13,84.4);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C13','13','University of Tokyo','Japan',1,16,3,38,14,19,31,29,7,78.23);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C14','14','University of Pennsylvania','USA',11,20,4,28,8,18,14,9,14,77.6);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C15','15','University of California, Los Angeles','USA',12,28,27,13,6,14,8,6,9,76.91);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C16','16','Johns Hopkins University','USA',13,18,84,16,4,11,5,3,2,71.6);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C17','17','Kyoto University','Japan',2,22,16,24,30,42,88,60,16,68.6);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C18','18','New York University','USA',14,32,22,18,47,29,46,32,43,68.39);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C19','19','University of Michigan, Ann Arbor','USA',15,24,17,140,3,20,6,14,12,68.36);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C20','20','Swiss Federal Institute of Technology in Zurich','Switzerland',1,17,64,17,44,27,39,79,57,66.93);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C21','21','University of California, San Diego','USA',16,36,567,19,16,5,15,15,17,66.59);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C22','22','Northwestern University','USA',17,163,12,104,27,34,27,26,42,66.56);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C23','23','Hebrew University of Jerusalem','Israel',1,15,164,15,120,97,368,143,35,65.71);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C24','24','Seoul National University','South Korea',1,367,9,218,36,163,146,112,6,64.82);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C25','25','University of Wisconsin–Madison','USA',18,29,29,34,21,24,22,27,27,64.51);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C26','26','University of California, San Francisco','USA',19,367,567,20,22,7,15,11,56,63.69);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C27','27','University College London','United Kingdom',3,21,447,27,12,22,15,18,67,62.27);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C28','28','Duke University','USA',20,74,31,56,19,23,15,16,33,61.55);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C29','29','Rockefeller University','USA',21,49,567,12,372,28,115,70,289,61.28);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C30','30','University of Texas at Austin','USA',22,75,36,25,48,50,26,71,38,61.14);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C31','31','University of Washington - Seattle','USA',23,48,103,41,9,10,10,5,40,60.61);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C32','32','University of Toronto','Canada',1,70,51,32,2,17,9,8,145,60.04);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C33','33','University of Illinois at Urbana–Champaign','USA',24,33,75,21,40,48,42,74,65,59.94);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C34','34','Keio University','Japan',3,284,5,218,309,246,368,270,80,59.84);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C35','35','Imperial College London','United Kingdom',4,90,82,30,19,26,23,19,47,59.61);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C36','36','École Polytechnique','France',1,98,7,216,327,314,234,295,172,59.2);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C37','37','École normale supérieure - Paris','France',2,8,502,54,379,157,645,295,871,58.8);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C38','38','Waseda University','Japan',4,288,8,218,406,389,368,388,248,58.17);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C39','39','Weizmann Institute of Science','Israel',2,19,567,22,246,63,234,143,45,57.17);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C40','40','University of North Carolina at Chapel Hill','USA',25,124,69,86,32,32,19,21,41,57.09);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C41','41','University of Virginia','USA',26,209,20,126,94,74,88,90,97,56.73);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C42','42','McGill University','Canada',2,34,37,75,33,53,44,34,132,56.49);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C43','43','Purdue University, West Lafayette','USA',27,55,33,47,75,95,68,117,28,56.39);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C44','44','Dartmouth College','USA',28,40,19,218,246,167,136,154,63,56.35);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C45','45','Osaka University','Japan',5,46,39,75,50,58,182,67,18,56.03);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C46','46','University of Pittsburgh - Pittsburgh Campus','USA',29,79,169,218,25,57,21,24,50,55.63);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C47','47','Pennsylvania State University, University Park','USA',30,230,44,62,49,43,28,38,92,55.54);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C48','48','University of Minnesota, Twin Cities','USA',31,63,130,63,23,40,31,28,59,55.51);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C49','49','Ohio State University, Columbus','USA',32,96,87,82,28,52,31,38,44,55.39);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C50','50','Rutgers University-New Brunswick','USA',33,91,40,37,100,66,46,89,61,55.23);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C51','51','University of Southern California','USA',34,152,62,39,57,64,101,56,34,55.12);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C52','52','Washington University in St. Louis','USA',35,101,96,71,41,21,29,17,169,55.03);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C53','53','University of California, Davis','USA',36,54,227,59,29,33,35,52,62,54.85);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C54','54','University of Colorado Boulder','USA',37,80,67,31,96,38,45,74,133,54.62);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C55','55','University of Edinburgh','United Kingdom',5,44,127,33,54,37,65,43,228,54.39);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C56','56','Peking University','China',1,182,38,218,52,131,182,125,20,54.26);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C57','57','National Taiwan University','Taiwan',1,92,25,218,46,223,182,204,695,54.23);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C58','58','University of Paris-Sud','France',3,26,393,26,73,86,115,97,324,54.21);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C59','59','Lomonosov Moscow State University','Russia',1,14,175,48,268,254,287,344,861,54.19);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C60','60','University of Florida','USA',38,214,276,96,37,73,46,59,5,54.18);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C61','61','Carnegie Mellon University','USA',39,25,160,23,211,225,78,150,165,54);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C62','62','University of British Columbia','Canada',3,81,275,93,26,36,37,34,81,53.92);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C63','63','Pierre-and-Marie-Curie University','France',4,30,404,88,31,35,68,63,87,53.79);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C64','64','University of California, Santa Barbara','USA',40,133,280,29,111,59,46,55,77,53.63);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C65','65','National University of Singapore','Singapore',1,367,98,218,34,125,78,90,25,53.44);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C66','66','Boston University','USA',41,303,54,83,60,45,37,34,135,53.43);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C67','67','University of Manchester','United Kingdom',6,99,92,72,43,70,29,53,142,53.38);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C68','68','University of Arizona','USA',42,139,55,87,74,39,31,49,235,53.26);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C69','69','Vanderbilt University','USA',43,87,94,110,55,62,59,41,51,53.05);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C70','70','University of Utah','USA',44,97,105,67,97,65,101,90,19,52.89);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C71','71','Karolinska Institute','Sweden',1,149,567,36,51,54,52,34,743,52.79);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C72','72','University of Maryland, College Park','USA',45,68,210,43,58,47,39,67,280,52.72);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C73','73','Tohoku University','Japan',6,41,170,218,68,127,115,119,22,52.57);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C74','74','University of Copenhagen','Denmark',1,117,149,64,38,31,59,31,432,52.51);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C75','75','University of Texas Southwestern Medical Center','USA',46,59,567,35,131,30,78,40,173,52.5);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C76','76','Ruprecht Karl University of Heidelberg','Germany',1,38,402,51,69,61,46,46,243,52.32);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C77','77','University of Notre Dame','USA',47,221,24,155,242,242,182,235,352,52.27);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C78','78','Tsinghua University','China',2,309,73,218,63,158,65,156,30,52.21);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C79','79','Ludwig Maximilian University of Munich','Germany',2,42,129,92,66,55,53,51,167,52.16);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C80','80','Georgia Institute of Technology','USA',48,135,60,218,107,152,78,106,36,52.08);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C81','81','University of Rochester','USA',49,72,53,113,114,118,68,79,64,52.03);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C82','82','Katholieke Universiteit Leuven','Belgium',1,367,202,218,35,92,53,46,74,52.03);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C83','83','Brown University','USA',50,64,43,73,121,67,76,99,200,52.01);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C84','84','Emory University','USA',51,367,146,116,67,60,93,41,55,51.85);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C85','85','Erasmus University Rotterdam','Netherlands',1,367,46,189,87,147,53,44,227,51.78);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C86','86','Tel Aviv University','Israel',3,77,107,50,98,117,136,154,39,51.75);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C87','87','Utrecht University','Netherlands',2,84,199,115,39,44,59,46,429,51.74);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C88','88','University of Sydney','Australia',1,105,198,166,45,103,46,84,75,51.61);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C89','89','University of California, Irvine','USA',52,227,567,44,78,51,68,54,162,51.51);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C90','90','University of Texas MD Anderson Cancer Center','USA',53,367,567,80,93,72,42,29,71,51.51);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C91','91','Swiss Federal Institute of Technology in Lausanne','Switzerland',2,367,74,116,124,114,39,110,58,51.47);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C92','92','University of Geneva','Switzerland',3,35,191,42,122,77,115,79,321,51.46);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C93','93','University of Melbourne','Australia',2,141,113,218,42,68,53,71,223,51.34);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C94','94','King''s College London','United Kingdom',7,27,190,114,76,116,101,74,188,51.31);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C95','95','Tufts University','USA',54,60,48,182,166,160,93,85,84,51.22);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C96','96','University of Zurich','Switzerland',4,115,389,85,56,46,68,56,137,51.14);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C97','97','Arizona State University','USA',55,367,455,66,143,85,76,140,21,51.13);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C98','98','Yonsei University','South Korea',2,367,45,218,140,326,321,235,23,51.02);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C99','99','University of Oslo','Norway',1,53,286,40,106,134,101,102,302,50.81);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C100','100','Kyushu University','Japan',7,367,49,218,152,182,264,200,37,50.6);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C101','101','Technical University of Munich','Germany',3,37,118,177,104,90,128,95,119,50.58);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C102','102','Texas A&M University, College Station','USA',56,339,108,46,77,98,88,143,201,50.43);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C103','103','University of Queensland','Australia',3,269,292,142,65,78,101,99,68,50.4);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C104','104','Mines ParisTech','France',5,278,23,169,977,834,812,906,871,50.34);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C105','105','Case Western Reserve University','USA',57,50,215,195,137,106,59,74,111,50.28);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C106','106','Indiana University - Bloomington','USA',58,134,35,178,180,143,161,190,178,50.26);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C107','107','University of Alberta','Canada',4,169,151,153,62,109,82,103,116,50.25);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C108','108','Leiden University','Netherlands',3,120,567,102,82,94,53,56,260,50.17);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C109','109','Tokyo Institute of Technology','Japan',8,170,50,128,169,169,136,190,52,50.13);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C110','110','University of Groningen','Netherlands',4,313,193,196,64,96,68,67,316,50.1);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C111','111','University of Helsinki','Finland',1,56,551,111,80,79,88,65,420,50.04);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C112','112','Sapienza University of Rome','Italy',1,67,205,45,83,166,212,130,312,49.97);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C113','113','Georgetown University','USA',59,159,34,218,298,321,321,204,122,49.92);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C114','114','University of Amsterdam','Netherlands',5,109,317,212,70,88,93,60,282,49.83);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C115','115','Korea University','South Korea',3,367,58,218,172,411,321,273,26,49.79);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C116','116','University of Barcelona','Spain',1,367,226,218,61,108,93,83,215,49.79);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C117','117','Lund University','Sweden',2,136,466,169,85,135,53,60,871,49.75);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C118','118','Michigan State University','USA',60,112,162,218,88,123,65,111,136,49.74);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C119','119','Ghent University','Belgium',2,123,329,147,84,149,68,119,90,49.73);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C120','120','Rice University','USA',61,52,161,95,255,150,59,130,76,49.73);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C121','121','Baylor College of Medicine','USA',62,367,567,218,113,41,101,44,199,49.7);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C122','122','Aarhus University','Denmark',2,310,165,106,91,81,101,95,154,49.65);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C123','123','University of Bristol','United Kingdom',8,194,196,74,92,69,82,106,335,49.59);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C124','124','Uppsala University','Sweden',3,73,321,70,95,75,93,103,871,49.57);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C125','125','Nagoya University','Japan',9,39,322,53,138,140,146,195,78,49.57);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C126','126','Royal Institute of Technology','Sweden',4,199,30,105,221,300,321,318,797,49.54);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C127','127','University of Colorado Denver','USA',63,367,567,140,135,110,128,66,72,49.48);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C128','128','University of Glasgow','United Kingdom',9,234,89,218,123,144,82,87,402,49.45);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C129','129','VU University Amsterdam','Netherlands',6,367,385,218,79,120,68,79,871,49.44);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C130','130','University of New South Wales','Australia',4,177,70,218,90,177,101,164,157,49.33);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C131','131','Paris Diderot University - Paris 7','France',6,127,567,68,105,56,115,97,483,49.33);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C132','132','University of São Paulo','Brazil',1,297,71,218,59,186,136,164,710,49.31);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C133','133','Western University (The University of Western Ontario)','Canada',5,367,41,218,149,208,234,190,261,49.31);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C134','134','Radboud University Nijmegen','Netherlands',7,128,274,218,89,119,93,74,410,49.3);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C135','135','Nanyang Technological University','Singapore',2,367,567,218,102,361,212,204,32,49.29);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C136','136','Technion – Israel Institute of Technology','Israel',4,45,180,55,186,221,161,209,88,49.12);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C137','137','University of Miami','USA',64,367,241,218,159,130,82,112,73,49.09);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C138','138','Stony Brook University','USA',65,186,567,58,173,84,93,134,96,49.09);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C139','139','University of Texas at Dallas','USA',66,367,159,218,250,151,59,49,313,49.05);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C140','140','University of Nottingham','United Kingdom',10,131,109,84,116,176,146,140,138,49.02);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C141','141','University of Iowa','USA',67,233,296,167,103,83,115,112,121,49.01);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C142','142','Southern Methodist University','USA',68,179,28,218,624,655,368,646,824,48.99);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C143','143','Icahn School of Medicine at Mount Sinai','USA',69,367,567,218,160,71,161,63,101,48.96);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C144','144','Korea Advanced Institute of Science and Technology (KAIST)','South Korea',4,367,194,218,183,283,368,289,8,48.95);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C145','145','Monash University','Australia',5,277,145,218,86,136,182,161,99,48.91);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C146','146','University of Alabama at Birmingham','USA',70,367,567,218,141,124,128,71,130,48.79);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C147','147','Free University of Berlin','Germany',4,76,548,128,109,80,234,90,461,48.78);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C148','148','University of Southampton','United Kingdom',11,329,95,218,115,133,101,130,334,48.77);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C149','149','University of the Witwatersrand','South Africa',1,61,32,172,442,237,321,447,291,48.75);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C150','150','McMaster University','Canada',6,222,268,163,127,156,101,87,222,48.74);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C151','151','University of Montreal','Canada',7,320,376,218,101,111,101,90,540,48.72);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C152','152','University of Birmingham','United Kingdom',12,65,158,205,117,165,146,138,170,48.7);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C153','153','Humboldt University of Berlin','Germany',5,291,567,108,108,82,161,85,471,48.64);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C154','154','University of California, Santa Cruz','USA',71,175,567,100,243,49,115,99,183,48.59);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C155','155','Albert Ludwig University of Freiburg','Germany',6,148,134,193,156,104,182,134,98,48.57);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C156','156','University of Tübingen','Germany',7,69,490,103,142,122,146,115,226,48.56);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C157','157','University of Cincinnati','USA',72,188,86,218,150,171,128,127,263,48.56);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C158','158','University of Bonn','Germany',8,58,249,65,153,107,146,150,341,48.54);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C159','159','Wake Forest University','USA',73,265,83,218,249,244,128,125,124,48.52);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C160','160','University of Basel','Switzerland',5,83,363,60,167,100,136,130,486,48.48);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C161','161','University of Leeds','United Kingdom',13,62,157,218,133,141,136,150,265,48.41);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C162','162','University of Hamburg','Germany',9,314,136,135,147,126,101,127,677,48.31);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C163','163','Université libre de Bruxelles','Belgium',3,173,110,69,236,214,101,170,148,48.28);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C164','164','Indiana University-Purdue University Indianapolis','USA',74,367,492,218,187,190,125,122,79,48.28);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C165','165','Pohang University of Science and Technology','South Korea',5,367,567,218,285,355,212,281,24,48.24);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C166','166','Oregon Health & Science University','USA',75,367,567,128,184,115,125,105,144,48.23);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C167','167','University of Calgary','Canada',8,367,123,218,145,180,101,127,778,48.23);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C168','168','Stockholm University','Sweden',5,129,79,187,202,89,88,179,839,48.23);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C169','169','University of Padua','Italy',2,281,567,218,99,105,182,119,351,48.17);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C170','170','University of Hong Kong','Hong Kong',1,287,128,218,139,204,128,147,205,48.15);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C171','171','Yeshiva University','USA',76,200,567,218,195,91,161,109,128,48.11);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C172','172','University of Milan','Italy',3,162,441,182,118,189,212,106,438,48.07);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C173','173','University of Sheffield','United Kingdom',14,142,209,196,129,137,136,147,179,48.07);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C174','174','Technical University of Denmark','Denmark',3,351,510,202,220,230,161,216,46,48.06);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C175','175','University of Maryland, Baltimore','USA',77,367,567,218,125,112,197,116,180,48.05);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C176','176','Goethe University Frankfurt','Germany',10,111,219,89,179,155,212,124,328,48.01);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C177','177','University of Göttingen','Germany',11,43,171,176,174,146,264,184,299,47.98);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C178','178','Hokkaido University','Japan',10,279,277,135,148,173,287,251,53,47.97);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C179','179','Australian National University','Australia',6,196,379,52,130,99,197,188,415,47.97);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C180','180','Shanghai Jiao Tong University','China',3,335,143,218,81,267,212,209,198,47.96);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C181','181','University of New Mexico','USA',78,367,567,218,223,170,82,147,100,47.95);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C182','182','University of Strasbourg','France',7,71,567,49,191,145,264,219,269,47.89);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C183','183','University of Massachusetts Medical School','USA',79,367,567,80,296,76,234,122,143,47.85);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C184','184','University of Houston','USA',80,367,42,218,310,257,511,349,156,47.83);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C185','185','Trinity College, Dublin','Ireland',1,338,78,200,289,233,115,204,153,47.73);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C186','186','University of Lausanne','Switzerland',6,102,423,218,235,101,115,117,683,47.73);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C187','187','Iowa State University','USA',81,286,186,109,151,178,82,184,339,47.71);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C188','188','Joseph Fourier University','France',8,195,567,218,110,93,234,170,160,47.71);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C189','189','Wayne State University','USA',82,367,183,218,189,258,125,176,117,47.67);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C190','190','University of South Florida - Tampa','USA',83,367,418,218,233,251,197,164,70,47.66);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C191','191','Zhejiang University','China',4,367,309,218,71,290,368,265,106,47.66);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C192','192','Hanyang University','South Korea',6,367,168,218,286,471,368,396,31,47.6);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C193','193','University of Ottawa','Canada',9,223,163,218,171,194,212,134,496,47.6);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C194','194','University of Missouri–Columbia','USA',84,250,88,98,222,226,161,242,150,47.59);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C195','195','Fudan University','China',5,367,203,218,112,252,368,204,123,47.56);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C196','196','University of Kansas','USA',85,228,91,218,212,161,161,235,127,47.52);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C197','197','University of Cologne','Germany',12,367,132,201,204,138,146,161,421,47.52);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C198','198','University of Georgia','USA',86,93,188,172,181,132,234,256,82,47.5);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C199','199','University of Liverpool','United Kingdom',15,176,179,207,154,172,128,174,377,47.49);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C200','200','University of Bern','Switzerland',7,184,526,213,163,128,93,159,433,47.49);
 
 INSERT INTO InterestList(listId, UniversityName,comment) VALUES
     (1,'UofT','Professor of MIE350 is too handsome.'),
@@ -339,3 +725,87 @@ INSERT INTO InterestList(listId, UniversityName,comment) VALUES
     (14,'University of Pennsylvania','Chuan Pu'),
     (15,'Tsinghua University','T0'),
     (16,'The University of Edinburgh','LOVED');
+
+INSERT INTO UniversityUser(UniversityId, UniversityName, UniversityPassword)VALUES ('UU0001','Harvard University','HU0001'),
+	('UU0002','Stanford University','SU0002'),
+	('UU0003','Massachusetts Institute of Technology','HU0002'),
+	('UU0004','University of Cambridge','SU0003'),
+	('UU0005','University of Oxford','HU0003'),
+	('UU0006','Columbia University','SU0004'),
+	('UU0007','University of California, Berkeley','HU0004'),
+	('UU0008','University of Chicago','SU0005'),
+	('UU0009','Princeton University','HU0005'),
+	('UU0010','Cornell University','SU0006'),
+	('UU0011','Yale University','HU0006'),
+	('UU0012','California Institute of Technology','SU0007'),
+	('UU0013','University of Tokyo','HU0007'),
+	('UU0014','University of Pennsylvania','SU0008'),
+	('UU0015','University of California, Los Angeles','HU0008'),
+	('UU0016','Johns Hopkins University','SU0009'),
+	('UU0017','Kyoto University','HU0009'),
+	('UU0018','New York University','SU0010'),
+	('UU0019','University of Michigan, Ann Arbor','HU0010'),
+	('UU0020','Swiss Federal Institute of Technology in Zurich','SU0011'),
+	('UU0021','University of California, San Diego','HU0011'),
+	('UU0022','Northwestern University','SU0012'),
+	('UU0023','Hebrew University of Jerusalem','HU0012'),
+	('UU0024','Seoul National University','SU0013'),
+	('UU0025','University of Wisconsin¨CMadison','HU0013'),
+	('UU0026','University of California, San Francisco','SU0014'),
+	('UU0027','University College London','HU0014'),
+	('UU0028','Duke University','SU0015'),
+	('UU0029','Rockefeller University','HU0015'),
+	('UU0030','University of Texas at Austin','SU0016');
+
+INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001','James','0001KEY'),
+	('SU0002','Robert','0002KEY'),
+	('SU0003','John','0003KEY'),
+	('SU0004','Michael','0004KEY'),
+	('SU0005','David','0005KEY'),
+	('SU0006','William','0006KEY'),
+	('SU0007','Richard','0007KEY'),
+	('SU0008','Joseph','0008KEY'),
+	('SU0009','Thomas','0009KEY'),
+	('SU0010','Charles','0010KEY'),
+	('SU0011','Christopher','0011KEY'),
+	('SU0012','Daniel','0012KEY'),
+	('SU0013','Matthew','0013KEY'),
+	('SU0014','Anthony','0014KEY'),
+	('SU0015','Mark','0015KEY'),
+	('SU0016','Donald','0016KEY'),
+	('SU0017','Steven','0017KEY'),
+	('SU0018','Paul','0018KEY'),
+	('SU0019','Andrew','0019KEY'),
+	('SU0020','Joshua','0020KEY'),
+	('SU0021','Kenneth','0021KEY'),
+	('SU0022','Kevin','0022KEY'),
+	('SU0023','Brian','0023KEY'),
+	('SU0024','George','0024KEY'),
+	('SU0025','Timothy','0025KEY'),
+	('SU0026','Ronald','0026KEY'),
+	('SU0027','Edward','0027KEY'),
+	('SU0028','Jason','0028KEY'),
+	('SU0029','Jeffrey','0029KEY'),
+	('SU0030','Ryan','0030KEY'),
+	('SU0031','Jacob','0031KEY'),
+	('SU0032','Gary','0032KEY'),
+	('SU0033','Nicholas','0033KEY'),
+	('SU0034','Eric','0034KEY'),
+	('SU0035','Jonathan','0035KEY'),
+	('SU0036','Stephen','0036KEY'),
+	('SU0037','Larry','0037KEY'),
+	('SU0038','Justin','0038KEY'),
+	('SU0039','Scott','0039KEY'),
+	('SU0040','Brandon','0040KEY'),
+	('SU0041','Benjamin','0041KEY'),
+	('SU0042','Samuel','0042KEY'),
+	('SU0043','Gregory','0043KEY'),
+	('SU0044','Alexander','0044KEY'),
+	('SU0045','Frank','0045KEY'),
+	('SU0046','Patrick','0046KEY'),
+	('SU0047','Raymond','0047KEY'),
+	('SU0048','Jack','0048KEY'),
+	('SU0049','Dennis','0049KEY'),
+	('SU0050','Jerry','0050KEY');
+
+INSERT INTO universities(universityId, uniName) VALUES(1, 'UofT');

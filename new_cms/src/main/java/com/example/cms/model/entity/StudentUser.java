@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +19,27 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "students")
-public class Student extends Person {
+@Table(name = "StudentUser")
+public class StudentUser {
 
-    @OneToMany(mappedBy = "student")
+    @Id
+    @NotEmpty
+    private String StudentId;
+
+    @NotEmpty
+    private String StudentName;
+
+    @NotEmpty
+    private String StudentPassword;
+    /*
     @Nullable
-    private List<CourseMark> marks  = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Interest_List_Id", referencedColumnName = "list_Id")
+    private Interest_list interestList  = new Interest_list();
+
+    @Nullable
+    @OneToMany(mappedBy = "participatedStudent")
+    private Discussion discussion;
+*/
 
 }

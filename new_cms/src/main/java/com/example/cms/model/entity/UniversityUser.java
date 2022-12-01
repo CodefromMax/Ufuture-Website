@@ -4,28 +4,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Email;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-@MappedSuperclass
+@Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class Person {
+@Table(name = "UniversityUser")
+public class UniversityUser {
 
     @Id
-    private long id;
+    @NotEmpty
+    private String UniversityId;
 
     @NotEmpty
-    private String firstName;
+    private String UniversityName;
 
     @NotEmpty
-    private String lastName;
-
-    @Email
-    @NotEmpty
-    private String email;
-
+    private String UniversityPassword;
 }

@@ -57,5 +57,9 @@ public class Qs_rankings {
     @NotEmpty
     private String Overall_Score;
 
+    /*
+    @OneToOne(mappedBy = "qs_rankings")
+    private All_universities qsToUniversity;
 
+*/
 }

@@ -14,12 +14,54 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-
+@Table(name="CWURRankings")
 public class CWUR_rankings {
 
     @Id
     @NotEmpty
+    private String cwur_Id;
 
-    private String cwur_id;
+    @NotEmpty
+    private int Cwur_rank;
+
+    @NotEmpty
+    private String Institution_Name;
+
+    @Nullable
+    private String Country;
+
+    @Nullable
+    private int National_rank;
+
+    @Nullable
+    private int Quality_of_education;
+
+    @Nullable
+    private int Alumni_Employment;
+
+    @Nullable
+    private int Quality_of_Faculty;
+
+    @Nullable
+    private int Publications;
+
+    @Nullable
+    private int Influence;
+
+    @Nullable
+    private int citations;
+
+    @Nullable
+    private int broad_impact;
+
+    @Nullable
+    private int patents;
+
+    @Nullable
+    private int score;
+
+
+   // @OneToOne(mappedBy = "cwur_rankings")
+    //private All_universities cwurUniversity;
 
 }
