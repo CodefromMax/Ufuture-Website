@@ -19,10 +19,11 @@ public class CWUR_rankings {
 
     @Id
     @NotEmpty
+    @Column(name = "cwur_Id")
     private String cwur_Id;
 
     @NotEmpty
-    private int Cwur_rank;
+    private String Cwur_rank;
 
     @NotEmpty
     private String Institution_Name;
@@ -60,8 +61,5 @@ public class CWUR_rankings {
     @Nullable
     private int score;
 
-
-   // @OneToOne(mappedBy = "cwur_rankings")
-    //private All_universities cwurUniversity;
 
 }

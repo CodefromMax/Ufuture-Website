@@ -20,6 +20,7 @@ public class Qs_rankings {
 
     @Id
     @NotEmpty
+    @Column(name = "QS_ranking_id")
     private String QS_ranking_id;
 
     @NotEmpty
@@ -57,9 +58,5 @@ public class Qs_rankings {
     @NotEmpty
     private String Overall_Score;
 
-    /*
-    @OneToOne(mappedBy = "qs_rankings")
-    private All_universities qsToUniversity;
 
-*/
 }

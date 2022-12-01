@@ -20,25 +20,26 @@ public class All_universities {
 
     @Id
     @NotEmpty
-    private Long universityId;
+    private String universityId;
 
     @NotEmpty
     private String uniName;
-/*
+
     @Nullable
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "qs_id", referencedColumnName = "times_Id")
+    @ManyToOne
+    @JoinColumn(name = "qs_id")
     private Qs_rankings qs_rankings;
 
 
     @Nullable
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "times_id", referencedColumnName = "times_Id")
-    private Times_rankings times_rankings;
+    @ManyToOne
+    @JoinColumn(name = "cwur_id")
+    private CWUR_rankings cwur_rankings;
 
     @Nullable
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cwur_id", referencedColumnName = "cwur_Id")
-    private CWUR_rankings cwur_rankings;
-*/
+    @ManyToOne
+    @JoinColumn(name = "times_id")
+    private Times_rankings times_rankings;
+
+
 }

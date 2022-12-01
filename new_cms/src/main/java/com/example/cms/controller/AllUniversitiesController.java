@@ -30,5 +30,7 @@ public class AllUniversitiesController {
     List<All_universities> searchUniversity(@PathVariable("uniname") String uniname){
         return repository.searchUni(uniname);
     }
+    @GetMapping("/universities/showall")
+    List<All_universities> showAllUni (){return repository.findAll();}
 
 }

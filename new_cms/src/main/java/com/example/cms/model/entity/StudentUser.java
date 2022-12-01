@@ -42,4 +42,5 @@ public class StudentUser {
     @JsonIgnore
     private List<Discussion> discussion;
 
+
 }
