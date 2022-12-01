@@ -18,6 +18,7 @@ import java.util.List;
 
 public class All_universities {
 
+    //NA strings for rankings, use many to one for all rankings
     @Id
     @NotEmpty
     private String universityId;

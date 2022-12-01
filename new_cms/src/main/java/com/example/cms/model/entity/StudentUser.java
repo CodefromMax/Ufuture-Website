@@ -40,7 +40,15 @@ public class StudentUser {
     @Nullable
     @OneToMany(mappedBy = "participatedStudent")
     @JsonIgnore
-    private List<Discussion> discussion;
+    private List<Discussion> discussion = new ArrayList<Discussion>();
+
+    /*
+    @Nullable
+    @OneToMany(mappedBy = "studentUser")
+    @JsonIgnore
+    private List<Interest_list> interestList = new ArrayList<Interest_list>();
+    
+     */
 
 
 }

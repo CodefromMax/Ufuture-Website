@@ -1,5 +1,6 @@
 package com.example.cms.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,11 +24,18 @@ import java.util.List;
 
 public class Interest_list {
 
-    @Id
-    private long listId;
+    @EmbeddedId
+    private Interest_listKey listKey;
 
-    @NotEmpty
-    private String UniversityName;
+    @ManyToOne
+    @MapsId("studentId")
+    @JoinColumn(name = "studentId")
+    @JsonIgnoreProperties({"discussion"})
+    private StudentUser studentUser;
+
+    @ManyToOne
+    @JoinColumn(name = "universityId")
+    private All_universities university;
 
     @Nullable
     private String comment;

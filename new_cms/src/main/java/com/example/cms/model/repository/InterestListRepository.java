@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InterestListRepository extends JpaRepository<Interest_list, Long> {
+public interface InterestListRepository extends JpaRepository<Interest_list, Interest_listKey> {
 
-    @Query(value = "select * from InterestList", nativeQuery = true)
-    List<Interest_list> showAllList();
+    @Query(value = "select * from InterestList i " +
+            "where i.studentId = :StudentId", nativeQuery = true)
+    List<Interest_list> showListForTheStudent(@Param ("StudentId") String SId);
 }

@@ -712,23 +712,6 @@ INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_ran
 INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('NA','NA','Not Found','Not Found',0,0,0,0,0,0,0,0,0,0.00);
 
 
-INSERT INTO InterestList(listId, UniversityName,comment) VALUES
-    (1,'UofT','Professor of MIE350 is too handsome.'),
-    (2,'Massachusetts Institute of Technology (MIT)','Dream School'),
-    (3,'University of Cambridge','First choice'),
-    (4,'Stanford University','Always Loved'),
-    (5,'University of Oxford','MY DREAM'),
-    (6,'Harvard University','Wongderful'),
-    (7,'California Institute of Technology (Caltech)','Second choice'),
-    (8,'Imperial College London','Liked'),
-    (9,'UCL','Love London'),
-    (10,'ETH Zurich - Swiss Federal Institute of Technology','Great'),
-    (11,'University of Chicago','Yes'),
-    (12,'National University of Singapore (NUS)','No Choice'),
-    (13,'Peking University','T0'),
-    (14,'University of Pennsylvania','Chuan Pu'),
-    (15,'Tsinghua University','T0'),
-    (16,'The University of Edinburgh','LOVED');
 
 INSERT INTO UniversityUser(UniversityId, UniversityName, UniversityPassword)VALUES ('UU0001','Harvard University','HU0001'),
 	('UU0002','Stanford University','SU0002'),
