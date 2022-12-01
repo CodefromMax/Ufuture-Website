@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Universities from '@/components/Universities'
 import Qs_rankings from '@/components/Qs_rankings'
+import University_Page from '@/components/University_Page'
+
 Vue.use(Router)
 
 export default new Router({
@@ -21,6 +23,11 @@ export default new Router({
       path: '/uni',
       name: 'University',
       component: Universities
+    },
+    {
+      path: '/u',
+      name: 'university_Page',
+      component: University_Page
     }
    
   ]

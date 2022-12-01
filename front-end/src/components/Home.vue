@@ -1,6 +1,21 @@
 <template>
   <div>
-
+    <b-carousel
+      id="carousel-1"
+      :interval="4000"
+      controls
+      indicators
+      fade
+      img-width="1024"
+      img-height="480"
+      style="text-shadow: 1px 1px 2px #333;"
+    >
+      <!-- Text slides with image -->
+      <b-carousel-slide
+        img-src="https://picsum.photos/1024/480/?image=1002"
+      ></b-carousel-slide>
+    </b-carousel>
+    
     <div class = "search-container">
       <b-input-group prepend="Search a University">
         <!--triger 1-->
@@ -42,11 +57,6 @@
 
 
   </div>
-  
-
-
-
-
   
 
 </template>
