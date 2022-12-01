@@ -7,6 +7,7 @@ import com.example.cms.controller.exceptions.DiscussionNotFoundException;
 import com.example.cms.controller.exceptions.DiscussionNotMatchException;
 import com.example.cms.controller.exceptions.StudentNotFoundException;
 import com.example.cms.model.entity.Discussion;
+import com.example.cms.model.entity.Interest_list;
 import com.example.cms.model.entity.StudentUser;
 import com.example.cms.model.repository.DiscussionRepository;
 import com.example.cms.model.repository.StudentUserRepository;
@@ -18,21 +19,22 @@ import java.util.Optional;
 
 
 public class DiscussionController {
-/*
+
     @Autowired
     private final DiscussionRepository repository;
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentUserRepository studentRepository;
 
 
     public DiscussionController(DiscussionRepository repository) {
         this.repository = repository;
     }
 
-    @GetMapping("/discussion")
-    List<Discussion> showall() {return repository.showAllDiscussions();}
+    @GetMapping("/discussion/showall")
+    List<Discussion> showDiscussion() {return repository.findAll();}
 
+    /*
     @PostMapping("/discussion")
     Discussion createDiscussion(@RequestBody DiscussionDto discussionDto){
         Discussion newDiscussion = new Discussion();

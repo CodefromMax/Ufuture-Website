@@ -36,10 +36,12 @@ public class StudentUser {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Interest_List_Id", referencedColumnName = "list_Id")
     private Interest_list interestList  = new Interest_list();
-
+*/
+   /*
     @Nullable
     @OneToMany(mappedBy = "participatedStudent")
-    private Discussion discussion;
-*/
+    @JsonIgnore
+    private List<Discussion> discussion;
 
+*/
 }

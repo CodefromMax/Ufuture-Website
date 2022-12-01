@@ -11,10 +11,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class CommentKey implements Serializable {
+
+    @Column(name = "CommentId")
+    private Long CommentId;
+
     @Column(name = "DiscussionId")
     private Long DiscussionIdOnComment;
 
-    @Column(name = "courseId")
+    @Column(name = "StudentId")
     private Long StudentIdOnComment ;
 
     @Override

@@ -809,3 +809,5 @@ INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001
 	('SU0050','Jerry','0050KEY');
 
 INSERT INTO universities(universityId, uniName) VALUES(1, 'UofT');
+
+INSERT INTO Discussion(discussionId, discussionContent) VALUES(1, 'skdfjkdsfjkdsfjskdfjskdf');

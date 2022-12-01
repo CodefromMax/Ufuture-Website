@@ -1,5 +1,6 @@
 package com.example.cms.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,15 +17,16 @@ public class Discussion {
 
     @Id
     @NotEmpty
-    private long discussionId;
+    private Long discussionId;
 
     @NotEmpty
     private String discussionContent;
 
-    /*@NotEmpty
+    /*
+
+    @NotEmpty
     @ManyToOne
     @JoinColumn(name = "StudentId")
-    private Student participatedStudent;
-
-     */
+    private StudentUser participatedStudent;
+*/
 }
