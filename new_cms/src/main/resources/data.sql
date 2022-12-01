@@ -811,3 +811,4 @@ INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001
 INSERT INTO universities(universityId, uniName) VALUES(1, 'UofT');
 
 INSERT INTO Discussion(discussionId, discussionContent) VALUES(1, 'skdfjkdsfjkdsfjskdfjskdf');
+

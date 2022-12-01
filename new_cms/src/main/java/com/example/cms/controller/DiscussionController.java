@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin
+@RestController
 
 public class DiscussionController {
 
@@ -32,7 +33,7 @@ public class DiscussionController {
     }
 
     @GetMapping("/discussion/showall")
-    List<Discussion> showDiscussion() {return repository.findAll();}
+    List<Discussion> showAllDiscussions() {return repository.findAll();}
 
     /*
     @PostMapping("/discussion")
