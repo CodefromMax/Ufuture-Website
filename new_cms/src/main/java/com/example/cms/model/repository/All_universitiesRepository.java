@@ -1,8 +1,7 @@
 package com.example.cms.model.repository;
 
 import com.example.cms.model.entity.All_universities;
-import com.example.cms.model.entity.CourseMark;
-import com.example.cms.model.entity.Student;
+import com.example.cms.model.entity.StudentUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

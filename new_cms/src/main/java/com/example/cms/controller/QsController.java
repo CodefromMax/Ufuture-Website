@@ -1,7 +1,7 @@
 package com.example.cms.controller;
 
 import com.example.cms.model.entity.Qs_rankings;
-import com.example.cms.model.entity.Student;
+import com.example.cms.model.entity.StudentUser;
 import com.example.cms.model.repository.QsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
