@@ -19,6 +19,7 @@ public class Times_rankings {
 
     @Id
     @NotEmpty
+    @Column(name = "times_Id")
     private String times_Id;
 
     @NotEmpty
@@ -57,8 +58,4 @@ public class Times_rankings {
     @Nullable
     private String International_Student_Ratio;
 
-/*
-    @OneToOne(mappedBy = "times_rankings")
-    private All_universities timesUniversity;
-    */
 }

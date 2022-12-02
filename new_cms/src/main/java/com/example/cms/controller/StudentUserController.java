@@ -29,13 +29,13 @@ public class StudentUserController {
     }
 
     @GetMapping("/StudentUsers/{id}")
-    StudentUser retrieveStudentUser(@PathVariable("id") Long StudentUserId) {
+    StudentUser retrieveStudentUser(@PathVariable("id") String StudentUserId) {
         return repository.findById(StudentUserId)
                 .orElseThrow(() -> new StudentNotFoundException(StudentUserId));
     }
 
     @DeleteMapping("/StudentUsers/{id}")
-    void deleteStudentUser(@PathVariable("id") Long StudentUserId) {
+    void deleteStudentUser(@PathVariable("id") String StudentUserId) {
         repository.deleteById(StudentUserId);
     }
 

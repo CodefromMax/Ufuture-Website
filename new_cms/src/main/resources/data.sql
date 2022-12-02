@@ -300,7 +300,8 @@ INSERT INTO QSRanking (QS_ranking_id,Qs_rank, Institution_Name, Location, Academ
     ('Q299','296=','University of Miami','United States',22.7,32.1,70.8,20.8,66.9,25.3,81.7,50.3,35.4),
     ('Q300','296=','University of Tartu','Estonia',25.8,10.7,88.9,14.3,40,24.2,88,79.6,35.4),
     ('Q301','300=','Griffith University','Australia',26.1,16.6,7.6,71.7,99.9,40.5,90,27,35.2),
-    ('Q302','300=','University Paris 1 Panthyon-Sorbonne','France',64,35.7,4.7,3.4,35.5,49.9,73.4,32.2,35.2);
+    ('Q302','300=','University Paris 1 Panthyon-Sorbonne','France',64,35.7,4.7,3.4,35.5,49.9,73.4,32.2,35.2),
+    ('NA','NA','NA','NA',0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 
 
 INSERT INTO TimesRankings(times_Id,Times_Rank,University_Name,Country,Teaching_Score,International_Score,Research_Score,Citations_Score,Income_Score,Total_Score,Number_Of_Students,Student_Staff_Ratio,International_Student_Ratio) VALUES
@@ -503,7 +504,8 @@ INSERT INTO TimesRankings(times_Id,Times_Rank,University_Name,Country,Teaching_S
     	('T197',196,'St George’s, University of London','United Kingdom',25.6,69.5,18.1,100,37.7,49.2,2958,13.4,0.17),
     	('T198',198,'University of Trento','Italy',30.8,55.9,27.4,87.7,47.1,49.1,16841,43.2,0.08),
     	('T199',199,'Paris Diderot University – Paris 7','France',30.5,64.9,22.9,91,29,48.9,27756,14.8,0.17),
-    	('T200',200,'Queen’s University Belfast','United Kingdom',34.1,93.4,33.3,68.9,35.7,48.8,17940,17.9,0.30);
+    	('T200',200,'Queen’s University Belfast','United Kingdom',34.1,93.4,33.3,68.9,35.7,48.8,17940,17.9,0.30),
+    	('NA',0,'NA','NA',0,0,0,0,0,0,0,0,0);
 
 
 
@@ -707,24 +709,9 @@ INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_ran
 INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C198','198','University of Georgia','USA',86,93,188,172,181,132,234,256,82,47.5);
 INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C199','199','University of Liverpool','United Kingdom',15,176,179,207,154,172,128,174,377,47.49);
 INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('C200','200','University of Bern','Switzerland',7,184,526,213,163,128,93,159,433,47.49);
+INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_rank,Quality_of_education,Alumni_Employment,Quality_of_Faculty,Publications,Influence,citations,broad_impact,patents,score) VALUES ('NA','NA','Not Found','Not Found',0,0,0,0,0,0,0,0,0,0.00);
 
-INSERT INTO InterestList(listId, UniversityName,comment) VALUES
-    (1,'UofT','Professor of MIE350 is too handsome.'),
-    (2,'Massachusetts Institute of Technology (MIT)','Dream School'),
-    (3,'University of Cambridge','First choice'),
-    (4,'Stanford University','Always Loved'),
-    (5,'University of Oxford','MY DREAM'),
-    (6,'Harvard University','Wongderful'),
-    (7,'California Institute of Technology (Caltech)','Second choice'),
-    (8,'Imperial College London','Liked'),
-    (9,'UCL','Love London'),
-    (10,'ETH Zurich - Swiss Federal Institute of Technology','Great'),
-    (11,'University of Chicago','Yes'),
-    (12,'National University of Singapore (NUS)','No Choice'),
-    (13,'Peking University','T0'),
-    (14,'University of Pennsylvania','Chuan Pu'),
-    (15,'Tsinghua University','T0'),
-    (16,'The University of Edinburgh','LOVED');
+
 
 INSERT INTO UniversityUser(UniversityId, UniversityName, UniversityPassword)VALUES ('UU0001','Harvard University','HU0001'),
 	('UU0002','Stanford University','SU0002'),
@@ -808,7 +795,145 @@ INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001
 	('SU0049','Dennis','0049KEY'),
 	('SU0050','Jerry','0050KEY');
 
-INSERT INTO universities(universityId, uniName) VALUES(1, 'UofT');
 
 INSERT INTO Discussion(discussionId, discussionContent) VALUES(1, 'skdfjkdsfjkdsfjskdfjskdf');
 
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0001','School is Back','2023-09-23 06:48:50');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0002','Back to the Class','2023-09-20 13:01:28');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0003','Homework is Done','2024-01-23 09:59:23');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0004','Bag is Set','2024-02-02 18:48:20');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0005','Nerds Night Out','2023-05-01 09:53:01');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0006','Here Comes the Homework','2023-09-12 11:35:32');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0007','Shining Nerds','2022-12-23 20:05:26');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0008','Sweet Kindergarten Meet','2023-04-01 03:21:49');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0009','Meeting Classmates','2023-12-10 14:31:41');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0010','Fresh and New','2023-05-31 23:37:20');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0011','All Set for Studies','2023-01-27 19:14:15');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0012','Meeting New Classmates','2023-12-10 09:13:53');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0013','Starting the Freshmen Year','2023-04-10 06:51:47');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0014','Back to School','2023-07-12 14:46:16');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0015','Pen & Party','2023-08-25 05:37:27');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0016','Coloring Imagination','2023-05-15 16:35:55');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0017','A Drop of Knowledge','2023-04-13 00:19:04');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0018','Ocean of Books','2023-08-25 04:29:54');
+INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0019','Buzzy Bees','2023-04-25 16:31:14');
+
+INSERT INTO universities(universityId,uniName,qs_id,cwur_id,times_id) VALUES ('AU0001','University of Cambridge','Q2','C4','T4'),
+    	('AU0002','Stanford University','Q3','C2','T3'),
+    	('AU0003','University of Oxford','Q4','C5','T2'),
+    	('AU0004','Harvard University','Q5','C1','T6'),
+    	('AU0005','Imperial College London','Q7','C35','T8'),
+    	('AU0006','University of Chicago','Q10','C8','T10'),
+    	('AU0007','Peking University','Q12','C56','T42'),
+    	('AU0008','University of Pennsylvania','Q13','C14','T17'),
+    	('AU0009','Tsinghua University','Q14','C78','T47'),
+    	('AU0010','Princeton University','Q17','C9','T7'),
+    	('AU0011','Yale University','Q18','C11','T12'),
+    	('AU0012','Cornell University','Q20','C10','T18'),
+    	('AU0013','Columbia University','Q22','C6','T15'),
+    	('AU0014','Johns Hopkins University','Q24','C16','T11'),
+    	('AU0015','Seoul National University','Q29','C24','T85'),
+    	('AU0016','McGill University','Q31','C42','T38'),
+    	('AU0017','Northwestern University','Q32','C22','T25'),
+    	('AU0018','University of Toronto','Q35','C195','T19'),
+    	('AU0019','Kyoto University','Q36','C32','T88'),
+    	('AU0020','University of British Columbia','Q47','C17','T34'),
+    	('AU0021','Technical University of Munich','Q49','C94','T53'),
+    	('AU0022','Duke University','Q50','C191','T20'),
+    	('AU0023','The University of Queensland','Q51','C180','T60'),
+    	('AU0024','Carnegie Mellon University','Q52','C62','T22'),
+    	('AU0025','Monash University','Q57','C101','T73'),
+    	('AU0026','University of Amsterdam','Q58','C28','T58'),
+    	('AU0027','Delft University of Technology','Q61','C61','T65'),
+    	('AU0028','University of Bristol','Q62','C145','T69'),
+    	('AU0029','Brown University','Q63','C114','T51'),
+    	('AU0030','University of Texas at Austin','Q72','C123','T46'),
+    	('AU0031','Lomonosov Moscow State University','Q75','C83','T161'),
+    	('AU0032','KU Leuven','Q76','C45','T35'),
+    	('AU0033','University of Southampton','Q78','C30','T112'),
+    	('AU0034','University of Washington','Q80','C98','T32'),
+    	('AU0035','University of Glasgow','Q81','C115','T76'),
+    	('AU0036','University of Copenhagen','Q82','C59','T82'),
+    	('AU0037','University of Wisconsin-Madison','Q83','C148','T50'),
+    	('AU0038','University of Zurich','Q84','C73','T105'),
+    	('AU0039','University of Illinois at Urbana-Champaign','Q85','C128','T36'),
+    	('AU0040','University of Leeds','Q86','C74','T135'),
+    	('AU0041','Georgia Institute of Technology','Q88','C96','T41'),
+    	('AU0042','KTH Royal Institute of Technology','Q89','C161','T155'),
+    	('AU0043','University of Birmingham','Q91','C80','T120'),
+    	('AU0044','Durham University','Q92','C152','T70'),
+    	('AU0045','Pennsylvania State University','Q93','C117','T75'),
+    	('AU0046','Lund University','Q95','C120','T91'),
+    	('AU0047','University of St Andrews','Q97','C99','T86'),
+    	('AU0048','Rice University','Q100','C53','T103'),
+    	('AU0049','University of Oslo','Q101','C174','T136'),
+    	('AU0050','University of California, Davis','Q102','C111','T44'),
+    	('AU0051','Technical University of Denmark','Q104','C66','T170'),
+    	('AU0052','University of Helsinki','Q107','C107','T77'),
+    	('AU0053','Boston University','Q108','C125','T64'),
+    	('AU0054','University of Alberta','Q110','C87','T138'),
+    	('AU0055','Utrecht University','Q113','C140','T62'),
+    	('AU0056','University of Nottingham','Q114','C52','T144'),
+    	('AU0057','University of Bern','Q120','C200','T121'),
+    	('AU0058','Newcastle University','Q122','C92','T196'),
+    	('AU0059','Queen Mary University of London','Q126','C124','T98'),
+    	('AU0060','University of Geneva','Q127','C108','T132'),
+    	('AU0061','Uppsala University','Q128','C51','T81'),
+    	('AU0062','Purdue University','Q129','C100','T116'),
+    	('AU0063','Leiden University','Q132','C160','T67'),
+    	('AU0064','University of Southern California','Q134','C178','T68'),
+    	('AU0065','University of Basel','Q136','C119','T101'),
+    	('AU0066','Eindhoven University of Technology','Q138','C110','T176'),
+    	('AU0067','Ghent University','Q143','C81','T119'),
+    	('AU0068','University of Groningen','Q145','C150','T74'),
+    	('AU0069','Lancaster University','Q146','C168','T131'),
+    	('AU0070','RWTH Aachen University','Q147','C84','T111'),
+    	('AU0071','University of Rochester','Q148','C192','T159'),
+    	('AU0072','University of Vienna','Q151','C118','T143'),
+    	('AU0073','McMaster University','Q152','C122','T96'),
+    	('AU0074','Stockholm University','Q153','C72','T137'),
+    	('AU0075','University of Waterloo','Q154','C112','T179'),
+    	('AU0076','Emory University','Q155','C105','T90'),
+    	('AU0077','Michigan State University','Q159','C60','T100'),
+    	('AU0078','Aarhus University','Q161','C199','T106'),
+    	('AU0079','University of York','Q162','C34','T133'),
+    	('AU0080','Texas A&M University','Q164','C69','T194'),
+    	('AU0081','University of Maryland, College Park','Q165','C186','T118'),
+    	('AU0082','Cardiff University','Q166','C44','T183'),
+    	('AU0083','Case Western Reserve University','Q176','C38','T134'),
+    	('AU0084','University College Dublin','Q182','C85','T177'),
+    	('AU0085','University of Pittsburgh','Q183','C97','T79'),
+    	('AU0086','University of Gothenburg','Q185','C89','T180'),
+    	('AU0087','University of Florida','Q188','C193','T123'),
+    	('AU0088','University of Liverpool','Q191','C167','T157'),
+    	('AU0089','Vanderbilt University','Q199','C77','T87'),
+    	('AU0090','University of Lausanne','Q204','C171','T146'),
+    	('AU0091','Dartmouth College','Q205','C41','T104'),
+    	('AU0092','University of Bergen','Q207','C86','T182'),
+    	('AU0093','Erasmus University Rotterdam','Q208','C113','T71'),
+    	('AU0094','University of Twente','Q213','C137','T152'),
+    	('AU0095','University of G?ttingen','Q216','C95','T99'),
+    	('AU0096','Arizona State University','Q219','C54','T189'),
+    	('AU0097','University of Aberdeen','Q221','C172','T172'),
+    	('AU0098','University of Reading','Q229','C197','T165'),
+    	('AU0099','University of California, Irvine','Q236','C196','T107'),
+    	('AU0100','University of Cape Town','Q238','C154','T122'),
+    	('AU0101','University of Sussex','Q240','C70','T141'),
+    	('AU0102','University of Notre Dame','Q245','C159','T109'),
+    	('AU0103','Yeshiva University','Q247','C141','T166'),
+    	('AU0104','University of Virginia','Q255','C187','T148'),
+    	('AU0105','Maastricht University','Q278','C189','T89'),
+    	('AU0106','University of Leicester','Q279','C157','T168'),
+    	('AU0107','University of Antwerp','Q280','C181','T190'),
+    	('AU0108','Georgetown University','Q281','C184','T95'),
+    	('AU0109','University of Miami','Q299','C142','T162'),
+    	('AU0110','Tufts University','NA','NA','T129'),
+        ('AU0111','University of Colorado Boulder','NA','NA','T128'),
+        ('AU0112','University of Cologne','NA','NA','T156'),
+        ('AU0113','University of Dundee','NA','NA','T186'),
+        ('AU0114','University of California, Santa Cruz','NA','NA','T145'),
+        ('AU0115','University of Utah','NA','NA','T184'),
+        ('AU0116','University of California, Riverside','NA','NA','T167'),
+        ('AU0117','University of Trento','NA','NA','T198'),
+        ('AU0118','Brandeis University','NA','NA','T185'),
+        ('AU0119','Boston College','NA','NA','T191');
