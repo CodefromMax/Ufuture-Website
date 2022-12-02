@@ -38,7 +38,7 @@ public class DiscussionController {
     @PostMapping("/discussion/post")
     Discussion createDiscussion(@RequestBody DiscussionDto DiscussionDto){
         Discussion newDiscussion = new Discussion();
-        newDiscussion.setDiscussionId(DiscussionDto.getDiscussionId());
+        newDiscussion.setDiscussionId(repository.count()+1);
         newDiscussion.setDiscussionContent(DiscussionDto.getDiscussionContent());
         AllUsers user = UserRepository.findById(DiscussionDto.getUserId()).orElseThrow(
                 () -> new UserNotFoundException(DiscussionDto.getUserId()));

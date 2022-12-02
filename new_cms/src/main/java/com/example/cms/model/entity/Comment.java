@@ -18,14 +18,14 @@ public class Comment {
     @EmbeddedId
     private CommentKey commentKey;
 
-    /*
+/*
     @ManyToOne
     @Nullable
     @JoinColumn(name = "discussionId")
     private Discussion discussionId;
-*/
+
     @NotEmpty
     private String comment;
 
-
+*/
 }
