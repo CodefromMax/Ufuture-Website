@@ -23,3 +23,6 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);

@@ -1,29 +1,12 @@
 <template>
     <div class="hello">
       <h2> Events </h2>
-  
-  
-      <div class = "search container">
-        <b-input-group prepend="Search a University">
-          <!--triger 1-->
-        <b-form-input type = "text" placeholder = "Name of the University" v-model = "query" @keydown.enter = "search(query)"/>
-        <template #append>
-          <!--triger 2-->
-          <b-button class = "search-button" @click = "search(query)">
-            <b-icon-search></b-icon-search>
-          </b-button>
-        </template>
-      
-        </b-input-group>
-  
-      </div>
-  
-  
+
   
       <b-table striped hover responsive :items="Events" :fields="fields">
         <template #cell(actions)="row">
           <b-button size="sm" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)">
-            Add to My Event
+            Add
           </b-button>
         
         
@@ -52,11 +35,13 @@
         Events: null,
         query: "",
         fields: [
-        {key: 'actions', label: 'actions'}, 
+        
         
         {key: 'eventCode', label: 'Code'},
         {key: 'eventName', label: 'Name'},
         {key: 'eventDate', label: 'Date'},
+        {key: 'universityName', label: 'University_Name'},
+        {key: 'location', label: 'Location'}
         
         
       ],
@@ -64,8 +49,9 @@
             Code: '',
             Name: '',
             Date:'',
-           
-            actions:''
+            University_Name:'',
+            location:''
+            
           },
       }
     },
@@ -76,7 +62,16 @@
       init() {
         axios
           .get('http://localhost:8085/events')
-          .then(response => (this.Events = response.data))
+          .then(response => {
+            let data = response.data.map(item => {
+              let universityName = item.universityUser && item.universityUser.universityName;
+              return {
+                ...item,
+                universityName
+              }
+            })
+            this.Events = data;
+          })
       },
   
       search(searchTerm){

@@ -6,7 +6,7 @@ import Qs_rankings from '@/components/Qs_rankings'
 import Login from '@/components/Login'
 import University_Page from '@/components/University_Page'
 import Events from '@/components/Events'
-
+import MyEvents from '@/components/MyEvents'
 Vue.use(Router)
 
 export default new Router({
@@ -40,6 +40,11 @@ export default new Router({
       path: '/events',
       name: 'Events',
       component: Events
+    },
+    {
+      path: '/myEvents',
+      name: 'MyEvents',
+      component: MyEvents
     }
    
   ]

@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import VueCookies from 'vue-cookies'
 import axios from 'axios';
 export default {
   name: 'Login',
@@ -58,40 +59,59 @@ export default {
     login(submitEvent) {
       this.id = submitEvent.target.elements.id.value;
       this.password = submitEvent.target.elements.password.value;
-      axios.all([
-          axios.get('http://localhost:8085/StudentUsers/'+submitEvent.target.elements.id.value)
-          .catch(
-              function(e){console.log('Error', e);}), 
-         axios.get('http://localhost:8085/UniversityUsers/'+submitEvent.target.elements.id.value)
-          .catch(
-             function(e){console.log('Error', e);})
-          ])
-          .then(axios.spread((data1, data2) => {
-          console.log('data1', data1, 'data2', data2)
-          if (typeof data1 !== 'undefined'){
-              // this.$emit("authenticated", true);
-              // this.$emit("authorized", false);
-              // this.$emit('User',data1.data);
-              this.$root.$emit("authenticated", true);
-              this.$root.$emit("authorized", false);
-              this.$root.$emit('User',data1.data);
-              this.$router.push("/");
-          }
-          else if(typeof data2 !== 'undefined'){
-              // this.$emit("authenticated", true);
-              // this.$emit("authorized", true);
-              // this.$emit('User',data2.data);
-              this.$root.$emit("authenticated", true);
+    
+      axios.post('http://localhost:8085/UniversityUsers/login', {userName: this.id, pasword: this.passwrd}).then(res => {
+          let data = res.data;
+          if (data !== null) {
+            this.$root.$emit("authenticated", true);
               this.$root.$emit("authorized", true);
-              this.$root.$emit('User',data2.data);
+              this.$root.$emit('User',data);
+              VueCookies.set("user", data);
               this.$router.push("/");
+              this.$router.go(0);
           }
-          else{
-              let alert_1 = document.querySelector("#alert_1");
-              alert_1.classList.remove("d-none");
-              alert_1.innerHTML = 'User Does Not Exist!';
-          }
-      }));
+      })
+
+      // axios.all([
+      //     axios.get('http://localhost:8085/StudentUsers/'+submitEvent.target.elements.id.value)
+      //     .catch(
+      //         function(e){console.log('Error', e);}), 
+      //    axios.get('http://localhost:8085/UniversityUsers/'+submitEvent.target.elements.id.value)
+      //     .catch(
+      //        function(e){console.log('Error', e);})
+      //     ])
+      //     .then(axios.spread((data1, data2) => {
+      //     console.log('data1', data1, 'data2', data2)
+      //     if (typeof data1 !== 'undefined'){
+      //         // this.$emit("authenticated", true);
+      //         // this.$emit("authorized", false);
+      //         // this.$emit('User',data1.data);
+      //         data1.data.isStudent = true;
+      //         this.$root.$emit("authenticated", true);
+      //         this.$root.$emit("authorized", false);
+      //         this.$root.$emit('User',data1.data);
+      //         VueCookies.set("user", data1.data);
+      //         this.$router.push("/");
+      //         this.$router.go(0);
+      //     }
+      //     else if(typeof data2 !== 'undefined'){
+      //         // this.$emit("authenticated", true);
+      //         // this.$emit("authorized", true);
+      //         // this.$emit('User',data2.data);
+      //         data2.data.isStudent = false;
+      //         this.$root.$emit("authenticated", true);
+      //         this.$root.$emit("authorized", true);
+      //         this.$root.$emit('User',data2.data);
+      //         VueCookies.set("user", data2.data);
+      //         this.$router.push("/");
+      //         this.$router.go(0);
+      //     }
+      //     else{
+      //         let alert_1 = document.querySelector("#alert_1");
+      //         alert_1.classList.remove("d-none");
+      //         alert_1.innerHTML = 'User Does Not Exist!';
+      //     }
+      // }));
 
     },
     moveToRegister() {

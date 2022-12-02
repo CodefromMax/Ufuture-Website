@@ -18,9 +18,12 @@
           <b-nav-item to="/" exact exact-active-class="exact-active">Home</b-nav-item>
           <b-nav-item to="/qsrankings" exact exact-active-class="exact-active">Qs rankings</b-nav-item>
           <b-nav-item to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
-          <b-nav-item to="/Login" exact exact-active-class="exact-active">Log In</b-nav-item>
-
         
+          <b-nav-item v-if="(isLogin)" to="/myEvents" exact exact-active-class="exact-active">My Event</b-nav-item>
+          <b-nav-item v-if="!isLogin" to="/Login" exact exact-active-class="exact-active">Log In</b-nav-item>
+          <b-nav-item v-if="isLogin"  exact exact-active-class="exact-active">
+            <div @click.stop="hadnlerOut" >Log Out</div>
+          </b-nav-item>
           <!-- <b-nav-item disabled>Admin</b-nav-item> -->
         </b-nav>
       </b-sidebar>
@@ -33,8 +36,30 @@
 </template>
 
 <script>
+import VueCookies from 'vue-cookies'
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      isLogin: false,
+      isStudent: false,
+    }
+  },
+
+  created() {
+    let user = VueCookies.get("user");
+    if (user !== null) {
+      this.isLogin = true;
+      this.isStudent = user.isStudent;
+    }
+    console.log(user);
+  },
+  methods: {
+    hadnlerOut() {
+      VueCookies.set("user", "");
+      this.$router.go(0);
+    }
+  }
 }
 </script>
 

@@ -8,7 +8,7 @@
         </b-button>
       </template>
     </b-table>
-    <b-modal id="edit-modal" title="Edit note" @hide="resetEditModal" hide-footer>
+    <b-modal id="edit-modal" v-if="isShow" title="Edit note" @hide="resetEditModal" hide-footer>
       <b-form>
 
         <label class="sr-only" for="input-listId">List ID</label>
@@ -18,15 +18,6 @@
           placeholder="List ID"
           readonly
         ></b-form-input>
-
-        <label class="sr-only" for="input-University-name">University Name</label>
-        <b-form-input
-          id='input-University-name'
-          v-model="form.University_name"
-          placeholder="University Name"
-          required
-        ></b-form-input>
-
 
         <label class="sr-only" for="input-comment">Note</label>
         <b-input-group>
@@ -45,11 +36,12 @@
 
 <script>
 import axios from 'axios';
-
+import VueCookies from 'vue-cookies'
 export default {
   name: 'HelloWorld',
   data () {
     return {
+      isShow: true,
       Interest_list: null,
       fields: [
       {key: 'listId', label: 'List ID', sortable: true},
@@ -68,19 +60,34 @@ export default {
   },
   methods: {
     init() {
+      let user = VueCookies.get("user");
+      if (user == null) {
+        alert("User is not logged in");
+        return;
+      }
+    
       axios
-        .get('http://localhost:8085/university/interestlist/showall')
-        .then(response => {this.Interest_list = response.data, console.log(response.data), localStorage.setItem('length', this.Interest_list.length);})
+        .get('http://localhost:8085/university/interestlist/' + user.userId)
+        .then(response => {
+          this.Interest_list = response.data.map(item => {
+            return {
+              listId: item.id,
+              universityName: item.qs_rankings && item.qs_rankings.institution_Name,
+              comment: item.comment,
+            }
+          });
+          console.log(response.data);
+          localStorage.setItem('length', this.Interest_list.length);
+        })
     },
     edit(item, index, button) {
+      this.isShow = true;
       this.form.listId = item.listId
       this.form.comment = item.comment
-      this.form.University_name = item.UniversityName
     },
     resetEditModal() {
       this.form.listId=''
       this.form.comment=''
-      this.form.University_name=''
     },
     onSave(event) {
       var numId;
@@ -91,7 +98,7 @@ export default {
           "UniversityName": this.form.University_name,
           "comment": this.form.comment,
         })
-        .then(() => this.init())
+        .then(() => this.init(), this.isShow = false)
         .catch(function (error) {
           console.log(error);
         });
@@ -105,7 +112,7 @@ export default {
           "UniversityName": this.form.University_name,
           "comment": this.form.comment,
         })
-        .then(() => this.init())
+        .then(() => this.init(), this.isShow = false)
         .catch(function (error) {
           console.log(error);
         });
