@@ -9,8 +9,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EventsRepository extends JpaRepository<Events, String>  {
+public interface EventsRepository extends JpaRepository<Events, Long>  {
     @Query(value = "select * from Events", nativeQuery = true)
     List<Events> showAllEvents();
+
+    @Query(value = "select * from Events e " +
+            "where e.university = :UniId", nativeQuery = true)
+    List<Events> showAllEventsForUniversity(@Param("UniId") String uniId);
+
+    @Query(value = "select count(eventCode) from Events e " +
+            "where e.university = :UniId", nativeQuery = true)
+    Long CountAllEventsForUniversity(@Param("UniId") String uniId);
+
 
 }

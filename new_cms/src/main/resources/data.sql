@@ -713,7 +713,7 @@ INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_ran
 
 
 
-INSERT INTO UniversityUser(UniversityId, UniversityName, UniversityPassword)VALUES ('UU0001','Harvard University','HU0001'),
+INSERT INTO UniversityUser(userId, uniName, password)VALUES ('UU0001','Harvard University','HU0001'),
 	('UU0002','Stanford University','SU0002'),
 	('UU0003','Massachusetts Institute of Technology','HU0002'),
 	('UU0004','University of Cambridge','SU0003'),
@@ -744,7 +744,7 @@ INSERT INTO UniversityUser(UniversityId, UniversityName, UniversityPassword)VALU
 	('UU0029','Rockefeller University','HU0015'),
 	('UU0030','University of Texas at Austin','SU0016');
 
-INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001','James','0001KEY'),
+INSERT INTO StudentUser(userId, StudentName, password) VALUES ('SU0001','James','0001KEY'),
 	('SU0002','Robert','0002KEY'),
 	('SU0003','John','0003KEY'),
 	('SU0004','Michael','0004KEY'),
@@ -796,27 +796,8 @@ INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001
 	('SU0050','Jerry','0050KEY');
 
 
-INSERT INTO Discussion(discussionId, discussionContent) VALUES(1, 'skdfjkdsfjkdsfjskdfjskdf');
 
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0001','School is Back','2023-09-23 06:48:50');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0002','Back to the Class','2023-09-20 13:01:28');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0003','Homework is Done','2024-01-23 09:59:23');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0004','Bag is Set','2024-02-02 18:48:20');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0005','Nerds Night Out','2023-05-01 09:53:01');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0006','Here Comes the Homework','2023-09-12 11:35:32');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0007','Shining Nerds','2022-12-23 20:05:26');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0008','Sweet Kindergarten Meet','2023-04-01 03:21:49');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0009','Meeting Classmates','2023-12-10 14:31:41');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0010','Fresh and New','2023-05-31 23:37:20');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0011','All Set for Studies','2023-01-27 19:14:15');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0012','Meeting New Classmates','2023-12-10 09:13:53');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0013','Starting the Freshmen Year','2023-04-10 06:51:47');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0014','Back to School','2023-07-12 14:46:16');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0015','Pen & Party','2023-08-25 05:37:27');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0016','Coloring Imagination','2023-05-15 16:35:55');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0017','A Drop of Knowledge','2023-04-13 00:19:04');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0018','Ocean of Books','2023-08-25 04:29:54');
-INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0019','Buzzy Bees','2023-04-25 16:31:14');
+
 
 INSERT INTO universities(universityId,uniName,qs_id,cwur_id,times_id) VALUES ('AU0001','University of Cambridge','Q2','C4','T4'),
     	('AU0002','Stanford University','Q3','C2','T3'),
@@ -937,3 +918,23 @@ INSERT INTO universities(universityId,uniName,qs_id,cwur_id,times_id) VALUES ('A
         ('AU0117','University of Trento','NA','NA','T198'),
         ('AU0118','Brandeis University','NA','NA','T185'),
         ('AU0119','Boston College','NA','NA','T191');
+
+INSERT INTO AllUsers SELECT * FROM StudentUser;
+INSERT INTO AllUsers SELECT * FROM UniversityUser;
+
+INSERT INTO Discussion(discussionId,discussionContent, usersInDiscussion, university) VALUES
+    (1,'Is this a good university','SU0001','AU0001'),
+    (2,'This is the best school','SU0002','AU0002'),
+    (3,'Is this a good university','SU0003','AU0003'),
+    (4,'This is the best school','SU0004','AU0004'),
+    (5,'Is this a good university','SU0005','AU0005'),
+    (6,'This is the best school','SU0006','AU0006'),
+    (7,'This is the best school','UU0002','AU0052'),
+    (8,'Is this a good university','UU0003','AU0053'),
+    (9,'This is the best school','UU0004','AU0054');
+
+INSERT INTO Events(eventCode, eventName, eventDate, location, createrId, university) VALUES (1,'School is Back','2023-09-23 06:48:50','zoom.ca','UU0001','AU0001');
+INSERT INTO Events(eventCode, eventName, eventDate, location, createrId, university) VALUES (2,'Back to the Class','2023-09-20 13:01:28','zoom.ca','UU0002','AU0002');
+INSERT INTO Events(eventCode, eventName, eventDate, location, createrId, university) VALUES (3,'Homework is Done','2024-01-23 09:59:23','zoom.ca','UU0003','AU0001');
+INSERT INTO Events(eventCode, eventName, eventDate, location, createrId, university) VALUES (4,'Bag is Set','2024-02-02 18:48:20','zoom.ca','UU0001','AU0003');
+INSERT INTO Events(eventCode, eventName, eventDate, location, createrId, university) VALUES (5,'Nerds Night Out','2023-05-01 09:53:01','zoom.ca','UU0002','AU0001');

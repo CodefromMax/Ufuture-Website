@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DiscussionDto {
-    private long DiscussionId;
     private String DiscussionContent;
-    private String StudentId;
+    private String userId;
+    private String universityName;
 }

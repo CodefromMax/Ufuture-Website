@@ -14,10 +14,20 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "UniversityUser")
-public class UniversityUser extends User {
+@Table(name = "AllUsers")
+
+public class AllUsers {
+    @Id
+    @NotEmpty
+    private String UserId;
 
     @NotEmpty
-    @Column(name = "uniName")
-    private String UniversityName;
+    private String UserName;
+
+    @NotEmpty
+    private String UserPassword;
+/*
+    @NotEmpty
+    private String UserType;
+ */
 }

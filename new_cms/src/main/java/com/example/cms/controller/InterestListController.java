@@ -41,7 +41,7 @@ public class InterestListController {
     Interest_list addNewSchool(@RequestBody InterestListDto listDto) {
         Interest_listKey newListKey = new Interest_listKey();
         Interest_list newList = new Interest_list();
-        newListKey.setInterestListOrder(listDto.getInterestOrder());
+        newListKey.setInterestListOrder(repository.count()+1);
         newListKey.setStudentId(listDto.getStudentId());
         newList.setListKey(newListKey);
         newList.setComment(listDto.getComment());
