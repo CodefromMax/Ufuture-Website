@@ -3,12 +3,12 @@
     <form @submit.prevent="login">
       <h2 class="mb-3">Login</h2>
       <div class="input">
-        <label for="id">School ID</label>
+        <label for="id">User ID</label>
         <input
           class="form-control"
           type="text"
           name="id"
-          placeholder="student/professor id"
+          placeholder="student/University ID"
           required
         />
       </div>
@@ -62,9 +62,9 @@ export default {
           axios.get('http://localhost:8085/StudentUsers/'+submitEvent.target.elements.id.value)
           .catch(
               function(e){console.log('Error', e);}), 
-         // axios.get('http://localhost:8085/professors/'+submitEvent.target.elements.id.value)
-         // .catch(
-          //    function(e){console.log('Error', e);})
+         axios.get('http://localhost:8085/UniversityUsers/'+submitEvent.target.elements.id.value)
+          .catch(
+             function(e){console.log('Error', e);})
           ])
           .then(axios.spread((data1, data2) => {
           console.log('data1', data1, 'data2', data2)
