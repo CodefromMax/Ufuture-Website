@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2> QSranking </h2>
+    <h2> QSrankings </h2>
 
 
     <div class = "search container">

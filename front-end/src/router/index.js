@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Universities from '@/components/Universities'
 import Qs_rankings from '@/components/Qs_rankings'
 import University_Page from '@/components/University_Page'
+import Events from '@/components/Events'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/u',
       name: 'university_Page',
       component: University_Page
+    },
+    {
+      path: '/events',
+      name: 'Events',
+      component: Events
     }
    
   ]
