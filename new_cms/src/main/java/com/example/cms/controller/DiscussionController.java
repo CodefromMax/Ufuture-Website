@@ -35,6 +35,11 @@ public class DiscussionController {
     @GetMapping("/discussion/showall")
     List<Discussion> showDiscussion() {return repository.findAll();}
 
+    @GetMapping("/discussion/{name}")
+    List<Discussion> showDiscussionForUniversity(@PathVariable("name") String name){
+        return repository.showDiscussionForUniversity(name);
+    }
+
     @PostMapping("/discussion/post")
     Discussion createDiscussion(@RequestBody DiscussionDto DiscussionDto){
         Discussion newDiscussion = new Discussion();

@@ -13,4 +13,9 @@ public interface DiscussionRepository extends JpaRepository<Discussion, Long>  {
     @Query(value = "select * from Discussion", nativeQuery = true)
     List<Discussion> showAllDiscussions();
 
+    @Query(value = "select * from Discussion " +
+            "LEFT JOIN universities ON Discussion.university = universities.universityId " +
+            "where universities.uniName = :searchTerm ", nativeQuery = true)
+    List<Discussion> showDiscussionForUniversity(@Param("searchTerm") String searchTerm);
+
 }

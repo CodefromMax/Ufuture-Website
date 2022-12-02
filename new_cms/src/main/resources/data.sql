@@ -924,7 +924,7 @@ INSERT INTO AllUsers SELECT * FROM UniversityUser;
 
 INSERT INTO Discussion(discussionId,discussionContent, usersInDiscussion, university) VALUES
     (1,'Is this a good university','SU0001','AU0001'),
-    (2,'This is the best school','SU0002','AU0002'),
+    (2,'This is the best school','SU0001','AU0001'),
     (3,'Is this a good university','SU0003','AU0003'),
     (4,'This is the best school','SU0004','AU0004'),
     (5,'Is this a good university','SU0005','AU0005'),
