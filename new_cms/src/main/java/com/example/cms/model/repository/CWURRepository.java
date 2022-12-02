@@ -12,4 +12,7 @@ import java.util.List;
 
 @Repository
 public interface CWURRepository extends JpaRepository<CWUR_rankings, String> {
+    @Query(value = "select * from CWURRankings c " +
+            "where lower(c.Institution_Name) like lower(concat('%', :cwurName, '%')) " , nativeQuery = true)
+    List<CWUR_rankings> searchCwurName(@Param("cwurName") String cwurName);
 }

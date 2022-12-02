@@ -9,4 +9,7 @@ import java.util.List;
 
 @Repository
 public interface TimesRepository extends JpaRepository<Times_rankings, String> {
+    @Query(value = "select * from TimesRankings t " +
+            "where lower(t.University_Name) like lower(concat('%', :timesName, '%')) " , nativeQuery = true)
+    List<Times_rankings> searchTimesName(@Param("timesName") String tN);
 }
