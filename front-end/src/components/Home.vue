@@ -54,7 +54,8 @@
 
     </b-button-group>
     <b-button-group>
-      <b-button size="lg" style="height: 50px;" @click = "CWRRanking()">CWR</b-button>
+      <router-link :to="{ path: '/cwurrankings' }">
+      <b-button size="lg" style="height: 50px;" @click = "CWRRanking()">CWR</b-button></router-link>
     </b-button-group>    
     <b-button-group>
     <b-button size="lg" style="height: 50px;" @click = "TimesRanking()">Times</b-button>

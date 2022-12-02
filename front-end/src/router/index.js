@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Universities from '@/components/Universities'
 import Qs_rankings from '@/components/Qs_rankings'
+import CWUR_ranking from '@/components/CWUR_ranking'
+import Times_ranking from '@/components/Times_ranking'
 import Login from '@/components/Login'
 import University_Page from '@/components/University_Page'
 import Events from '@/components/Events'
@@ -27,6 +29,16 @@ export default new Router({
       path: '/qsrankings',
       name: 'Qs_rankings',
       component: Qs_rankings
+    },
+    {
+      path: '/cwurrankings',
+      name: 'CWUR_ranking',
+      component: CWUR_ranking
+    },
+    {
+      path: '/timesrankings',
+      name: 'times_ranking',
+      component: Times_ranking
     },
     {
       path: '/uni',
