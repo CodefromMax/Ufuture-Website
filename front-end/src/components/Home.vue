@@ -49,7 +49,7 @@
    
     </b-button-group>
     <b-button-group>  
-      <router-link :to="{ path: '/login' }">
+      <router-link :to="{ path: '/Login' }">
       <b-button size="lg" style="height: 50px;" @click = "Login()">LogIn</b-button></router-link>
 
     </b-button-group>
