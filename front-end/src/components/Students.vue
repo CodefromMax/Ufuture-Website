@@ -18,8 +18,7 @@
 
     </div>
 
-
-
+    
     <b-table striped hover responsive :items="Qs_rankings" :fields="fields">
       <template #cell(actions)="row">
         <b-button size="sm" v-b-modal.edit-modal @click="edit(row.item, row.index, $event.target)">
