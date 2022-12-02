@@ -9,8 +9,8 @@ import Login from '@/components/Login'
 import University_Page from '@/components/University_Page'
 import Events from '@/components/Events'
 import MyEvents from '@/components/MyEvents'
-import Times_rankings from '@/components/Times_rankings'
-import CWUR_rankings from '@/components/CWUR_rankings'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -60,16 +60,8 @@ export default new Router({
       name: 'MyEvents',
       component: MyEvents
     },
-    {
-      path: '/times_rankings',
-      name: 'Times_rankings',
-      component: Times_rankings
-    },
-    {
-      path: '/CWUR_rankings',
-      name: 'CWUR_rankings',
-      component: CWUR_rankings
-    }
+   
+
    
   ]
 })

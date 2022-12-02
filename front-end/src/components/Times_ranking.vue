@@ -54,13 +54,18 @@ export default {
       fields: [
       {key: 'actions', label: 'Actions'}, 
       {key: 'more', label: 'More'}, 
-      {key: 'university_Name', label: 'University Name'},
-      {key: 'times_Rank', label: 'Ranking'},
-      {key: 'international_Score', label: 'international Score'},
-      {key: 'citations_Score', label: 'citations Score'},
-      {key: 'teaching_Score', label: 'teaching Score'},
-      {key: 'total_Score', label: 'Overall Score'},
-      
+        {key: 'times_Rank', label: 'Times Rank'},
+        {key: 'university_Name', label: 'University Name'},  
+        {key: 'Teaching_Score', label: 'Teaching Score'},
+        {key: 'International_Score', label: 'International Score'},
+        {key: 'Research_Score', label: 'Research Score'},
+        {key: 'Citations_Score', label: 'Citations Score'},
+        {key: 'Income_Score', label: ' Income Score'},
+        {key: 'Total_Score', label: 'Total Score'},
+        {key: 'Number_Of_Students', label: 'Number Of Students'},
+        {key: 'Student_Staff_Ratio', label: 'Student Staff Ratio'},
+        {key: 'International_Student_Ratio', label: 'International Student Ratio'},
+        
     ],
     }
   },
