@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Universities from '@/components/Universities'
 import Qs_rankings from '@/components/Qs_rankings'
+import Login from '@/components/Login'
 import University_Page from '@/components/University_Page'
 
 Vue.use(Router)
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/StudentUsers',
+      name: 'login',
+      component: Login
     },
     {
       path: '/qsrankings',
