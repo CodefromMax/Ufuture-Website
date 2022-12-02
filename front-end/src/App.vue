@@ -20,11 +20,8 @@
 
           <b-nav-item to="/cwurrankings" exact exact-active-class="exact-active">CWUR rankings</b-nav-item>
           <b-nav-item to="/timesrankings" exact exact-active-class="exact-active">Times rankings</b-nav-item>
-          <b-nav-item to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
-          <b-nav-item to="/Login" exact exact-active-class="exact-active">Log In</b-nav-item>
-
-
-          <b-nav-item to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
+          <b-nav-item v-if="(isLogin)" to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
+  
         
           <b-nav-item v-if="(isLogin)" to="/myEvents" exact exact-active-class="exact-active">My Event</b-nav-item>
           <b-nav-item v-if="!isLogin" to="/Login" exact exact-active-class="exact-active">Log In</b-nav-item>
