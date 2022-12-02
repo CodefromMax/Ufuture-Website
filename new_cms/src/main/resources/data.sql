@@ -936,3 +936,6 @@ INSERT INTO universities(universityId,uniName,qs_id,cwur_id,times_id) VALUES ('A
         ('AU0117','University of Trento','NA','NA','T198'),
         ('AU0118','Brandeis University','NA','NA','T185'),
         ('AU0119','Boston College','NA','NA','T191');
+
+INSERT INTO AllUsers SELECT * FROM StudentUser;
+INSERT INTO AllUsers SELECT * FROM UniversityUser;

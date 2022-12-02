@@ -5,26 +5,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-@MappedSuperclass
+@Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public abstract class User {
+@Table(name = "AllUsers")
 
+public class AllUsers {
     @Id
     @NotEmpty
-    @Column(name = "userId")
-    private String userId;
+    private String UserId;
 
     @NotEmpty
-    @Column (name = "password")
-    private String password;
+    private String UserName;
 
-
+    @NotEmpty
+    private String UserPassword;
+/*
+    @NotEmpty
+    private String UserType;
+ */
 }

@@ -21,11 +21,11 @@ public class Discussion {
     @Nullable
     private String discussionContent;
 
-    /*
+
     @ManyToOne
-    @JoinColumn(name = "User")
-    private User user;
-*/
+    @JoinColumn(name = "UsersInDiscussion")
+    private AllUsers user;
+
     @ManyToOne
     @JoinColumn(name = "university")
     private All_universities university;
