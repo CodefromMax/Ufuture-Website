@@ -17,8 +17,12 @@
         <b-nav vertical align="center">
           <b-nav-item to="/" exact exact-active-class="exact-active">Home</b-nav-item>
           <b-nav-item to="/qsrankings" exact exact-active-class="exact-active">Qs rankings</b-nav-item>
-          <b-nav-item to="/times_rankings" exact exact-active-class="exact-active">Times rankings</b-nav-item>
-          <b-nav-item to="/CWURrankings" exact exact-active-class="exact-active">CWUR rankings</b-nav-item>
+
+          <b-nav-item to="/cwurrankings" exact exact-active-class="exact-active">CWUR rankings</b-nav-item>
+          <b-nav-item to="/timesrankings" exact exact-active-class="exact-active">Times rankings</b-nav-item>
+          <b-nav-item to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
+          <b-nav-item to="/Login" exact exact-active-class="exact-active">Log In</b-nav-item>
+
 
           <b-nav-item to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
         
