@@ -18,7 +18,7 @@
           <b-nav-item to="/" exact exact-active-class="exact-active">Home</b-nav-item>
           <b-nav-item to="/qsrankings" exact exact-active-class="exact-active">Qs rankings</b-nav-item>
           <b-nav-item to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
-          <b-nav-item to="/StudentUsers" exact exact-active-class="exact-active">Log In</b-nav-item>
+          <b-nav-item to="/Login" exact exact-active-class="exact-active">Log In</b-nav-item>
 
         
           <!-- <b-nav-item disabled>Admin</b-nav-item> -->
