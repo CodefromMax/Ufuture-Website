@@ -46,10 +46,8 @@
 
       <router-link :to="{ path: '/qsrankings' }">
       <b-button size="lg" style="height: 50px;" @click = "QSRanking()">QS</b-button></router-link>
+  
       
-      <router-link :to="{ path: '/StudentUsers' }">
-      <b-button size="lg" style="height: 50px;" @click = "Login()">LogIn</b-button></router-link>
-
     </b-button-group>
     <b-button-group>
       <b-button size="lg" style="height: 50px;" @click = "CWRRanking()">CWR</b-button>
