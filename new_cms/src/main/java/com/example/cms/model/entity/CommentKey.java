@@ -9,21 +9,21 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Objects;
-
+@Embeddable
+@Getter
+@Setter
 public class CommentKey implements Serializable {
 
-    @Column(name = "CommentId")
-    private Long CommentId;
+    @Column(name = "commentId")
+    private Long Commentorder;
 
-    @Column(name = "DiscussionId")
-    private Long DiscussionIdOnComment;
+    @Column(name = "discussionId")
+    private Long DiscussionId;
 
-    @Column(name = "StudentId")
-    private Long StudentIdOnComment ;
 
     @Override
     public int hashCode(){
-        String concatString = String.valueOf(DiscussionIdOnComment.hashCode()) + String.valueOf(StudentIdOnComment.hashCode());
+        String concatString = String.valueOf(DiscussionId.hashCode()) + String.valueOf(Commentorder.hashCode());
         return concatString.hashCode();
     }
 
@@ -34,6 +34,6 @@ public class CommentKey implements Serializable {
         if (!(o instanceof CommentKey))
             return false;
         CommentKey other = (CommentKey) o;
-        return DiscussionIdOnComment.equals(other.DiscussionIdOnComment) && StudentIdOnComment.equals(other.StudentIdOnComment);
+        return DiscussionId.equals(other.DiscussionId) && Commentorder.equals(other.Commentorder);
     }
 }

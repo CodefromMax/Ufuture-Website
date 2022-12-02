@@ -3,11 +3,14 @@ package com.example.cms.model.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,12 +29,8 @@ public class Events {
     private String eventName;
 
     @NotEmpty
-    private String eventDate;
+    private Timestamp eventDate;
 
-    public Events(String eventCode, String eventName, String eventDate){
-        this.eventCode = eventCode;
-        this.eventName = eventName;
-        this.eventDate = eventDate;
-    }
+
 
 }

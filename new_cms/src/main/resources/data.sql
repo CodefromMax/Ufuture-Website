@@ -713,7 +713,7 @@ INSERT INTO CWURRankings(cwur_Id,Cwur_rank,Institution_Name,Country,National_ran
 
 
 
-INSERT INTO UniversityUser(UniversityId, UniversityName, UniversityPassword)VALUES ('UU0001','Harvard University','HU0001'),
+INSERT INTO UniversityUser(userId, uniName, password)VALUES ('UU0001','Harvard University','HU0001'),
 	('UU0002','Stanford University','SU0002'),
 	('UU0003','Massachusetts Institute of Technology','HU0002'),
 	('UU0004','University of Cambridge','SU0003'),
@@ -744,7 +744,7 @@ INSERT INTO UniversityUser(UniversityId, UniversityName, UniversityPassword)VALU
 	('UU0029','Rockefeller University','HU0015'),
 	('UU0030','University of Texas at Austin','SU0016');
 
-INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001','James','0001KEY'),
+INSERT INTO StudentUser(userId, StudentName, password) VALUES ('SU0001','James','0001KEY'),
 	('SU0002','Robert','0002KEY'),
 	('SU0003','John','0003KEY'),
 	('SU0004','Michael','0004KEY'),
@@ -796,7 +796,6 @@ INSERT INTO StudentUser(StudentId, StudentName, StudentPassword) VALUES ('SU0001
 	('SU0050','Jerry','0050KEY');
 
 
-INSERT INTO Discussion(discussionId, discussionContent) VALUES(1, 'skdfjkdsfjkdsfjskdfjskdf');
 
 INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0001','School is Back','2023-09-23 06:48:50');
 INSERT INTO Events(eventCode, eventName, eventDate) VALUES ('EV0002','Back to the Class','2023-09-20 13:01:28');

@@ -2,15 +2,12 @@ package com.example.cms.controller;
 
 
 import com.example.cms.controller.dto.DiscussionDto;
-import com.example.cms.controller.exceptions.DepartmentNotFoundException;
-import com.example.cms.controller.exceptions.DiscussionNotFoundException;
-import com.example.cms.controller.exceptions.DiscussionNotMatchException;
-import com.example.cms.controller.exceptions.StudentNotFoundException;
-import com.example.cms.model.entity.Discussion;
-import com.example.cms.model.entity.Interest_list;
-import com.example.cms.model.entity.StudentUser;
+import com.example.cms.controller.exceptions.*;
+import com.example.cms.model.entity.*;
+import com.example.cms.model.repository.All_universitiesRepository;
 import com.example.cms.model.repository.DiscussionRepository;
 import com.example.cms.model.repository.StudentUserRepository;
+import com.example.cms.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +21,10 @@ public class DiscussionController {
     private final DiscussionRepository repository;
 
     @Autowired
-    private StudentUserRepository studentUserRepository;
+    private UserRepository UserRepository;
+
+    @Autowired
+    private All_universitiesRepository universityRepository;
 
 
     public DiscussionController(DiscussionRepository repository) {
@@ -33,35 +33,40 @@ public class DiscussionController {
 
     @GetMapping("/discussion/showall")
     List<Discussion> showDiscussion() {return repository.findAll();}
-
+/*
     @PostMapping("/discussion/post")
-    Discussion createDiscussion(@RequestBody DiscussionDto discussionDto){
+    Discussion createDiscussion(@RequestBody DiscussionDto DiscussionDto){
         Discussion newDiscussion = new Discussion();
-        newDiscussion.setDiscussionId(discussionDto.getDiscussionId());
-        newDiscussion.setDiscussionContent(discussionDto.getDiscussionContent());
-        StudentUser studentUser = studentUserRepository.findById(discussionDto.getStudentId()).orElseThrow(
-                () -> new StudentNotFoundException(discussionDto.getStudentId()));
+        newDiscussion.setDiscussionId(DiscussionDto.getDiscussionId());
+        newDiscussion.setDiscussionContent(DiscussionDto.getDiscussionContent());
+        User user = UserRepository.findById(DiscussionDto.getUserId()).orElseThrow(
+                () -> new UserNotFoundException(DiscussionDto.getUserId()));
+        All_universities involvedUniversity = universityRepository.findUniByName(DiscussionDto.getUniversityName()).orElseThrow(
+                () -> new UniversityNotFoundException(DiscussionDto.getUniversityName()));
         newDiscussion.setParticipatedStudent(studentUser);
+        newDiscussion.setUniversity(involvedUniversity);
         return repository.save(newDiscussion);
 
     }
+    @PostMapping("/discussion/university/post")
 
     @PutMapping("/discussion/{disId}")
-    Discussion updateContents(@RequestBody DiscussionDto discussionDto, @PathVariable("disId") Long discussionId){
+    Discussion updateContents(@RequestBody DiscussionDto DiscussionDto, @PathVariable("disId") Long discussionId){
         return repository.findById(discussionId)
                 .map(discussion -> {
-                    discussion.setDiscussionContent(discussionDto.getDiscussionContent());
-                    StudentUser student = studentUserRepository.findById(discussionDto.getStudentId()).orElseThrow(
-                            () -> new StudentNotFoundException(discussionDto.getStudentId()));
+                    discussion.setDiscussionContent(DiscussionDto.getDiscussionContent());
+                    StudentUser student = studentUserRepository.findById(DiscussionDto.getUserId()).orElseThrow(
+                            () -> new StudentNotFoundException(DiscussionDto.getUserId()));
                     discussion.setParticipatedStudent(student);
                     return repository.save(discussion);
                 })
                 .orElseGet(() -> {
-                    return this.createDiscussion(discussionDto);
+                    return this.StudentcreateDiscussion(DiscussionDto);
                     });
     }
     @DeleteMapping("/discussion/{disId}")
     void deleteDiscussion(@PathVariable("disId") Long discussionId) {repository.deleteById(discussionId);
     }
+ */
 }
 

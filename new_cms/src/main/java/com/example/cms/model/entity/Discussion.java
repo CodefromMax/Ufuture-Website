@@ -18,11 +18,16 @@ public class Discussion {
     @Id
     private Long discussionId;
 
-    @NotEmpty
+    @Nullable
     private String discussionContent;
 
+    /*
     @ManyToOne
-    @JoinColumn(name = "StudentId")
-    private StudentUser participatedStudent;
+    @JoinColumn(name = "User")
+    private User user;
+*/
+    @ManyToOne
+    @JoinColumn(name = "university")
+    private All_universities university;
 
 }
