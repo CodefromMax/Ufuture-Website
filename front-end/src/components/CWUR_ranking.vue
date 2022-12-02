@@ -44,7 +44,7 @@
 
 <script>
 import axios from 'axios';
-
+import VueCookies from 'vue-cookies'
 export default {
   name: 'CWUR_rankings',
   data () {
@@ -94,22 +94,15 @@ export default {
       console.log(localStorage.getItem('currentU'))
     },
     add(item, index, button){
-      if (item){
-        axios
-        .post('http://localhost:8085/university/interestlist/add',
-        {
-          "listId": (parseInt(localStorage.getItem('length'))+1),
-          "universityName": item.institution_Name,
-          "comment": ""
-        })
-        .then(() => this.init() )
-        .catch(function (error){
-          
-            console.log(error);
-          
-          
-        })
+      let user = VueCookies.get("user")
+      if (user == null) {
+        alert("User is not logged in");
       }
+      let userId = user.userId;
+      let qsId = item.qs_ranking_id;
+      axios.post(`http://localhost:8085/university/collect?userId=${userId}&qsId=${qsId}`).then(res => {
+
+      })
 
     }
     

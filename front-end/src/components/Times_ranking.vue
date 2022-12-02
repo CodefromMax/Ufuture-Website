@@ -44,7 +44,7 @@
 
 <script>
 import axios from 'axios';
-
+import VueCookies from 'vue-cookies'
 export default {
   name: 'Times_rankings',
   data () {
@@ -52,19 +52,19 @@ export default {
       Times_rankings: null,
       query: "",
       fields: [
-      {key: 'actions', label: 'Actions'}, 
-      {key: 'more', label: 'More'}, 
+        {key: 'actions', label: 'Actions'}, 
+        {key: 'more', label: 'More'}, 
         {key: 'times_Rank', label: 'Times Rank'},
         {key: 'university_Name', label: 'University Name'},  
-        {key: 'Teaching_Score', label: 'Teaching Score'},
-        {key: 'International_Score', label: 'International Score'},
-        {key: 'Research_Score', label: 'Research Score'},
-        {key: 'Citations_Score', label: 'Citations Score'},
-        {key: 'Income_Score', label: ' Income Score'},
-        {key: 'Total_Score', label: 'Total Score'},
-        {key: 'Number_Of_Students', label: 'Number Of Students'},
-        {key: 'Student_Staff_Ratio', label: 'Student Staff Ratio'},
-        {key: 'International_Student_Ratio', label: 'International Student Ratio'},
+        {key: 'teaching_Score', label: 'Teaching Score'},
+        {key: 'international_Score', label: 'International Score'},
+        {key: 'research_Score', label: 'Research Score'},
+        {key: 'citations_Score', label: 'Citations Score'},
+        {key: 'income_Score', label: ' Income Score'},
+        {key: 'number_Of_Students', label: 'Number Of Students'},
+        {key: 'student_Staff_Ratio', label: 'Student Staff Ratio'},
+        {key: 'international_Student_Ratio', label: 'International Student Ratio'},
+        {key: 'total_Score', label: 'Total Score'}
         
     ],
     }
@@ -100,20 +100,15 @@ export default {
     },
     add(item, index, button){
       if (item){
-        axios
-        .post('http://localhost:8085/university/interestlist/add',
-        {
-          "listId": (parseInt(localStorage.getItem('length'))+1),
-          "universityName": item.institution_Name,
-          "comment": ""
-        })
-        .then(() => this.init() )
-        .catch(function (error){
-          
-            console.log(error);
-          
-          
-        })
+        let user = VueCookies.get("user")
+      if (user == null) {
+        alert("User is not logged in");
+      }
+      let userId = user.userId;
+      let qsId = item.qs_ranking_id;
+      axios.post(`http://localhost:8085/university/collect?userId=${userId}&qsId=${qsId}`).then(res => {
+
+      })
       }
 
     }
