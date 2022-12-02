@@ -125,6 +125,8 @@ export default {
       axios.post(`http://localhost:8085/university/collect?userId=${userId}&qsId=${qsId}`).then(res => {
 
       })
+
+     
       // if (item){
       //   axios
       //   .post('http://localhost:8085/university/interestlist/add',

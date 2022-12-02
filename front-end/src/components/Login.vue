@@ -8,7 +8,7 @@
           class="form-control"
           type="text"
           name="id"
-          placeholder="student/University ID"
+          placeholder="Student/University ID"
           required
         />
       </div>
