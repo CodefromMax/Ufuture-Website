@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,22 +23,40 @@ import java.util.List;
 @Setter
 @Table(name = "InterestList")
 
-public class Interest_list {
+public class Interest_list implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    @EmbeddedId
+    private String userId;
+
+    private Integer isStudent;
+
+    private String qS_ranking_id;
+
+
+    private String comment;
+
+    @ManyToOne
+    @MapsId("QS_RANKING_ID")
+    @JoinColumn(name = "QS_ranking_id")
+    private Qs_rankings qs_rankings;
+
+
     private Interest_listKey listKey;
+
+
 
     @ManyToOne
     @MapsId("studentId")
-    @JoinColumn(name = "studentId")
+    @JoinColumn(name = "studentId", insertable =false, updatable = false)
     @JsonIgnoreProperties({"discussion"})
     private StudentUser studentUser;
 
     @ManyToOne
-    @JoinColumn(name = "universityId")
+    @JoinColumn(name = "universityId", insertable = false, updatable = false)
     private All_universities university;
 
-    @Nullable
-    private String comment;
 
 }
