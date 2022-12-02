@@ -22,14 +22,24 @@ import java.util.List;
 public class Events {
 
     @Id
-    @NotEmpty
-    private String eventCode;
+    private Long eventCode;
 
     @NotEmpty
     private String eventName;
 
     @NotEmpty
-    private Timestamp eventDate;
+    private String eventDate;
+
+    @NotEmpty
+    private String location;
+
+    @ManyToOne
+    @JoinColumn (name = "createrId")
+    private UniversityUser universityUser;
+
+    @ManyToOne
+    @JoinColumn(name = "university")
+    private All_universities university;
 
 
 
