@@ -56,8 +56,8 @@ public class UniversityUserController {
         StudentUser studentUser = new StudentUser();
         studentUser.setUserId(userNameDto.getUserName());
         studentUser.setPassword(userNameDto.getPassword());
-        Example<StudentUser> studentUserRepository = Example.of(studentUser);
-        if (repository.count(example) > 0) {
+        Example<StudentUser> studentUserExample = Example.of(studentUser);
+        if (studentUserRepository.count(studentUserExample) > 0) {
             UserVO userVO = new UserVO();
             userVO.setIsStudent(1);
             userVO.setUserId(studentUser.getUserId());

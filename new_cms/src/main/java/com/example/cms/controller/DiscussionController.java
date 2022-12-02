@@ -40,6 +40,7 @@ public class DiscussionController {
         return repository.showDiscussionForUniversity(name);
     }
 
+
     @PostMapping("/discussion/post")
     Discussion createDiscussion(@RequestBody DiscussionDto DiscussionDto){
         Discussion newDiscussion = new Discussion();
