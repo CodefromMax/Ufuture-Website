@@ -8,7 +8,6 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +31,7 @@ public class Events {
 
     @NotEmpty
     private String location;
+
 
     @ManyToOne
     @JoinColumn (name = "createrId")

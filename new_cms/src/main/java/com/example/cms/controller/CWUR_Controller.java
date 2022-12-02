@@ -20,4 +20,7 @@ public class CWUR_Controller {
 
     @GetMapping("/cwurrankings")
     List<CWUR_rankings> findAllCWUR() {return repository.findAll();}
+
+    @GetMapping("/cwurrankings/{cwurName}")
+    List<CWUR_rankings> findCWURByName(@PathVariable("cwurName") String cwurName) {return repository.searchCwurName(cwurName);}
 }

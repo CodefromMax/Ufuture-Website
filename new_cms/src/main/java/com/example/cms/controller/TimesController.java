@@ -22,4 +22,7 @@ public class TimesController {
 
     @GetMapping("/timesrankings")
     List<Times_rankings> findAlltimes() {return repository.findAll();}
+
+    @GetMapping("/timesrankings/{timesName}")
+    List<Times_rankings> findTimesByName(@PathVariable("timesName") String timesName) {return repository.searchTimesName(timesName);}
 }
