@@ -16,14 +16,16 @@ import javax.validation.constraints.NotEmpty;
 public class Discussion {
 
     @Id
+    @Column(name = "discussionId")
     private Long discussionId;
 
     @Nullable
+    @Column(name = "discussionContent")
     private String discussionContent;
 
 
     @ManyToOne
-    @JoinColumn(name = "UsersInDiscussion")
+    @JoinColumn(name = "usersInDiscussion")
     private AllUsers user;
 
     @ManyToOne

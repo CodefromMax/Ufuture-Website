@@ -939,3 +939,14 @@ INSERT INTO universities(universityId,uniName,qs_id,cwur_id,times_id) VALUES ('A
 
 INSERT INTO AllUsers SELECT * FROM StudentUser;
 INSERT INTO AllUsers SELECT * FROM UniversityUser;
+
+INSERT INTO Discussion(discussionId,discussionContent, usersInDiscussion, university) VALUES
+    (1,'Is this a good university','SU0001','AU0001'),
+    (2,'This is the best school','SU0002','AU0002'),
+    (3,'Is this a good university','SU0003','AU0003'),
+    (4,'This is the best school','SU0004','AU0004'),
+    (5,'Is this a good university','SU0005','AU0005'),
+    (6,'This is the best school','SU0006','AU0006'),
+    (7,'This is the best school','UU0002','AU0052'),
+    (8,'Is this a good university','UU0003','AU0053'),
+    (9,'This is the best school','UU0004','AU0054');

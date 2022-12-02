@@ -1,5 +1,6 @@
 package com.example.cms.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,14 +19,17 @@ public class Comment {
     @EmbeddedId
     private CommentKey commentKey;
 
-/*
+
     @ManyToOne
-    @Nullable
+    @MapsId("discussionId")
     @JoinColumn(name = "discussionId")
     private Discussion discussionId;
+
+    @ManyToOne
+    @JoinColumn(name = "Commenter")
+    private AllUsers commenter;
 
     @NotEmpty
     private String comment;
 
-*/
 }
