@@ -1,5 +1,7 @@
 <template>
   <div>
+
+    
     <b-carousel
       id="carousel-1"
       :interval="4000"
@@ -11,9 +13,17 @@
       style="text-shadow: 1px 1px 2px #333;"
     >
       <!-- Text slides with image -->
+      <router-link :to="{ path: '/events' }">
       <b-carousel-slide
-        img-src="https://picsum.photos/1024/480/?image=1002"
+        img-src="https://i.ibb.co/MhYfDL0/12-C2-FA67-BFA7-4-D42-BF46-EADFA5-EA63-B5.jpg"
       ></b-carousel-slide>
+      <b-carousel-slide
+        img-src="https://i.ibb.co/72kvZB3/66-AC7522-F756-489-B-A5-BA-97-F2854-DF37-E.jpg"
+      ></b-carousel-slide>
+      <b-carousel-slide
+        img-src="https://i.ibb.co/4FnRfbS/1-AFBED6-D-CBCF-45-CE-ACE0-791-C13517329.jpg"
+      ></b-carousel-slide>
+    </router-link>
     </b-carousel>
     
     <div class = "search-container">
