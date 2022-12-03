@@ -10,12 +10,11 @@
     </b-table>
     <b-modal id="edit-modal" v-if="isShow" title="Edit note" @hide="resetEditModal" hide-footer>
       <b-form>
-
-        <label class="sr-only" for="input-listId">List ID</label>
+        <label class="sr-only" for="preference order">preference order</label>
         <b-form-input
           id='input-listId'
-          v-model="form.listId"
-          placeholder="List ID"
+          v-model="form.preferenceOrder"
+          placeholder="preferenceOrder"
           readonly
         ></b-form-input>
 
@@ -25,11 +24,11 @@
         </b-input-group>
         
         <br />
-        <b-button type="button" @click="onSave" variant="primary">Save</b-button>
-        <b-button type="reset" variant="warning">Reset</b-button>
+        <b-button type="button" @click="onSave" variant="primary">Submit</b-button>
+        <b-button type="reset" @click="reset" variant="warning">Reset</b-button>
         <b-button type="button" @click = "deletel" variant="danger">Remove University</b-button>
       </b-form>
-
+    
     </b-modal>
   </div>
 </template>
@@ -44,8 +43,8 @@ export default {
       isShow: true,
       Interest_list: null,
       fields: [
-      
-      {key: 'university.uniName', label: 'University Name', sortable: true},
+      {key: 'preferenceOrder', label: 'Preference Order', sortable: true},
+      {key: 'niversityName', label: 'University Name', sortable: true},
       {key: 'comment', label: 'Note', sortable: true, sortable: true},
       {key: 'actions', label: 'Actions'}],
       form: {
@@ -59,6 +58,9 @@ export default {
     this.init();
   },
   methods: {
+    reset() {
+      this.form.comment = ""
+    },
     init() {
       let user = VueCookies.get("user");
       if (user == null) {
@@ -69,26 +71,45 @@ export default {
       axios
         .get('http://localhost:8085/university/interestlist/' + user.userId)
         .then(response => {
-          this.Interest_list = response.data
+          console.log(response.data);
+
+          let data = response.data;
+          let preferenceOrder = 0;
+          for(let item of data) {
+            item.preferenceOrder = ++preferenceOrder;
+            let university = item.university;
+            if (item.type == 0) {
+              item.niversityName = university.qs_rankings && university.qs_rankings.institution_Name;
+            }
+            if (item.type == 1) {
+              item.niversityName = university.cwur_rankings && university.cwur_rankings.institution_Name;
+            }
+            if (item.type == 2) {
+              item.niversityName = university.times_rankings && university.times_rankings.university_Name;
+            }
+          }
+        
+
+          this.Interest_list = data;
         })
 
     },
     edit(item, index, button) {
+      console.log(item);
       this.isShow = true;
       this.form.listId = item.listId
-      this.form.comment = item.comment
+      this.form.comment = item.comment;
+      this.form.listOrder = item.listKey.interestListOrder;
+      this.form.studentId = item.listKey.studentId;
     },
     resetEditModal() {
       this.form.listId=''
       this.form.comment=''
     },
     onSave(event) {
-      var numId;
-      numId = parseInt(this.form.listId);
+    
       axios
-        .put('http://localhost:8085/university/interestlist/comment/' + numId, {
-          "listId": numId,
-          "UniversityName": this.form.University_name,
+        .put(`http://localhost:8085/university/interestlist/comment/${this.form.studentId}/${this.form.listOrder}`, {
           "comment": this.form.comment,
         })
         .then(() => this.init(), this.isShow = false)
@@ -97,14 +118,8 @@ export default {
         });
     },
     deletel(event) {
-      var numId;
-      numId = parseInt(this.form.listId);
       axios
-        .delete('http://localhost:8085/university/interestlist/' + numId, {
-          "listId": numId,
-          "UniversityName": this.form.University_name,
-          "comment": this.form.comment,
-        })
+        .delete(`http://localhost:8085/university/interestlist/${this.form.studentId}/${this.form.listOrder}`)
         .then(() => this.init(), this.isShow = false)
         .catch(function (error) {
           console.log(error);

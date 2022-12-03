@@ -94,7 +94,10 @@ export default {
     init() {
       axios
         .get('http://localhost:8085/qsrankings')
-        .then(response => (this.Qs_rankings = response.data))
+        .then(response => {
+          let data = response.data;
+          this.Qs_rankings = data;
+        })
     },
 
     search(searchTerm){
@@ -119,35 +122,40 @@ export default {
 
     add(item, index, button){
 
+      // axios
+      //   .get('http://localhost:8085/universities/'+ item.institution_Name)
+      //   .then(response => {
+      //     this.All_universities = response.data[0].universityId;
+      //   })
+
       axios
-        .get('http://localhost:8085/universities/'+ item.institution_Name)
-        .then(response => {this.All_universities = response.data[0].universityId, console.log(response.data[0].universityId)} )
+        .get('http://localhost:8085/universitiesByType/0/'+ item.qs_ranking_id)
+        .then(response => {
+          this.All_universities = response.data[0].universityId;
+        })
       
       let user = VueCookies.get("user")
       if (user == null) {
         alert("User is not logged in");
       }
       let userId = user.userId;
-      console.log(userId)
-      console.log(this.All_universities)
       axios
-      .post('http://localhost:8085/university/interestlist/add',
-      {
-        "studentId": String(userId),
-       "comment": "",
-       "universityId": String(this.All_universities)
-      //  "studentId":"SU0002",
-	    //   "comment":"testing",
-	    //  "universityId":"AU0001"
-      
-      })
-      
-       .then(() => this.init() )
-      .catch(function (error){
-          
-           console.log(error);
-          
-      })
+        .post('http://localhost:8085/university/interestlist/add',
+        {
+          "studentId": String(userId),
+          "comment": "",
+          "universityId": String(this.All_universities),
+          "type": 0,
+          "listOrder": item.qs_ranking_id
+        //  "studentId":"SU0002",
+        //   "comment":"testing",
+        //  "universityId":"AU0001"
+        
+        })
+        .then(() => this.init() )
+        .catch(function (error){
+            console.log(error);
+        })
 
     // add(item, index, button){
     //   let user = VueCookies.get("user")

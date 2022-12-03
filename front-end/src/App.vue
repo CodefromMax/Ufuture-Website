@@ -20,10 +20,10 @@
 
           <b-nav-item to="/cwurrankings" exact exact-active-class="exact-active">CWUR rankings</b-nav-item>
           <b-nav-item to="/timesrankings" exact exact-active-class="exact-active">Times rankings</b-nav-item>
-          <b-nav-item v-if="(isLogin)" to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
+          <b-nav-item v-if="(isLogin && isStudent)" to="/uni" exact exact-active-class="exact-active">Interest List</b-nav-item>
   
         
-          <b-nav-item v-if="(isLogin)" to="/myEvents" exact exact-active-class="exact-active">My Event</b-nav-item>
+          <b-nav-item v-if="(isLogin && !isStudent)" to="/myEvents" exact exact-active-class="exact-active">My Event</b-nav-item>
           <b-nav-item v-if="!isLogin" to="/Login" exact exact-active-class="exact-active">Log In</b-nav-item>
           <b-nav-item v-if="isLogin"  exact exact-active-class="exact-active">
             <div @click.stop="hadnlerOut" >Log Out</div>
@@ -54,7 +54,7 @@ export default {
     let user = VueCookies.get("user");
     if (user !== null) {
       this.isLogin = true;
-      this.isStudent = user.isStudent;
+      this.isStudent = user.isStudent === 1;
     }
     console.log(user);
   },

@@ -99,17 +99,47 @@ export default {
       console.log(localStorage.getItem('currentU'))
     },
     add(item, index, button){
-      if (item){
-        let user = VueCookies.get("user")
+      axios
+        .get('http://localhost:8085/universitiesByType/2/'+ item.times_Id)
+        .then(response => {
+          console.log(response);
+          this.All_universities = response.data[0].universityId;
+        })
+      
+      let user = VueCookies.get("user")
+    
       if (user == null) {
         alert("User is not logged in");
       }
       let userId = user.userId;
-      let qsId = item.qs_ranking_id;
-      axios.post(`http://localhost:8085/university/collect?userId=${userId}&qsId=${qsId}`).then(res => {
+      axios
+        .post('http://localhost:8085/university/interestlist/add',
+        {
+          "studentId": String(userId),
+          "comment": "",
+          "universityId": String(this.All_universities),
+          "type": 2,
+          "listOrder": item.times_Id
+        //  "studentId":"SU0002",
+        //   "comment":"testing",
+        //  "universityId":"AU0001"
+        
+        })
+        .then(() => this.init() )
+        .catch(function (error){
+            console.log(error);
+        })
+      // if (item){
+      //   let user = VueCookies.get("user")
+      // if (user == null) {
+      //   alert("User is not logged in");
+      // }
+      // let userId = user.userId;
+      // let qsId = item.qs_ranking_id;
+      // axios.post(`http://localhost:8085/university/collect?userId=${userId}&qsId=${qsId}`).then(res => {
 
-      })
-      }
+      // })
+      // }
 
     }
     
