@@ -44,8 +44,8 @@ export default {
       isShow: true,
       Interest_list: null,
       fields: [
-      {key: 'listId', label: 'List ID', sortable: true},
-      {key: 'universityName', label: 'University Name', sortable: true},
+      
+      {key: 'university.uniName', label: 'University Name', sortable: true},
       {key: 'comment', label: 'Note', sortable: true, sortable: true},
       {key: 'actions', label: 'Actions'}],
       form: {
@@ -69,16 +69,9 @@ export default {
       axios
         .get('http://localhost:8085/university/interestlist/' + user.userId)
         .then(response => {
-          this.Interest_list = response.data.map(item => {
-            return {
-              listId: item.id,
-              universityName: item.qs_rankings && item.qs_rankings.institution_Name,
-              comment: item.comment,
-            }
-          });
-          console.log(response.data);
-          localStorage.setItem('length', this.Interest_list.length);
+          this.Interest_list = response.data
         })
+
     },
     edit(item, index, button) {
       this.isShow = true;
