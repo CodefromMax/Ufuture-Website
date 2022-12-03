@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <div :style="{'background-color':'#F0F8FF'}">
     <h2> QSrankings </h2>
 
 
@@ -39,6 +40,7 @@
         
       </template>
     </b-table>
+  </div>
   </div>
 </template>
 
@@ -115,7 +117,7 @@ export default {
 
     },
     clickedU(item){
-      //console.log(item.institution_Name)
+     
       localStorage.setItem('currentU', item.institution_Name)
       console.log(localStorage.getItem('currentU'))
     },

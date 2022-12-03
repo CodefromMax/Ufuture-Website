@@ -86,20 +86,18 @@ export default {
     
       fields2: [
       {key: 'actions', label: 'Actions'}, 
-      {key: 'more', label: 'More'}, 
-      {key: 'institution_Name', label: 'University Name'},
-      {key: 'qs_ranking_id', label: 'Ranking'},
-      {key: 'location', label: 'Location'},
-      {key: 'academic_Reputation_Score', label: 'Academic Reputation Score'},
-      {key: 'employer_Reputation_Score', label: 'Employer Reputation Score'},
-      {key: 'faculty_Student_Score', label: 'Faculty Student Score'},
-      {key: 'citations_per_Faculty_Score', label: 'Citations per Faculty Score'},
-      {key: 'international_Faculty_Score', label: 'International Faculty Score'},
-      {key: 'international_Students_Score', label: 'International Students Score'},
-      {key: 'international_Research_Network_Score', label: 'International Research Network Score'},
-      {key: 'employment_Outcomes_Score', label: 'Employment Outcomes Score'},
-      {key: 'overall_Score', label: 'Overall Score'},
-      
+        {key: 'times_Rank', label: 'Times Rank'},
+        {key: 'university_Name', label: 'University Name'},  
+        {key: 'teaching_Score', label: 'Teaching Score'},
+        {key: 'international_Score', label: 'International Score'},
+        {key: 'research_Score', label: 'Research Score'},
+        {key: 'citations_Score', label: 'Citations Score'},
+        {key: 'income_Score', label: ' Income Score'},
+        {key: 'number_Of_Students', label: 'Number Of Students'},
+        {key: 'student_Staff_Ratio', label: 'Student Staff Ratio'},
+        {key: 'international_Student_Ratio', label: 'International Student Ratio'},
+        {key: 'total_Score', label: 'Total Score'}
+        
     ],
 
     Discussion: null,
@@ -115,7 +113,6 @@ export default {
 
       fields3: [
       {key: 'actions', label: 'Actions'}, 
-      {key: 'more', label: 'More'}, 
       {key: 'institution_Name', label: 'University Name'},
       {key: 'cwur_Id', label: 'Ranking'},
       {key: 'alumni_Employment', label: 'alumni Employment'},
@@ -169,7 +166,7 @@ export default {
           "listId": (parseInt(localStorage.getItem('length'))+1),
           "universityName": item.institution_Name,
           "comment": "",
-          
+
         })
         .then(() => this.init() )
         .catch(function (error){
