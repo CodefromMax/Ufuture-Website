@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h2> Times rankings </h2>
-
+    <div :style="{'background-color':'#F0F8FF'}">
 
     <div class = "search container">
       <b-input-group prepend="Search a University">
@@ -39,6 +39,7 @@
         
       </template>
     </b-table>
+  </div>
   </div>
 </template>
 

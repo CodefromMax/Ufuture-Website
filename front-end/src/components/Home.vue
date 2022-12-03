@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <div :style="{'background-color':'#F0F8FF'}">
     
     <b-carousel
       id="carousel-1"
@@ -71,7 +71,7 @@
     <b-button size="lg" style="height: 50px;" @click = "TimesRanking()">Times</b-button>
     </b-button-group>
   </div>
-
+  </div>
 
   </div>
   

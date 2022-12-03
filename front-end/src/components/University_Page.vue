@@ -117,7 +117,6 @@ export default {
     
       fields2: [
       {key: 'actions', label: 'Actions'}, 
-        {key: 'more', label: 'More'}, 
         {key: 'times_Rank', label: 'Times Rank'},
         {key: 'university_Name', label: 'University Name'},  
         {key: 'teaching_Score', label: 'Teaching Score'},
@@ -153,7 +152,6 @@ export default {
 
       fields3: [
       {key: 'actions', label: 'Actions'}, 
-      {key: 'more', label: 'More'}, 
       {key: 'institution_Name', label: 'University Name'},
       {key: 'cwur_Id', label: 'Ranking'},
       {key: 'alumni_Employment', label: 'alumni Employment'},
