@@ -106,9 +106,17 @@ export default {
       {key: 'actions', label: 'Action'},
       {key: 'user.userId', label: 'user'},
       {key: 'discussionContent', label: 'Discussion'},
+      {key: 'discussionId', label: 'Id'},
   
     
     ],
+    form: {
+        discussionContent: '',
+          universityName:'',
+          userId:'',
+          discussionId:''
+          },
+
     CWUR_rankings: null,
 
       fields3: [
@@ -121,6 +129,7 @@ export default {
       {key: 'score', label: 'Overall Score'},
       
     ],
+    
     }
   },
   mounted () {
@@ -132,10 +141,10 @@ export default {
         .get('http://localhost:8085/qsrankings/searchname/'+localStorage.getItem('currentU'))
         .then(response => (this.Qs_rankings = response.data))
       axios
-        .get('http://localhost:8085/qsrankings/searchname/'+localStorage.getItem('currentU'))
+        .get('http://localhost:8085/cwurrankings/'+localStorage.getItem('currentU'))
         .then(response => (this.CWUR_rankings = response.data))
       axios
-        .get('http://localhost:8085/qsrankings/searchname/'+localStorage.getItem('currentU'))
+        .get('http://localhost:8085/timesrankings/'+localStorage.getItem('currentU'))
         .then(response => (this.Times_rankings = response.data))
       
       axios
