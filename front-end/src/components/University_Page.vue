@@ -58,7 +58,7 @@
           readonly
         ></b-form-input>
 
-        <label class="sr-only" for="input-first-name">discussion Content</label>
+        <label class="sr-only" for="input-first-name">Discussion</label>
         <b-form-input
           id='input-name'
           v-model="form.discussionContent"
@@ -193,12 +193,12 @@ export default {
           this.form.userId = user.userId;
           axios.post(`http://localhost:8085/discussion/post`, {
             "userId": this.form.userId,
-            "DiscussionContent": this.form.discussionContent,
+            "discussionContent": this.form.discussionContent,
             "universityName": localStorage.getItem('currentU')
           },
           console.log({
             "userId": this.form.userId,
-            "DiscussionContent": this.form.discussionContent,
+            "discussionContent": this.form.discussionContent,
             "universityName": this.form.universityName
           })
             ).then(res => {
@@ -245,6 +245,7 @@ export default {
         })
       }
     },
+    
     add(item, index, button){
       if (item){
         axios
