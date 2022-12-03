@@ -32,34 +32,34 @@ public class CWUR_rankings {
     private String Country;
 
     @Nullable
-    private int National_rank;
+    private Integer National_rank;
 
     @Nullable
-    private int Quality_of_education;
+    private Integer Quality_of_education;
 
     @Nullable
-    private int Alumni_Employment;
+    private Integer Alumni_Employment;
 
     @Nullable
-    private int Quality_of_Faculty;
+    private Integer Quality_of_Faculty;
 
     @Nullable
-    private int Publications;
+    private Integer Publications;
 
     @Nullable
-    private int Influence;
+    private Integer Influence;
 
     @Nullable
-    private int citations;
+    private Integer citations;
 
     @Nullable
-    private int broad_impact;
+    private Integer broad_impact;
 
     @Nullable
-    private int patents;
+    private Integer patents;
 
     @Nullable
-    private int score;
+    private Integer score;
 
 
 }

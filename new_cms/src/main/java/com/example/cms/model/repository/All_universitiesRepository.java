@@ -15,7 +15,7 @@ public interface All_universitiesRepository extends JpaRepository<All_universiti
 
      */
     @Query(value = "select * from universities u " +
-            "where lower(u.uniName) like lower(concat('%', :searchuniName, '%')) " , nativeQuery = true)
+            "where lower(u.uniName) like concat('%', lower(:searchuniName), '%') " , nativeQuery = true)
     List<All_universities> searchUni(@Param("searchuniName") String searchuniName);
 
     @Query(value = "select * from universities u " +

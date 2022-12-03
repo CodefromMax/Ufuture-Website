@@ -23,7 +23,7 @@ public class Times_rankings {
     private String times_Id;
 
     @NotEmpty
-    private int Times_Rank;
+    private Integer Times_Rank;
 
     @NotEmpty
     private String University_Name;
@@ -32,28 +32,28 @@ public class Times_rankings {
     private String Country;
 
     @Nullable
-    private float Teaching_Score;
+    private Float Teaching_Score;
 
     @Nullable
-    private float International_Score;
+    private Float International_Score;
 
     @Nullable
-    private float Research_Score;
+    private Float Research_Score;
 
     @Nullable
-    private float Citations_Score;
+    private Float Citations_Score;
 
     @Nullable
-    private float Income_Score;
+    private Float Income_Score;
 
     @Nullable
-    private float Total_Score;
+    private Float Total_Score;
 
     @Nullable
-    private long Number_Of_Students;
+    private Float Number_Of_Students;
 
     @Nullable
-    private float Student_Staff_Ratio;
+    private Float Student_Staff_Ratio;
 
     @Nullable
     private String International_Student_Ratio;

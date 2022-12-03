@@ -75,15 +75,31 @@ public class InterestListController {
     }
 */
     @GetMapping("/university/interestlist/{StudentId}")
-    List<Interest_list> findListById(@PathVariable("StudentId") String SId){return repository.showListForTheStudent(SId);}
+    List<Interest_list> findListById(@PathVariable("StudentId") String SId){
+        return repository.showListForTheStudent(SId);
+    }
     @PostMapping("/university/interestlist/add")
     Interest_list addNewSchool(@RequestBody InterestListDto listDto) {
+
+        // collect exist
+        Interest_list query = new Interest_list();
+        Interest_listKey queryKey = new Interest_listKey();
+        queryKey.setStudentId(listDto.getStudentId());
+        queryKey.setInterestListOrder(listDto.getListOrder());
+        query.setListKey(queryKey);
+        Example<Interest_list> example = Example.of(query);
+        if (repository.count(example) > 0) {
+            return null;
+        }
+
+
         Interest_listKey newListKey = new Interest_listKey();
         Interest_list newList = new Interest_list();
-        newListKey.setInterestListOrder(repository.countForStudentList(listDto.getStudentId())+1);
+        newListKey.setInterestListOrder(listDto.getListOrder());
         newListKey.setStudentId(listDto.getStudentId());
         newList.setListKey(newListKey);
         newList.setComment(listDto.getComment());
+        newList.setType(listDto.getType());
         StudentUser newStudent = studentUserRepository.findById(listDto.getStudentId()).orElseThrow(
                 () -> new StudentNotFoundException(listDto.getStudentId()));
         All_universities university = allUniversitiesRepository.findById(listDto.getUniversityId()).orElseThrow(
@@ -97,7 +113,7 @@ public class InterestListController {
     @PutMapping("/university/interestlist/comment/{StudentId}/{listOrder}")
     Interest_list updateComment(@RequestBody InterestListDto listDto,
                                 @PathVariable("StudentId") String studentId,
-                                @PathVariable("listOrder") long listOrder) {
+                                @PathVariable("listOrder") String listOrder) {
         Interest_listKey findKey = new Interest_listKey();
         findKey.setStudentId(studentId);
         findKey.setInterestListOrder(listOrder);
@@ -128,7 +144,7 @@ public class InterestListController {
 //        });
         //       return null;
    @DeleteMapping("/university/interestlist/{StudentId}/{Order}")
-    void deleteInterestList (@PathVariable("StudentId") String studentId,@PathVariable("Order") long order){
+    void deleteInterestList (@PathVariable("StudentId") String studentId,@PathVariable("Order") String order){
         Interest_listKey deleteKey = new Interest_listKey();
         deleteKey.setInterestListOrder(order);
         deleteKey.setStudentId(studentId);

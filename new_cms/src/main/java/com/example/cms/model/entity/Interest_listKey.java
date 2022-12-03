@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Interest_listKey implements Serializable {
 
     @Column(name = "interestListOrder")
-    private Long interestListOrder;
+    private String interestListOrder;
 
     @Column(name = "studentId")
     private String studentId;

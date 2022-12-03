@@ -42,6 +42,11 @@ public class Interest_list implements Serializable {
     @Nullable
     private String comment;
 
+    /**
+     * 0 Qs_rankings 1 Cwur_rankings 2 Times_rankings
+     */
+    private Integer type;
+
     /*
     @ManyToOne
     @MapsId("QS_RANKING_ID")
