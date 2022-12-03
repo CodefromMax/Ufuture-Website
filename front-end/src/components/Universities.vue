@@ -72,7 +72,7 @@ export default {
           this.Interest_list = response.data.map(item => {
             return {
               listId: item.id,
-              universityName: item.qs_rankings && item.qs_rankings.institution_Name,
+              universityName: item.universityName,
               comment: item.comment,
             }
           });
@@ -138,3 +138,4 @@ a {
   color: #42b983;
 }
 </style>
+ 
