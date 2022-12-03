@@ -121,7 +121,7 @@ export default {
 
       axios
         .get('http://localhost:8085/universities/'+ item.institution_Name)
-        .then(response => {this.All_universities = response.data[0], console.log(response.data[0].universityId)} )
+        .then(response => {this.All_universities = response.data[0].universityId, console.log(response.data[0].universityId)} )
       
       let user = VueCookies.get("user")
       if (user == null) {
@@ -129,15 +129,16 @@ export default {
       }
       let userId = user.userId;
       console.log(userId)
+      console.log(this.All_universities)
       axios
       .post('http://localhost:8085/university/interestlist/add',
       {
-      //   "studentId": String(userId),
-      //  "comment": "",
-      //  "universityId": String(this.All_universities)
-       "studentId":"SU0002",
-	      "comment":"testing",
-	     "universityId":"AU0001"
+        "studentId": String(userId),
+       "comment": "",
+       "universityId": String(this.All_universities)
+      //  "studentId":"SU0002",
+	    //   "comment":"testing",
+	    //  "universityId":"AU0001"
       
       })
       
