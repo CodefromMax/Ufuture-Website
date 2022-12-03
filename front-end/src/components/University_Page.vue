@@ -33,6 +33,12 @@
     </b-table>
 
     <h3> Discussion </h3>
+    <div style="display: flex; padding: 10px 0 0 10px">
+        <b-button size="sm" v-b-modal.edit-modal @click="add( $event.target); isAdd = true">
+          Post
+          </b-button>
+      </div>
+    
     <b-table striped hover responsive :items="Discussion" :fields="fieldsd">
       <template #cell(actions)="row">
         <b-button size="sm"  variant="light">
@@ -174,6 +180,8 @@ export default {
       }
 
     }
+
+    
 
   }
 }
