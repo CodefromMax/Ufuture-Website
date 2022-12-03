@@ -919,8 +919,8 @@ INSERT INTO universities(universityId,uniName,qs_id,cwur_id,times_id) VALUES ('A
         ('AU0118','Brandeis University','NA','NA','T185'),
         ('AU0119','Boston College','NA','NA','T191');
 
-INSERT INTO AllUsers SELECT * FROM StudentUser;
-INSERT INTO AllUsers SELECT * FROM UniversityUser;
+INSERT INTO AllUsers(UserId,UserName,UserPassword) SELECT userId,StudentName,password FROM StudentUser;
+INSERT INTO AllUsers(UserId,UserName,UserPassword) SELECT userId,uniName,password FROM UniversityUser;
 
 INSERT INTO Discussion(discussionId,discussionContent, usersInDiscussion, university) VALUES
     (1,'Is this a good university','SU0001','AU0001'),

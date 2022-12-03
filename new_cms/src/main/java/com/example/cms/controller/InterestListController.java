@@ -93,17 +93,21 @@ public class InterestListController {
         return repository.save(newList);
     }
 
-    /*
-    @PutMapping("/university/interestlist/comment/{StudentId}")
+
+    @PutMapping("/university/interestlist/comment/{StudentId}/{listOrder}")
     Interest_list updateComment(@RequestBody InterestListDto listDto,
-                                @PathVariable("StudentId") String studentId) {
-        repository.findAll();
-        return repository.findById(Long.parseLong(studentId)).map(interest_list -> {
-            interest_list.setComment(listDto.getComment());
-            return repository.save(interest_list);
-        }).orElse(null);
+                                @PathVariable("StudentId") String studentId,
+                                @PathVariable("listOrder") long listOrder) {
+        Interest_listKey findKey = new Interest_listKey();
+        findKey.setStudentId(studentId);
+        findKey.setInterestListOrder(listOrder);
+        return repository.findById(findKey).map(interestList -> {
+            interestList.setComment(listDto.getComment());
+            return repository.save(interestList);
+        }).orElseGet(() -> {
+            return this.addNewSchool(listDto);
+        });
     }
-     */
 
     /*
     @DeleteMapping("/university/interestlist/{StudentId}")

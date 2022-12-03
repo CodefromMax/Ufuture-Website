@@ -5,7 +5,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class InterestListDto {
-    private String StudentId;
-    private String Comment;
-    private String UniversityId;
+    private String studentId;
+    private String comment;
+    private String universityId;
 }
