@@ -34,18 +34,48 @@
 
     <h3> Discussion </h3>
     <div style="display: flex; padding: 10px 0 0 10px">
-        <b-button size="sm" v-b-modal.edit-modal @click="add( $event.target); isAdd = true">
+        <b-button size="sm" v-b-modal.edit-modal @click="add1($event.target); isAdd = true">
           Post
           </b-button>
       </div>
-    
     <b-table striped hover responsive :items="Discussion" :fields="fieldsd">
       <template #cell(actions)="row">
-        <b-button size="sm"  variant="light">
-          Agree
-        </b-button>
+          <b-button size="sm" v-b-modal.edit-modal @click="edit(row.item, row.index, $event.target)">
+            Edit
+          </b-button>
       </template>
     </b-table>
+
+    <b-modal id="edit-modal" v-if="isShow" title="Discussion" @hide="resetEditModal" hide-footer>
+      <b-form >
+
+        <label class="sr-only" v-if="!isAdd" for="input-id">Code</label>
+        <b-form-input
+          id='input-code'
+          v-if="!isAdd"
+          v-model="form.eventCode"
+          placeholder="code"
+          readonly
+        ></b-form-input>
+
+        <label class="sr-only" for="input-first-name">discussion Content</label>
+        <b-form-input
+          id='input-name'
+          v-model="form.discussionContent"
+          placeholder="Discussion"
+          required
+        ></b-form-input>
+
+        
+
+        
+        <br />
+        <b-button type="submit" @click="submitEdit" variant="primary">Submit</b-button>
+        <b-button v-if="!isAdd" type="reset" @click="reset" variant="warning">Reset</b-button>
+        <b-button v-if="!isAdd" type="button" @click="deleteEdit" variant="danger">Remove</b-button>
+      </b-form>
+
+    </b-modal>
 
   </div>
   </div>
@@ -55,14 +85,14 @@
 
 <script>
 import axios from 'axios';
-// let uni = localStorage.getItem('currentU');
-
-// document.getElementById(uni).innerHTML = uni;
-
+import VueCookies from 'vue-cookies'
 export default {
   name: 'Qs_rankings',
   data () {
     return {
+      isAdd: false,
+        isShow: true,
+        Events: null,
       Qs_rankings: null,
       //query: "",
       fields1: [
@@ -79,13 +109,12 @@ export default {
       {key: 'international_Research_Network_Score', label: 'International Research Network Score'},
       {key: 'employment_Outcomes_Score', label: 'Employment Outcomes Score'},
       {key: 'overall_Score', label: 'Overall Score'},
-
-
     ],
     Times_rankings: null,
     
       fields2: [
       {key: 'actions', label: 'Actions'}, 
+        {key: 'more', label: 'More'}, 
         {key: 'times_Rank', label: 'Times Rank'},
         {key: 'university_Name', label: 'University Name'},  
         {key: 'teaching_Score', label: 'Teaching Score'},
@@ -99,7 +128,6 @@ export default {
         {key: 'total_Score', label: 'Total Score'}
         
     ],
-
     Discussion: null,
     
       fieldsd: [
@@ -116,11 +144,10 @@ export default {
           userId:'',
           discussionId:''
           },
-
     CWUR_rankings: null,
-
       fields3: [
       {key: 'actions', label: 'Actions'}, 
+      {key: 'more', label: 'More'}, 
       {key: 'institution_Name', label: 'University Name'},
       {key: 'cwur_Id', label: 'Ranking'},
       {key: 'alumni_Employment', label: 'alumni Employment'},
@@ -129,7 +156,6 @@ export default {
       {key: 'score', label: 'Overall Score'},
       
     ],
-    
     }
   },
   mounted () {
@@ -149,10 +175,64 @@ export default {
       
       axios
         .get('http://localhost:8085/discussion/' + localStorage.getItem('currentU') )
-        .then(response => {this.Discussion = response.data,console.log(response.data),localStorage.setItem('DisId', response.data[response.data.length-1].discussionId+1),console.log(localStorage.getItem('DisId')),this.cuurent_discussion = response.data[localStorage.getItem('DisId')]})
-
+        .then(response => {this.Discussion = response.data,console.log(response.data)})
     },
-
+    //
+    add1() {
+        this.isAdd = true;
+        this.resetEditModal();
+        this.isShow = true;
+      },
+      reset() {
+        this.resetEditModal();
+      },
+      submitEdit() {
+        if (this.isAdd) {
+          let user = VueCookies.get("user");
+          console.log("user",user.userId)
+          this.form.userId = user.userId;
+          axios.post(`http://localhost:8085/discussion/post`, {
+            "userId": this.form.userId,
+            "DiscussionContent": this.form.discussionContent,
+            "universityName": localStorage.getItem('currentU')
+          },
+          console.log({
+            "userId": this.form.userId,
+            "DiscussionContent": this.form.discussionContent,
+            "universityName": this.form.universityName
+          })
+            ).then(res => {
+            this.isShow = false;
+            this.init();
+          })
+          return;
+        }
+        
+        axios.put(`http://localhost:8085/discussion/${this.form.discussionId}`, this.form).then(res => {
+          this.isShow = false;
+          this.init();
+        })
+      },
+      deleteEdit() {
+        axios.delete(`http://localhost:8085/discussion/${this.form.discussionId}`).then(res => {
+          this.isShow = false;
+          this.init();
+        })
+      },
+      edit(item, index, button) {
+        this.isAdd = false;
+        this.form = item;
+        this.isShow = true;
+      } ,
+      resetEditModal() {
+        this.form = {
+          discussionContent: '',
+          universityName:'',
+          userId:'',
+          discussionId:''
+        };
+      },
+    //
     search(searchTerm){
       if (searchTerm){
         axios
@@ -162,10 +242,8 @@ export default {
           if (error.response){
             console.log(error.response.data);
           }
-
         })
       }
-
     },
     add(item, index, button){
       if (item){
@@ -174,22 +252,15 @@ export default {
         {
           "listId": (parseInt(localStorage.getItem('length'))+1),
           "universityName": item.institution_Name,
-          "comment": "",
-
+          "comment": ""
         })
         .then(() => this.init() )
         .catch(function (error){
-
             console.log(error);
-
-
         })
       }
-
     }
-
     
-
   }
 }
 </script>
@@ -210,7 +281,6 @@ li {
 a {
   color: #030404;
 }
-
 .search-container{
   padding: 5%
 }
