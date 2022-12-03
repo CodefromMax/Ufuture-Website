@@ -24,38 +24,41 @@ import java.util.List;
 @Table(name = "InterestList")
 
 public class Interest_list implements Serializable {
+    /*
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
     private String userId;
 
-    private Integer isStudent;
+    //private Integer isStudent;
 
     private String qS_ranking_id;
 
+     */
+    @EmbeddedId
+    private Interest_listKey listKey;
 
+    @Nullable
     private String comment;
 
+    /*
     @ManyToOne
     @MapsId("QS_RANKING_ID")
     @JoinColumn(name = "QS_ranking_id")
     private Qs_rankings qs_rankings;
 
-
-    private Interest_listKey listKey;
-
+     */
 
 
     @ManyToOne
     @MapsId("studentId")
-    @JoinColumn(name = "studentId", insertable =false, updatable = false)
+    @JoinColumn(name = "studentId")
     @JsonIgnoreProperties({"discussion"})
     private StudentUser studentUser;
 
     @ManyToOne
-    @JoinColumn(name = "universityId", insertable = false, updatable = false)
+    @JoinColumn(name = "universityId")
     private All_universities university;
 
 

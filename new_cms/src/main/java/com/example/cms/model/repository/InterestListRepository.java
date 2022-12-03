@@ -9,9 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InterestListRepository extends JpaRepository<Interest_list, Long> {
+public interface InterestListRepository extends JpaRepository<Interest_list, Interest_listKey> {
 
     @Query(value = "select * from InterestList i " +
             "where i.studentId = :StudentId", nativeQuery = true)
     List<Interest_list> showListForTheStudent(@Param ("StudentId") String SId);
+
+    @Query(value = "select count(interestListOrder) from InterestList i " +
+            "where i.studentId = :StudentId", nativeQuery = true)
+    Long countForStudentList(@Param("StudentId") String SId);
 }

@@ -37,6 +37,7 @@ public class InterestListController {
         this.repository = repository;
     }
 
+    /*
     @PostMapping("/university/collect")
     void collect(@RequestParam("userId") String userId, @RequestParam("qsId") String qsId) {
         Interest_list query = new Interest_list();
@@ -72,12 +73,14 @@ public class InterestListController {
         return all;
 //        return repository.showListForTheStudent(studentId);
     }
-
+*/
+    @GetMapping("/university/interestlist/{StudentId}")
+    List<Interest_list> findListById(@PathVariable("StudentId") String SId){return repository.showListForTheStudent(SId);}
     @PostMapping("/university/interestlist/add")
     Interest_list addNewSchool(@RequestBody InterestListDto listDto) {
         Interest_listKey newListKey = new Interest_listKey();
         Interest_list newList = new Interest_list();
-        newListKey.setInterestListOrder(repository.count()+1);
+        newListKey.setInterestListOrder(repository.countForStudentList(listDto.getStudentId())+1);
         newListKey.setStudentId(listDto.getStudentId());
         newList.setListKey(newListKey);
         newList.setComment(listDto.getComment());
@@ -90,6 +93,7 @@ public class InterestListController {
         return repository.save(newList);
     }
 
+    /*
     @PutMapping("/university/interestlist/comment/{StudentId}")
     Interest_list updateComment(@RequestBody InterestListDto listDto,
                                 @PathVariable("StudentId") String studentId) {
@@ -99,12 +103,16 @@ public class InterestListController {
             return repository.save(interest_list);
         }).orElse(null);
     }
+     */
 
+    /*
     @DeleteMapping("/university/interestlist/{StudentId}")
     void deleteInterestList (@PathVariable("StudentId") String studentId){
         repository.findAll();
         repository.deleteById(Long.parseLong(studentId));
     }
+
+     */
 //        Interest_listKey findKey = new Interest_listKey();
 //        findKey.setStudentId(studentId);
 //        findKey.setInterestListOrder(order);
@@ -115,13 +123,13 @@ public class InterestListController {
 //            return this.addNewSchool(listDto);
 //        });
         //       return null;
-//    @DeleteMapping("/university/interestlist/{StudentId}/{Order}")
-//    void deleteInterestList (@PathVariable("StudentId") String studentId,@PathVariable("Order") long order){
-//        Interest_listKey deleteKey = new Interest_listKey();
-//        deleteKey.setInterestListOrder(order);
-//        deleteKey.setStudentId(studentId);
-//        repository.deleteById(deleteKey);
-//    }
+   @DeleteMapping("/university/interestlist/{StudentId}/{Order}")
+    void deleteInterestList (@PathVariable("StudentId") String studentId,@PathVariable("Order") long order){
+        Interest_listKey deleteKey = new Interest_listKey();
+        deleteKey.setInterestListOrder(order);
+        deleteKey.setStudentId(studentId);
+        repository.deleteById(deleteKey);
+    }
 }
 
 
