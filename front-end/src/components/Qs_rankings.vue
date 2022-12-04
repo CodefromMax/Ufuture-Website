@@ -129,35 +129,48 @@ export default {
       //   .then(response => {
       //     this.All_universities = response.data[0].universityId;
       //   })
-
-      axios
-        .get('http://localhost:8085/universitiesByType/0/'+ item.qs_ranking_id)
-        .then(response => {
-          this.All_universities = response.data[0].universityId;
-        })
-      
       let user = VueCookies.get("user")
       if (user == null) {
         alert("User is not logged in");
       }
       let userId = user.userId;
+
       axios
-        .post('http://localhost:8085/university/interestlist/add',
-        {
-          "studentId": String(userId),
-          "comment": "",
-          "universityId": String(this.All_universities),
-          "type": 0,
-          "listOrder": item.qs_ranking_id
-        //  "studentId":"SU0002",
-        //   "comment":"testing",
-        //  "universityId":"AU0001"
-        
+        .get('http://localhost:8085/universitiesByType/0/'+ item.qs_ranking_id)
+        .then(response => {
+          this.All_universities = response.data[0].universityId;
+        }).then(() => {
+          axios
+          .post('http://localhost:8085/university/interestlist/add',
+          {
+            "studentId": String(userId),
+            "comment": "",
+            "universityId": String(this.All_universities),
+            "type": 0,
+            "listOrder": item.qs_ranking_id
+          //  "studentId":"SU0002",
+          //   "comment":"testing",
+          //  "universityId":"AU0001"
+          
+          })
+          .then((response) => {
+            console.log(response);
+            let data = response.data;
+            if (data == "") {
+              alert("already added");
+              return;
+            }
+            this.init();
+            alert("Add Success") 
+          })
+          .catch(function (error){
+              alert("Add Exception") 
+              console.log(error);
+          })
         })
-        .then(() => this.init() )
-        .catch(function (error){
-            console.log(error);
-        })
+      
+  
+  
 
     // add(item, index, button){
     //   let user = VueCookies.get("user")

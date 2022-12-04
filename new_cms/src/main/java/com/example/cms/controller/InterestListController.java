@@ -79,7 +79,7 @@ public class InterestListController {
         return repository.showListForTheStudent(SId);
     }
     @PostMapping("/university/interestlist/add")
-    Interest_list addNewSchool(@RequestBody InterestListDto listDto) {
+    synchronized Interest_list addNewSchool(@RequestBody InterestListDto listDto) {
 
         // collect exist
         Interest_list query = new Interest_list();

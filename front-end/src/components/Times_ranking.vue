@@ -100,13 +100,6 @@ export default {
       console.log(localStorage.getItem('currentU'))
     },
     add(item, index, button){
-      axios
-        .get('http://localhost:8085/universitiesByType/2/'+ item.times_Id)
-        .then(response => {
-          console.log(response);
-          this.All_universities = response.data[0].universityId;
-        })
-      
       let user = VueCookies.get("user")
     
       if (user == null) {
@@ -114,22 +107,40 @@ export default {
       }
       let userId = user.userId;
       axios
-        .post('http://localhost:8085/university/interestlist/add',
-        {
-          "studentId": String(userId),
-          "comment": "",
-          "universityId": String(this.All_universities),
-          "type": 2,
-          "listOrder": item.times_Id
-        //  "studentId":"SU0002",
-        //   "comment":"testing",
-        //  "universityId":"AU0001"
-        
-        })
-        .then(() => this.init() )
-        .catch(function (error){
+        .get('http://localhost:8085/universitiesByType/2/'+ item.times_Id)
+        .then(response => {
+          this.All_universities = response.data[0].universityId;
+        }).then(res => {
+          axios
+          .post('http://localhost:8085/university/interestlist/add',
+          {
+            "studentId": String(userId),
+            "comment": "",
+            "universityId": String(this.All_universities),
+            "type": 2,
+            "listOrder": item.times_Id
+          //  "studentId":"SU0002",
+          //   "comment":"testing",
+          //  "universityId":"AU0001"
+          
+          })
+          .then((response) => {
+            let data = response.data;
+            if (data == "") {
+              alert("already added");
+              return;
+            }
+            this.init();
+            alert("Add Success") 
+          })
+          .catch(function (error){
+            alert("Add Exception") 
             console.log(error);
+          })
         })
+  
+  
+    
       // if (item){
       //   let user = VueCookies.get("user")
       // if (user == null) {
@@ -142,7 +153,7 @@ export default {
       // })
       // }
 
-    }
+    },
     
   }
 }

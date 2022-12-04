@@ -10,11 +10,11 @@
     </b-table>
     <b-modal id="edit-modal" v-if="isShow" title="Edit note" @hide="resetEditModal" hide-footer>
       <b-form>
-        <label class="sr-only" for="preference order">preference order</label>
+        <label class="sr-only" for="id">id</label>
         <b-form-input
           id='input-listId'
-          v-model="form.preferenceOrder"
-          placeholder="preferenceOrder"
+          v-model="form.id"
+          placeholder="id"
           readonly
         ></b-form-input>
 
@@ -43,7 +43,7 @@ export default {
       isShow: true,
       Interest_list: null,
       fields: [
-      {key: 'preferenceOrder', label: 'Preference Order', sortable: true},
+      {key: 'id', label: 'id', sortable: true},
       {key: 'niversityName', label: 'University Name', sortable: true},
       {key: 'comment', label: 'Note', sortable: true, sortable: true},
       {key: 'actions', label: 'Actions'}],
@@ -76,7 +76,7 @@ export default {
           let data = response.data;
           let preferenceOrder = 0;
           for(let item of data) {
-            item.preferenceOrder = ++preferenceOrder;
+            item.id = ++preferenceOrder;
             let university = item.university;
             if (item.type == 0) {
               item.niversityName = university.qs_rankings && university.qs_rankings.institution_Name;
@@ -95,8 +95,9 @@ export default {
 
     },
     edit(item, index, button) {
-      console.log(item);
       this.isShow = true;
+      this.$set(this.form, 'id', item.id);
+      this.form.id = item.id;
       this.form.listId = item.listId
       this.form.comment = item.comment;
       this.form.listOrder = item.listKey.interestListOrder;
