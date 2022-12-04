@@ -83,7 +83,7 @@
         <br />
         <b-button type="submit" @click="submitEdit" variant="primary">Submit</b-button>
         <b-button v-if="!isAdd" type="reset" @click="reset" variant="warning">Reset</b-button>
-        <b-button v-if="!isAdd" type="button" @click="deleteEdit" variant="danger">Remove Professor</b-button>
+        <b-button v-if="!isAdd" type="button" @click="deleteEdit" variant="danger">Remove Event</b-button>
       </b-form>
 
     </b-modal>
