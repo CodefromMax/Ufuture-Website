@@ -1,5 +1,5 @@
 package com.example.cms;
-/*
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProfessorSalaryTests {
+public class DiscussionCommentTest {
+    /*
     @Autowired
     private MockMvc mockMvc;
 
@@ -80,7 +81,6 @@ public class ProfessorSalaryTests {
         assertEquals(30000, addedProfessor.getSalary());
     }
 
-
+*/
 }
 
- */

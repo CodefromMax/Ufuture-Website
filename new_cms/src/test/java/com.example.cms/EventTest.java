@@ -1,8 +1,6 @@
 package com.example.cms;
-/*
+
 import com.example.cms.controller.exceptions.StudentNotFoundException;
-import com.example.cms.model.entity.Student;
-import com.example.cms.model.repository.StudentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.Test;
@@ -26,8 +24,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class StudentTests {
-
+public class EventTest {
+/*
 	@Autowired
 	private MockMvc mockMvc;
 
@@ -96,6 +94,5 @@ class StudentTests {
 		assertEquals(200, response.getStatus());
 		assertTrue(studentRepository.findById(123456L).isEmpty());
 	}
-
-}
 */
+}
