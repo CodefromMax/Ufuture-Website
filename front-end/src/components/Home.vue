@@ -12,7 +12,6 @@
       img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
     >
-      <!-- Text slides with image -->
       <router-link :to="{ path: '/events' }">
       <b-carousel-slide
         img-src="https://i.ibb.co/MhYfDL0/12-C2-FA67-BFA7-4-D42-BF46-EADFA5-EA63-B5.jpg"
@@ -28,10 +27,8 @@
     
     <div class = "search-container">
       <b-input-group prepend="Search a University">
-        <!--triger 1-->
       <b-form-input type = "text" placeholder = "Name of the University" v-model = "query" @keydown.enter = "search(query)"/>
       <template #append>
-        <!--triger 2-->
         <b-button class = "search-button" @click = "search(query)">
           <b-icon-search></b-icon-search>
         </b-button>
@@ -42,9 +39,13 @@
 
     <b-table size="lg" striped hover responsive :items="All_universities" :fields="fields">
       <template #cell(actions)="row">
-        <b-button size="lg" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)">
-          Add it to interest list
+        <router-link :to="{ path: '/u' }">
+        <b-button size="sm" v-b-modal.edit-modal @click="clickedU(row.item)">
+        Go
         </b-button>
+        </router-link>
+         
+        
       </template>
     </b-table>
 
@@ -55,15 +56,16 @@
 
 
       <router-link :to="{ path: '/qsrankings' }">
-      <b-button size="lg" style="height: 50px;" @click = "QSRanking()">QS</b-button></router-link>
+      <b-button size="lg" style="height: 50px;" >QS</b-button></router-link>
    
     </b-button-group>
     <b-button-group>
       <router-link :to="{ path: '/cwurrankings' }">
-      <b-button size="lg" style="height: 50px;" @click = "CWRRanking()">CWR</b-button></router-link>
+      <b-button size="lg" style="height: 50px;" >CWUR</b-button></router-link>
     </b-button-group>    
     <b-button-group>
-    <b-button size="lg" style="height: 50px;" @click = "TimesRanking()">Times</b-button>
+      <router-link :to="{ path: '/timesrankings' }">
+    <b-button size="lg" style="height: 50px;" >Times</b-button></router-link>
     </b-button-group>
   </div>
   </div>
@@ -76,7 +78,6 @@
 <script>
 
 import axios from 'axios';
-import Login from './Login.vue';
 
 export default {
   name: 'Home',
@@ -87,15 +88,8 @@ export default {
       
       fields: [
       {key: 'universityId', label: 'University ID'},
-      {key: 'uniName', label: 'University Name', sortable: true},
- 
-      {key: 'actions', label: 'Actions'}],
-      form: {
-          email: '',
-          first_name: '',
-          last_name: '',
-          id: ''
-        },
+      {key: 'uniName', label: 'University Name', sortable: true},     
+      {key: 'actions', label: 'Action'}],
     }
   },
   mounted () {
@@ -103,10 +97,14 @@ export default {
   },
   methods: {
     init() {
-      axios
-        .get('http://localhost:8085/universities/')
-        .then(response => (this.All_universities = response.data))
+      
     },
+
+    clickedU(item){
+     
+     localStorage.setItem('currentU', item.uniName)
+    
+   },
 
     search(searchTerm){
       if (searchTerm){
@@ -120,26 +118,6 @@ export default {
           
         })
       }
-      console.log(searchTerm)
-
-    //Adding a university to interest list with a note
-    // add(item, index, button) {
-    //   this.form.id = item.id
-    //   this.form.Note = item.Note
-    // },
-    // onSave(event) {
-    //   var Uid;
-    //   Uid = parseInt(this.form.id);
-    //   axios
-    //     .post('http://localhost:8085/student/list/' + Uid, {
-    //       "id": Uid,
-    //       "firstName": this.form.Note,
-   
-    //     })
-    //     .then(() => this.init())
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
     }
   }
 }

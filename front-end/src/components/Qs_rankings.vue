@@ -119,16 +119,11 @@ export default {
     clickedU(item){
      
       localStorage.setItem('currentU', item.institution_Name)
-      console.log(localStorage.getItem('currentU'))
+     
     },
 
     add(item, index, button){
 
-      // axios
-      //   .get('http://localhost:8085/universities/'+ item.institution_Name)
-      //   .then(response => {
-      //     this.All_universities = response.data[0].universityId;
-      //   })
       let user = VueCookies.get("user")
       if (user == null) {
         alert("User is not logged in");
@@ -148,10 +143,7 @@ export default {
             "universityId": String(this.All_universities),
             "type": 0,
             "listOrder": item.qs_ranking_id
-          //  "studentId":"SU0002",
-          //   "comment":"testing",
-          //  "universityId":"AU0001"
-          
+
           })
           .then((response) => {
             console.log(response);
@@ -168,38 +160,6 @@ export default {
               console.log(error);
           })
         })
-      
-  
-  
-
-    // add(item, index, button){
-    //   let user = VueCookies.get("user")
-    //   if (user == null) {
-    //     alert("User is not logged in");
-    //   }
-    //   let userId = user.userId;
-    //   let qsId = item.qs_ranking_id;
-    //   axios.post(`http://localhost:8085/university/collect?userId=${userId}&qsId=${qsId}`).then(res => {
-
-    //   })
-
-     
-      // if (item){
-      //   axios
-      //   .post('http://localhost:8085/university/interestlist/add',
-      //   {
-      //     "listId": (parseInt(localStorage.getItem('length'))+1),
-      //     "universityName": item.institution_Name,
-      //     "comment": ""
-      //   })
-      //   .then(() => this.init() )
-      //   .catch(function (error){
-          
-      //       console.log(error);
-          
-          
-      //   })
-      // }
 
     }
     

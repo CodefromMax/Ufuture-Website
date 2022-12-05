@@ -5,10 +5,8 @@
 
     <div class = "search container">
       <b-input-group prepend="Search a University">
-        <!--triger 1-->
       <b-form-input type = "text" placeholder = "Name of the University" v-model = "query" @keydown.enter = "search(query)"/>
       <template #append>
-        <!--triger 2-->
         <b-button class = "search-button" @click = "search(query)">
           <b-icon-search></b-icon-search>
         </b-button>
@@ -78,8 +76,8 @@ export default {
     search(searchTerm){
       if (searchTerm){
         axios
-        .get('http://localhost:8085/qsrankings/searchname/'+searchTerm)
-        .then(response => (this.Qs_rankings = response.data) )
+        .get('http://localhost:8085/cwurrankings/searchname/'+searchTerm)
+        .then(response => (this.CWUR_rankings = response.data) )
         .catch(function (error){
           if (error.response){
             console.log(error.response.data);
@@ -90,9 +88,7 @@ export default {
 
     },
     clickedU(item){
-      //console.log(item.institution_Name)
       localStorage.setItem('currentU', item.institution_Name)
-      console.log(localStorage.getItem('currentU'))
     },
     add(item, index, button){
       let user = VueCookies.get("user")
@@ -113,10 +109,6 @@ export default {
           "universityId": String(this.All_universities),
           "type": 1,
           "listOrder": item.cwur_Id
-        //  "studentId":"SU0002",
-        //   "comment":"testing",
-        //  "universityId":"AU0001"
-        
         })
         .then((response) => {
             let data = response.data;

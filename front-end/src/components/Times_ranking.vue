@@ -5,10 +5,8 @@
 
     <div class = "search container">
       <b-input-group prepend="Search a University">
-        <!--triger 1-->
       <b-form-input type = "text" placeholder = "Name of the University" v-model = "query" @keydown.enter = "search(query)"/>
       <template #append>
-        <!--triger 2-->
         <b-button class = "search-button" @click = "search(query)">
           <b-icon-search></b-icon-search>
         </b-button>
@@ -77,14 +75,14 @@ export default {
     init() {
       axios
         .get('http://localhost:8085/timesrankings')
-        .then(response => {this.Times_rankings = response.data, console.log(response.data)})
+        .then(response => {this.Times_rankings = response.data})
     },
 
     search(searchTerm){
       if (searchTerm){
         axios
-        .get('http://localhost:8085/qsrankings/searchname/'+searchTerm)
-        .then(response => (this.Qs_rankings = response.data) )
+        .get('http://localhost:8085/timesrankings/searchname/'+searchTerm)
+        .then(response => (this.Times_rankings = response.data) )
         .catch(function (error){
           if (error.response){
             console.log(error.response.data);
@@ -97,7 +95,6 @@ export default {
     clickedU(item){
       
       localStorage.setItem('currentU', item.university_Name)
-      console.log(localStorage.getItem('currentU'))
     },
     add(item, index, button){
       let user = VueCookies.get("user")
@@ -119,10 +116,7 @@ export default {
             "universityId": String(this.All_universities),
             "type": 2,
             "listOrder": item.times_Id
-          //  "studentId":"SU0002",
-          //   "comment":"testing",
-          //  "universityId":"AU0001"
-          
+         
           })
           .then((response) => {
             let data = response.data;
@@ -140,19 +134,7 @@ export default {
         })
   
   
-    
-      // if (item){
-      //   let user = VueCookies.get("user")
-      // if (user == null) {
-      //   alert("User is not logged in");
-      // }
-      // let userId = user.userId;
-      // let qsId = item.qs_ranking_id;
-      // axios.post(`http://localhost:8085/university/collect?userId=${userId}&qsId=${qsId}`).then(res => {
-
-      // })
-      // }
-
+  
     },
     
   }

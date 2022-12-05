@@ -71,8 +71,6 @@ export default {
       axios
         .get('http://localhost:8085/university/interestlist/' + user.userId)
         .then(response => {
-          console.log(response.data);
-
           let data = response.data;
           let preferenceOrder = 0;
           for(let item of data) {

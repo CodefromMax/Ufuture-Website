@@ -64,11 +64,7 @@
           v-model="form.discussionContent"
           placeholder="Discussion"
           required
-        ></b-form-input>
-
-        
-
-        
+        ></b-form-input> 
         <br />
         <b-button type="submit" @click="submitEdit" variant="primary">Submit</b-button>
         <b-button v-if="!isAdd" type="reset" @click="reset" variant="warning">Reset</b-button>
@@ -91,10 +87,10 @@ export default {
   data () {
     return {
       isAdd: false,
-        isShow: true,
-        Events: null,
+      isShow: true,
+      Events: null,
       Qs_rankings: null,
-      //query: "",
+      
       fields1: [
       {key: 'actions', label: 'Actions'},
       {key: 'institution_Name', label: 'University Name'},
@@ -113,10 +109,9 @@ export default {
     Times_rankings: null,
     
       fields2: [
-      {key: 'actions', label: 'Actions'}, 
-        {key: 'more', label: 'More'}, 
-        {key: 'times_Rank', label: 'Times Rank'},
+        {key: 'actions', label: 'Actions'}, 
         {key: 'university_Name', label: 'University Name'},  
+        {key: 'times_Rank', label: 'Times Rank'},
         {key: 'teaching_Score', label: 'Teaching Score'},
         {key: 'international_Score', label: 'International Score'},
         {key: 'research_Score', label: 'Research Score'},
@@ -147,9 +142,11 @@ export default {
     CWUR_rankings: null,
       fields3: [
       {key: 'actions', label: 'Actions'}, 
-      {key: 'more', label: 'More'}, 
       {key: 'institution_Name', label: 'University Name'},
       {key: 'cwur_Id', label: 'Ranking'},
+      {key: 'national_rank', label: 'national rank'},
+      {key: 'country', label: 'Location'},
+      {key: 'quality_of_Faculty',  label: 'quality of Faculty'},
       {key: 'alumni_Employment', label: 'alumni Employment'},
       {key: 'citations', label: 'citations'},
       {key: 'quality_of_education', label: 'quality of education'},
@@ -168,16 +165,16 @@ export default {
         .then(response => (this.Qs_rankings = response.data))
       axios
         .get('http://localhost:8085/cwurrankings/'+localStorage.getItem('currentU'))
-        .then(response => (this.CWUR_rankings = response.data))
+        .then(response => {this.CWUR_rankings = response.data})
       axios
         .get('http://localhost:8085/timesrankings/'+localStorage.getItem('currentU'))
         .then(response => (this.Times_rankings = response.data))
       
       axios
         .get('http://localhost:8085/discussion/' + localStorage.getItem('currentU') )
-        .then(response => {this.Discussion = response.data,console.log(response.data)})
+        .then(response => {this.Discussion = response.data})
     },
-    //
+  
     add1() {
         this.isAdd = true;
         this.resetEditModal();
@@ -189,22 +186,17 @@ export default {
       submitEdit() {
         if (this.isAdd) {
           let user = VueCookies.get("user");
-          console.log("user",user.userId)
-          this.form.userId = user.userId;
+          
           axios.post(`http://localhost:8085/discussion/post`, {
-            "userId": this.form.userId,
+            "userId": user.userId,
             "discussionContent": this.form.discussionContent,
             "universityName": localStorage.getItem('currentU')
           },
-          console.log({
-            "userId": this.form.userId,
-            "discussionContent": this.form.discussionContent,
-            "universityName": this.form.universityName
-          })
             ).then(res => {
             this.isShow = false;
             this.init();
           })
+          
           return;
         }
         
@@ -220,9 +212,23 @@ export default {
         })
       },
       edit(item, index, button) {
-        this.isAdd = false;
+        let user = VueCookies.get("user");
+        console.log("user",user.isStudent)
+
+          console.log(this.Discussion[index].user)
+        if (user.isStudent != 0){
+          if (this.Discussion[index].user.userId == user.userId) {
+          this.isAdd = false;
+          this.form = item;
+          this.isShow = true;
+          }
+        }
+        else
+        { this.isAdd = false;
         this.form = item;
         this.isShow = true;
+        }
+      
       } ,
       resetEditModal() {
         this.form = {
@@ -232,19 +238,7 @@ export default {
           discussionId:''
         };
       },
-    //
-    search(searchTerm){
-      if (searchTerm){
-        axios
-        .get('http://localhost:8085/qsrankings/searchname/'+searchTerm)
-        .then(response => (this.Qs_rankings = response.data),console.log(this.Qs_rankings))
-        .catch(function (error){
-          if (error.response){
-            console.log(error.response.data);
-          }
-        })
-      }
-    },
+    
     
     add(item, index, button){
       if (item){
