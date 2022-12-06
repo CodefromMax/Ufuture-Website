@@ -8,7 +8,7 @@
     <h3> QS Ranking </h3>
     <b-table striped hover responsive :items="Qs_rankings" :fields="fields1">
       <template #cell(actions)="row">
-        <b-button size="sm" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)" variant="light">
+        <b-button size="sm"  @click="add111(row.item, row.index, $event.target)" variant="light">
           Add to interest list
         </b-button>
       </template>
@@ -17,7 +17,7 @@
     <h3> CWUR Ranking </h3>
     <b-table striped hover responsive :items="CWUR_rankings" :fields="fields3">
       <template #cell(actions)="row">
-        <b-button size="sm" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)" variant="light">
+        <b-button size="sm"  @click="add111(row.item, row.index, $event.target)" variant="light">
           Add to interest list
         </b-button>
       </template>
@@ -26,7 +26,7 @@
     <h3> Times Ranking </h3>
     <b-table striped hover responsive :items="Times_rankings" :fields="fields2">
       <template #cell(actions)="row">
-        <b-button size="sm" v-b-modal.edit-modal @click="add(row.item, row.index, $event.target)" variant="light">
+        <b-button size="sm" @click="add111(row.item, row.index, $event.target)" variant="light">
           Add to interest list
         </b-button>
       </template>
@@ -240,21 +240,46 @@ export default {
       },
     
     
-    add(item, index, button){
-      if (item){
-        axios
-        .post('http://localhost:8085/university/interestlist/add',
-        {
-          "listId": (parseInt(localStorage.getItem('length'))+1),
-          "universityName": item.institution_Name,
-          "comment": ""
-        })
-        .then(() => this.init() )
-        .catch(function (error){
-            console.log(error);
-        })
+      add111(item, index, button){
+
+let user = VueCookies.get("user")
+if (user == null) {
+  alert("User is not logged in");
+}
+let userId = user.userId;
+
+axios
+  .get('http://localhost:8085/universitiesByType/0/'+ item.qs_ranking_id)
+  .then(response => {
+    this.All_universities = response.data[0].universityId;
+  }).then(() => {
+    axios
+    .post('http://localhost:8085/university/interestlist/add',
+    {
+      "studentId": String(userId),
+      "comment": "",
+      "universityId": String(this.All_universities),
+      "type": 0,
+      "listOrder": item.qs_ranking_id
+
+    })
+    .then((response) => {
+      console.log(response);
+      let data = response.data;
+      if (data == "") {
+        alert("already added");
+        return;
       }
-    }
+      this.init();
+      alert("Add Success") 
+    })
+    .catch(function (error){
+        alert("Add Exception") 
+        console.log(error);
+    })
+  })
+
+}
     
   }
 }
