@@ -102,7 +102,8 @@ public class EventsController {
         });
     }
     @DeleteMapping("/events/{eventId}")
-    void deleteEvent(@PathVariable("eventId") long ID) { ;
+    void deleteEvent(@PathVariable("eventId") long ID) {
+        repository.deleteById(ID);
     }
 
 

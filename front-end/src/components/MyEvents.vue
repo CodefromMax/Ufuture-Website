@@ -212,25 +212,6 @@
         localStorage.setItem('currentU', item.institution_Name)
         console.log(localStorage.getItem('currentU'))
       },
-      add(item, index, button){
-        if (item){
-          axios
-          .post('http://localhost:8085/university/interestlist/add',
-          {
-            "listId": (parseInt(localStorage.getItem('length'))+1),
-            "universityName": item.institution_Name,
-            "comment": ""
-          })
-          .then(() => this.init() )
-          .catch(function (error){
-            
-              console.log(error);
-            
-            
-          })
-        }
-  
-      }
       
     }
   }
