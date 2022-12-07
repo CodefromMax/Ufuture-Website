@@ -1,8 +1,6 @@
 package com.example.cms;
 
-import com.example.cms.model.entity.Discussion;
-import com.example.cms.model.entity.Interest_list;
-import com.example.cms.model.entity.Interest_listKey;
+import com.example.cms.model.entity.*;
 import com.example.cms.model.repository.CommentRepository;
 import com.example.cms.model.repository.DiscussionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,8 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -39,42 +36,87 @@ public class DiscussionCommentTest {
     @Autowired
     private CommentRepository commentRepository;
 
+    /* @Test
+    void getEvent() throws Exception{
+        //Read
+        MockHttpServletResponse response = mockMvc.perform(get("/discussion/showall")
+                .andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+
+        ObjectNode receivedJson = objectMapper.readValue(response.getContentAsString(), ObjectNode.class);
+        assertEquals(1l, receivedJson.get("eventCode").longValue());
+        assertEquals("School is Back", receivedJson.get("eventName").textValue());
+        assertEquals("2023-09-23 06:48:50", receivedJson.get("eventDate").textValue());
+        assertEquals("zoom.ca", receivedJson.get("location").textValue());
+        assertEquals("UU0001", receivedJson.get("createrId").textValue());
+        assertEquals("AU0001", receivedJson.get("university").textValue());
+    }*/
 
     @Test
     void CRUDforDiscussionComment() throws Exception {
-        //Create
-        ObjectNode listJson = objectMapper.createObjectNode();
-        listJson.put("discussionContent", "Is this the best university");
-        listJson.put("userId", "SU0001");
-        listJson.put("universityName", "Massachusetts Institute of Technology (MIT)");
+
+        //*********************** Create (post) ***************************
+        ObjectNode DisucussionJson = objectMapper.createObjectNode();
+        DisucussionJson.put("discussionContent", "Is this a good university");
+        DisucussionJson.put("userId", "SU0001");
+        DisucussionJson.put("universityName", "Stanford University");
 
         MockHttpServletResponse response_create = mockMvc.perform(post("/discussion/post").
                         contentType("application/json").
-                        content(listJson.toString())).
+                        content(DisucussionJson.toString())).
                 andReturn().getResponse();
         assertEquals(200, response_create.getStatus());
 
         assertTrue(discussionRepository.findById(10L).isPresent());
         Discussion addedDiscussion = discussionRepository.findById(10L).get();
+
+        assertEquals("Is this a good university", addedDiscussion.getDiscussionContent());
         assertEquals("SU0001", addedDiscussion.getUser().getUserId());
-        assertEquals(10L, addedDiscussion.getDiscussionId());
-        assertEquals("Is this the best university", addedDiscussion.getDiscussionContent());
-        assertEquals("AU001", addedDiscussion.getUniversity().getUniversityId());
+        assertEquals("Stanford University", addedDiscussion.getUniversity().getUniName());
 
-        //Read
-        MockHttpServletResponse response_read = mockMvc.perform(get("/discussion/Stanford University")).
+        //*********************** Read (get) ***************************
+        /*
+
+        MockHttpServletResponse response_read = mockMvc.perform(get("/discussion/AU0001")).
                 andReturn().getResponse();
-        Discussion discussionForGet = discussionRepository.findById(3L).get();
-        assertTrue(discussionRepository.findById(3L).isPresent());
+
+        Discussion discussionForGet = discussionRepository.findById(1L).get();
+        assertTrue(discussionRepository.findById(1L).isPresent());
+
         assertEquals(200, response_read.getStatus());
-        assertEquals("SU0003", discussionForGet.getUser().getUserId());
-        assertEquals(3L, discussionForGet.getDiscussionId());
+
+        assertEquals(1L, discussionForGet.getDiscussionId());
         assertEquals("Is this a good university", discussionForGet.getDiscussionContent());
-        assertEquals("AU003", discussionForGet.getUniversity().getUniversityId());
+        assertEquals("SU0001", discussionForGet.getUser());
+        assertEquals("AU003", discussionForGet.getUniversity());
 
-        //Update
-        //Follow Interest List, also generate the same thing for comment
+         */
 
+        //*********************** Update ***************************
+
+        ObjectNode DiscussionUpdateJson = objectMapper.createObjectNode();
+        DiscussionUpdateJson.put("discussionContent", "The university is good and awesome");
+
+        MockHttpServletResponse response_update = mockMvc.perform(put("/discussion/10").
+                contentType("application/json").
+                content(DiscussionUpdateJson.toString())).andReturn().getResponse();
+
+        assertTrue(discussionRepository.findById(10L).isPresent());
+        Discussion updatedDiscussion = discussionRepository.findById(10L).get();
+
+        assertEquals("The university is good and awesome", updatedDiscussion.getDiscussionContent());
+        assertEquals("SU0001", updatedDiscussion.getUser().getUserId());
+        assertEquals("Stanford University", updatedDiscussion.getUniversity().getUniName());
+
+        //*********************** Delete ***************************
+
+        MockHttpServletResponse response = mockMvc.perform(
+                        delete("/discussion/10").
+                                contentType("application/json"))
+                .andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+        assertTrue(discussionRepository.findById(10L).isEmpty());
     }
 }
-
