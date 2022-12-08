@@ -17,7 +17,7 @@
     <h3> CWUR Ranking </h3>
     <b-table striped hover responsive :items="CWUR_rankings" :fields="fields3">
       <template #cell(actions)="row">
-        <b-button size="sm"  @click="add111(row.item, row.index, $event.target)" variant="light">
+        <b-button size="sm"  @click="add22(row.item, row.index, $event.target)" variant="light">
           Add to interest list
         </b-button>
       </template>
@@ -26,7 +26,7 @@
     <h3> Times Ranking </h3>
     <b-table striped hover responsive :items="Times_rankings" :fields="fields2">
       <template #cell(actions)="row">
-        <b-button size="sm" @click="add111(row.item, row.index, $event.target)" variant="light">
+        <b-button size="sm" @click="add2(row.item, row.index, $event.target)" variant="light">
           Add to interest list
         </b-button>
       </template>
@@ -242,6 +242,87 @@ export default {
     
       add111(item, index, button){
 
+        let user = VueCookies.get("user")
+        if (user == null) {
+          alert("User is not logged in");
+        }
+        let userId = user.userId;
+
+        axios
+          .get('http://localhost:8085/universitiesByType/0/'+ item.qs_ranking_id)
+          .then(response => {
+            this.All_universities = response.data[0].universityId;
+          }).then(() => {
+            axios
+            .post('http://localhost:8085/university/interestlist/add',
+            {
+              "studentId": String(userId),
+              "comment": "",
+              "universityId": String(this.All_universities),
+              "type": 0,
+              "listOrder": item.qs_ranking_id
+
+            })
+            .then((response) => {
+              console.log(response);
+              let data = response.data;
+              if (data == "") {
+                alert("already added");
+                return;
+              }
+              this.init();
+              alert("Add Success") 
+            })
+            .catch(function (error){
+                alert("Add Exception") 
+                console.log(error);
+            })
+          })
+
+        },
+          add2(item, index, button){
+
+  let user = VueCookies.get("user")
+  if (user == null) {
+    alert("User is not logged in");
+  }
+  let userId = user.userId;
+
+  axios
+    .get('http://localhost:8085/universitiesByType/2/'+ item.times_Id)
+    .then(response => {
+      this.All_universities = response.data[0].universityId; 
+    }).then(() => {
+      axios
+      .post('http://localhost:8085/university/interestlist/add',
+      {
+        "studentId": String(userId),
+        "comment": "",
+        "universityId": String(this.All_universities),
+        "type": 0,
+        "listOrder": item.times_Id
+
+      })
+      .then((response) => {
+        console.log(response);
+        let data = response.data;
+        if (data == "") {
+          alert("already added");
+          return;
+        }
+        this.init();
+        alert("Add Success") 
+      })
+      .catch(function (error){
+          alert("Add Exception") 
+          console.log(error);
+      })
+    })
+
+  },
+
+  add22(item, index, button){
+
 let user = VueCookies.get("user")
 if (user == null) {
   alert("User is not logged in");
@@ -249,9 +330,9 @@ if (user == null) {
 let userId = user.userId;
 
 axios
-  .get('http://localhost:8085/universitiesByType/0/'+ item.qs_ranking_id)
+  .get('http://localhost:8085/universitiesByType/1/'+ item.cwur_Id)
   .then(response => {
-    this.All_universities = response.data[0].universityId;
+    this.All_universities = response.data[0].universityId; 
   }).then(() => {
     axios
     .post('http://localhost:8085/university/interestlist/add',
@@ -260,7 +341,7 @@ axios
       "comment": "",
       "universityId": String(this.All_universities),
       "type": 0,
-      "listOrder": item.qs_ranking_id
+      "listOrder": item.cwur_Id
 
     })
     .then((response) => {
@@ -280,6 +361,9 @@ axios
   })
 
 }
+
+
+
     
   }
 }
