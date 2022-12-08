@@ -76,24 +76,29 @@ public class InterestListTest {
 		assertEquals(1,addedList.getType());
 
 		//Read
+		/*
 
 		MockHttpServletResponse responseGet = mockMvc.perform(get("/university/interestlist/SU0001"))
 				.andReturn().getResponse();
 
-
-		assertTrue(interestListRepository.findById(listKey).isPresent());
+		Interest_listKey listKeyGet = new Interest_listKey();
+		listKeyGet.setInterestListOrder("1");
+		listKeyGet.setStudentId("SU0001");
+		ObjectNode receivedJson = objectMapper.readValue(responseGet.getContentAsByteArray(), ObjectNode.class);
 
 		assertEquals(200, responseGet.getStatus());
-		assertEquals("SU0001", addedList.getListKey().getStudentId());
+		assertEquals("interestListOrder:1,studentId:SU0001", receivedJson.get("listKey").toString());
 		assertEquals("1", addedList.getListKey().getInterestListOrder());
 		assertEquals("The university is good", addedList.getComment());
 		assertEquals("AU001", addedList.getUniversity().getUniversityId());
 		assertEquals(1,addedList.getType());
 
-		ObjectNode listUpdateJson = objectMapper.createObjectNode();
-		listUpdateJson.put("comment", "The university is good and awesome");
+
+		 */
 
 		//Update
+		ObjectNode listUpdateJson = objectMapper.createObjectNode();
+		listUpdateJson.put("comment", "The university is good and awesome");
 
 		MockHttpServletResponse response_update = mockMvc.perform(put("/university/interestlist/comment/SU0001/1").
 						contentType("application/json").

@@ -1,6 +1,12 @@
 package com.example.cms;
 
 import com.example.cms.controller.exceptions.StudentNotFoundException;
+import com.example.cms.model.entity.All_universities;
+import com.example.cms.model.entity.Events;
+import com.example.cms.model.entity.Interest_listKey;
+import com.example.cms.model.entity.UniversityUser;
+import com.example.cms.model.repository.EventsRepository;
+import com.example.cms.model.repository.StudentUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.Test;
@@ -25,74 +31,89 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class EventTest {
-/*
-	@Autowired
-	private MockMvc mockMvc;
 
-	@Autowired
-	private ObjectMapper objectMapper;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@Autowired
-	private StudentRepository studentRepository;
+    @Autowired
+    private ObjectMapper objectMapper;
 
-	@Test
-	void getStudent() throws Exception{
-		MockHttpServletResponse response = mockMvc.perform(get("/students/1111"))
-				.andReturn().getResponse();
+    @Autowired
+    private StudentUserRepository studentRepository;
 
-		assertEquals(200, response.getStatus());
+    @Autowired
+    private EventsRepository eventsRepository;
 
-		ObjectNode receivedJson = objectMapper.readValue(response.getContentAsString(), ObjectNode.class);
-		assertEquals(1111L, receivedJson.get("id").longValue());
-		assertEquals("Tyrion", receivedJson.get("firstName").textValue());
-		assertEquals("Lannister", receivedJson.get("lastName").textValue());
-	}
+    @Test
+    void addEventTest() throws Exception{
+        //Create
+        ObjectNode eventJson = objectMapper.createObjectNode();
+        eventJson.put("eventName", "School is Back testing");
+        eventJson.put("eventDate", "2023-09-23 06:48:50");
+        eventJson.put("location", "zoom.ca");
+        eventJson.put("universityUserId", "UU0010");
+        eventJson.put("university", "AU020");
 
-	@Test
-	void addStudent() throws Exception{
+        MockHttpServletResponse response = mockMvc.perform(
+                        post("/events/post").
+                                contentType("application/json").
+                                content(eventJson.toString()))
+                .andReturn().getResponse();
 
-		ObjectNode studentJson = objectMapper.createObjectNode();
-		studentJson.put("id", 8888L);
-		studentJson.put("firstName", "first");
-		studentJson.put("lastName", "last");
-		studentJson.put("email", "first@last.com");
+        // assert HTTP code of response is 200 OK
+        assertEquals(200, response.getStatus());
 
-		MockHttpServletResponse response = mockMvc.perform(
-				post("/students").
-						contentType("application/json").
-						content(studentJson.toString()))
-				.andReturn().getResponse();
+        assertTrue(eventsRepository.findById(6L).isPresent());
+        Events addedEvent = eventsRepository.findById(6L).get();
 
-		// assert HTTP code of response is 200 OK
-		assertEquals(200, response.getStatus());
+        // Assert the details of the students are correct
+        assertEquals(6L, addedEvent.getEventCode());
+        assertEquals("School is Back testing", addedEvent.getEventName());
+        assertEquals("2023-09-23 06:48:50", addedEvent.getEventDate());
+        assertEquals("zoom.ca", addedEvent.getLocation());
+        assertEquals("UU0010", addedEvent.getUniversityUser().getUserId());
+    }
 
-		// Assert student with id 8888 exists in our repository and then get the student object
-		assertTrue(studentRepository.findById(8888L).isPresent());
-		Student addedStudent = studentRepository.findById(8888L).get();
+    @Test
+    void updateEventTest() throws Exception{
+        //Update
+        ObjectNode eventJson = objectMapper.createObjectNode();
+        eventJson.put("eventName", "We love MIE350");
+        eventJson.put("eventDate", "2023-09-23 06:48:51");
+        eventJson.put("location", "Bahen 1130");
 
-		// Assert the details of the students are correct
-		assertEquals(8888L, addedStudent.getId());
-		assertEquals("first", addedStudent.getFirstName());
-		assertEquals("last", addedStudent.getLastName());
-		assertEquals("first@last.com", addedStudent.getEmail());
-	}
+        MockHttpServletResponse response = mockMvc.perform(
+                        put("/events/5").
+                                contentType("application/json").
+                                content(eventJson.toString()))
+                .andReturn().getResponse();
 
-	@Test
-	void deleteStudent() throws Exception{
-		Student s = new Student();
-		s.setId(123456L);
-		s.setFirstName("first");
-		s.setLastName("last");
-		s.setEmail("first@last.com");
-		studentRepository.save(s);
+        // assert HTTP code of response is 200 OK
+        assertEquals(200, response.getStatus());
 
-		MockHttpServletResponse response = mockMvc.perform(
-				delete("/students/123456").
-						contentType("application/json"))
-				.andReturn().getResponse();
+        // Assert student with id 8888 exists in our repository and then get the student object
+        assertTrue(eventsRepository.findById(5L).isPresent());
+        Events addedEvent = eventsRepository.findById(5L).get();
 
-		assertEquals(200, response.getStatus());
-		assertTrue(studentRepository.findById(123456L).isEmpty());
-	}
-*/
+        // Assert the details of the students are correct
+        assertEquals(5L, addedEvent.getEventCode());
+        assertEquals("We love MIE350", addedEvent.getEventName());
+        assertEquals("2023-09-23 06:48:51", addedEvent.getEventDate());
+        assertEquals("Bahen 1130", addedEvent.getLocation());
+        assertEquals("UU0002", addedEvent.getUniversityUser().getUserId());
+    }
+
+
+    @Test
+    void deleteEventTest() throws Exception{
+
+        MockHttpServletResponse response = mockMvc.perform(
+                        delete("/discussion/1").
+                                contentType("application/json"))
+                .andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+        assertTrue(studentRepository.findById("1L").isEmpty());
+    }
+
 }
